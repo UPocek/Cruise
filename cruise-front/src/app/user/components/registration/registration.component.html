@@ -1,0 +1,125 @@
+<div id="user_registration">
+  <h1 class="d-h1">Registration</h1>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+    <div>
+      <p>Enter your email:</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          formControlName="email"
+          id="email"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <p>Introduce yourself:</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          type="text"
+          name="name"
+          formControlName="name"
+          id="name"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input
+          matInput
+          type="text"
+          name="surname"
+          formControlName="surname"
+          id="surname"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <p>We will not spam you :)</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone number</mat-label>
+        <input
+          matInput
+          type="text"
+          name="phone"
+          formControlName="phone"
+          id="phone"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <p>We will stalk you :)</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          type="text"
+          name="address"
+          formControlName="address"
+          id="address"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <p>Enter password:</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          name="password"
+          formControlName="password"
+          id="password"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Reenter password</mat-label>
+        <input
+          matInput
+          [type]="hide_re ? 'password' : 'text'"
+          name="repassword"
+          formControlName="repassword"
+          id="repassword"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="hide_re = !hide_re"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide_re"
+        >
+          <mat-icon>{{ hide_re ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <input
+        [disabled]="form_submited"
+        type="submit"
+        value="Hop in"
+        id="registration-btn"
+        class="t20 main-btn"
+      />
+    </div>
+  </form>
+</div>

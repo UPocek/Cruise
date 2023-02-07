@@ -1,0 +1,124 @@
+#user_info {
+  margin: 2% auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#user_info h1 {
+  margin-bottom: 3rem;
+}
+
+#account_name {
+  margin: 2% auto;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+}
+
+#account_info {
+  width: 40%;
+  text-align: left;
+  margin: auto;
+}
+
+#account_name p{
+  margin: 2em;
+}
+
+#account_info p {
+  font-size: 1.5em;
+}
+
+#image {
+  margin: auto 20px;
+  height: 30%;
+  text-align: center;
+}
+
+#image img{
+  height: 10rem;
+  width: 10rem;
+}
+
+#user_info button {
+  margin: 10px;
+  color: white;
+}
+
+#rejectBtn {
+  background-color: #333333;
+}
+
+#user_info form {
+  display: flex;
+  flex-direction: column;
+}
+#user_info form>div {
+  margin: auto;
+}
+
+mat-form-field {
+  display: block;
+  width: 300px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.fab-buttons {
+  background-color: var(--Amber);
+  color: black !important;
+  margin: 1rem;
+}
+
+#buttons {
+  margin: 2rem;
+}
+.report-button {
+  background-color: var(--Amber);
+  color: var(--PrimaryText) !important;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+  transition: all 200ms;
+  margin: 1rem !important;
+}
+
+
+#user_info ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#user_info ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#user_info ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+.mat-slide-toggle {
+  padding-top: 1rem;
+  transform: scale(1.5, 1.5);
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: var(--Amber)
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: var(--Amber)
+}
+
+
+
+
+
+

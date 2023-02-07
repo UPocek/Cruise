@@ -1,0 +1,111 @@
+#user_login {
+  margin: 2% auto;
+  width: 80%;
+  text-align: center;
+}
+
+#user_login h1 {
+  margin-bottom: 3rem;
+}
+
+#user_login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#user_login form button {
+  background-color: transparent;
+  border: 0;
+}
+
+#user_login form {
+  display: flex;
+  flex-direction: column;
+}
+
+#user_login form>div {
+  width: 300px;
+  margin: auto;
+}
+
+.t30 {
+  margin-top: 30px;
+}
+
+.b30 {
+  margin-bottom: 30px;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+#user_login ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#user_login ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#user_login ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+#forgot-pass {
+  margin: auto;
+  cursor: pointer;
+}
+
+#forgot-pass p{
+  color: lightgrey;
+  display: flex;
+  align-items: flex-end;
+}
+
+hr {
+  background-color: lightgrey;
+  height: 1px;
+  margin: auto;
+}
+
+#or-line{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
+#or-line div {
+  width: 140px;
+  vertical-align: auto;
+}
+
+#or-line p {
+  margin: 5px 10px;
+}
+
+#user_login img {
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  align-items: center;
+}
+
+#login-type-buttons button {
+  width: 270px;
+  height: 50px;
+  padding: 0;
+}
+
+#registration-text {
+  margin-top: 60px;
+}
+
+
+#register-text:hover {
+  cursor: pointer;
+}
+

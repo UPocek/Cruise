@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/passenger_ride_history_back_fab"
+                layout="@layout/floating_back_button" />
+
+
+            <TextView
+                style="@style/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/cruise_details" />
+
+            <LinearLayout
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/passenger_ride_history_details_time"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/route"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/passenger_ride_history_details_location"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/split_fare_with"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/passeenger_ride_history_details_splitfare"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/passenger_ride_history_cruise_splitfare"
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:divider="@color/white" />
+
+            <LinearLayout
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cruise_time"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/passenger_ride_history_details_duration"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/distance"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/passenger_ride_history_details_distance"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/passenger_ride_history_details_price"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/ride_details_map_to_show"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+
+            <Button
+                android:id="@+id/rebook_from_history_btn"
+                style="@style/largeWidthButtonStyle"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/dark_gray"
+                android:text="@string/rebook_this_ride" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="20dp"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:id="@+id/passenger_current_ride_driver_info"
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/passenger_current_ride_driver_icon"
+                    style="@style/cardMessageIcon"
+                    android:src="@drawable/driver" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/passenger_current_ride_driver_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text=""
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/passenger_current_ride_driver_surname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+                <RatingBar
+                    android:id="@+id/driver_rating"
+                    style="@style/MyRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/passenger_current_ride_car_info"
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/passenger_current_ride_car_icon"
+                    style="@style/cardMessageIcon"
+                    android:src="@drawable/car" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/passenger_current_ride_car_make"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text=""
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/passenger_current_ride_car_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <RatingBar
+                    android:id="@+id/car_rating"
+                    style="@style/MyRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:rating="0" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/linearLayoutElement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/leave_a_comment"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/inputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/dark_gray">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/comment_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/submit_comment_btn"
+                style="@style/largeWidthButtonStyle"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/amber"
+                android:text="@string/submit" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+

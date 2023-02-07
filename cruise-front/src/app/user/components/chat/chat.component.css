@@ -1,0 +1,125 @@
+.all-chat-messages{
+    max-height: 630px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.chat-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    margin-bottom: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--PrimaryText);
+    margin-bottom: 16px;
+}
+.chat-header .title h3{
+    font-size: 1.8rem;
+    text-align: left;
+    margin: 0;
+}
+
+.chat-header .additional-informations p{
+    font-size: 0.9rem;
+    font-weight: 200;
+    text-align: right;
+    margin: 0;
+}
+
+.content{
+    display: flex;
+}
+
+.content p{
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 0;
+    color: var(--PrimaryText);
+}
+
+.forMe .content, .forMe .time{
+    justify-content: flex-start;
+}
+
+.fromMe .content{
+    justify-content: flex-end;
+}
+
+.forMe .content p{
+    background-color: lightgray;
+}
+.fromMe .content p{
+    background-color: var(--Amber);
+}
+.fromMe .content p.panic{
+    background-color: #FF0000;
+}
+.fromMe .content p.support{
+    background-color: #0075FF;;
+}
+
+.forMe .time{
+    text-align: left;
+}
+
+.fromMe .time{
+    text-align: right;
+}
+
+.time{
+    font-size: 0.8rem;
+    font-weight: 200;
+    margin: 4px auto;
+}
+
+.message{
+    margin: 16px 8px;
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px;
+}
+
+.actions .form-container{
+    display: inline-block;
+    width: 700px;
+    margin-right: 50px;
+}
+
+
+.send-btn{
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    background-color: var(--Amber);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+mat-form-field {
+    display: block;
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0 !important;
+ }
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: var(--PrimaryText);
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--PrimaryText);
+}
+
+::ng-deep .mat-focused .mat-form-field-required-marker {
+    color: var(--PrimaryText);
+}

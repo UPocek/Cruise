@@ -1,0 +1,174 @@
+<div class="estimation-card">
+  <div class="ride-pick-options">
+    <h2 class="title-btn" (click)="setIsDetails(true)">
+      Create a new ride request
+    </h2>
+    <h2 class="title-btn" (click)="setIsDetails(false)">
+      Choose from favourite routes
+    </h2>
+  </div>
+  <div *ngIf="isDetails">
+    <div class="line">
+      <hr />
+    </div>
+    <div>
+      <form id="main-form" [formGroup]="rideForm" (ngSubmit)="getOffers()">
+        <div>
+          <div class="top-elements">
+            <p>Where to:</p>
+            <div
+              appStopPropagation
+              *ngIf="!rideSetToFavourite"
+              (click)="markAsFavouriteRide()"
+              class="favourite in-l"
+            >
+              <img
+                src="../../../../assets/heart-line-white.png"
+                alt="Favourite"
+              />
+            </div>
+            <div
+              appStopPropagation
+              *ngIf="rideSetToFavourite"
+              class="favourite in-l"
+            >
+              <img
+                src="../../../../assets/heart-fill-white.png"
+                alt="Favourite"
+              />
+            </div>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter pick-up location:</mat-label>
+            <input
+              matInput
+              formControlName="departure"
+              type="text"
+              name="departure"
+              id="departure"
+              [value]="rideForm.value.departure"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter destination:</mat-label>
+            <input
+              matInput
+              formControlName="destination"
+              type="text"
+              name="destination"
+              id="destination"
+            />
+          </mat-form-field>
+          <div class="line">
+            <hr />
+          </div>
+          <p>Details: <span class="optional-text">(Optional)</span></p>
+          <mat-form-field appearance="outline">
+            <mat-label>Time</mat-label>
+            <input
+              matInput
+              formControlName="time"
+              type="datetime-local"
+              name="time"
+              id="time"
+            />
+          </mat-form-field>
+          <div class="horizontal_align">
+            <div class="vertical_types">
+              <mat-checkbox formControlName="pets">Pets</mat-checkbox>
+              <mat-checkbox formControlName="babys">Babys</mat-checkbox>
+            </div>
+            <mat-form-field appearance="outline">
+              <mat-label>Vehicle type</mat-label>
+              <mat-select formControlName="vehicleType">
+                <mat-option value="STANDARD" selected>STANDARD</mat-option>
+                <mat-option value="LUXARY">LUXARY</mat-option>
+                <mat-option value="VAN">VAN</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="line">
+            <hr />
+          </div>
+          <p>
+            Invite people for split fare:
+            <span class="optional-text">(Optional)</span>
+          </p>
+          <div class="invite-people">
+            <mat-form-field appearance="outline">
+              <mat-label>Email:</mat-label>
+              <input
+                matInput
+                type="email"
+                name="split_fare"
+                id="split_fare"
+                [value]="inviteRequest"
+                (input)="addFriend(split_fare.value)"
+                #split_fare
+              />
+            </mat-form-field>
+            <button class="icon-btn plus-button" (click)="inviteFriend()">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <ul class="email-list">
+            <li *ngFor="let friend of splitFare">{{ friend }}</li>
+          </ul>
+          <div id="ask_for_ride">
+            <input type="submit" value="Confirm request" class="t20 main-btn" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="offers">
+      <div
+        *ngFor="let ride of offers; let i = index"
+        id="offer{{ i }}"
+        class="offer-card"
+        (click)="requestRide(i)"
+      >
+        <div class="mini-map-holder">
+          <img src="../../../../assets/mini-map.png" alt="Mini map" />
+        </div>
+        <div class="offer-info">
+          <h4>Route {{ i + 1 }}</h4>
+          <p>{{ ride.estimatedTimeInMinutes }} min ride</p>
+        </div>
+        <div class="offer-price">
+          <h3>{{ ride.estimatedCost }}rsd</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isDetails">
+    <div class="line">
+      <hr />
+    </div>
+    <div>
+      <div
+        id="ride-card"
+        *ngFor="let ride of favouriteRides; let i = index"
+        (click)="requestFavouriteRide(i)"
+      >
+        <div class="map-holder">
+          <img src="../../../../assets/mini-map.png" alt="Mini map" />
+        </div>
+        <div class="ride-info">
+          <p>{{ favouriteRides[i].favoriteName }}</p>
+          <p>
+            <b>{{ favouriteRides[i].vehicleType }}</b>
+          </p>
+          <p>
+            babys allowed: <b>{{ favouriteRides[i].babyTransport }}</b>
+          </p>
+          <p>
+            pets allowed: <b>{{ favouriteRides[i].petTransport }}</b>
+          </p>
+          <p>
+            passenger number: <b>{{ favouriteRides[i].passengers.length }}</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div id="passenger-history">
+
+    <div class="rides-list">
+        <h1 class="d-h1">Ride history</h1>
+        <div class="filters">
+            <form [formGroup]="formFilters" (ngSubmit)="filterHistory()">
+                <p>Filters: <span class="optional-text">(Optional)</span></p>
+                <div class="filterInputs">
+                    <div class="filterItem">
+                        <mat-form-field appearance="outline">
+                            <mat-label>From</mat-label>
+                            <input
+                              matInput
+                              formControlName="from"
+                              type="datetime-local"
+                              name="from"
+                              id="from"
+                            />
+                          </mat-form-field>
+                    </div>
+                    <div class="filterItem">
+                        <mat-form-field appearance="outline">
+                            <mat-label>To</mat-label>
+                            <input
+                              matInput
+                              formControlName="to"
+                              type="datetime-local"
+                              name="to"
+                              id="to"
+                            />
+                          </mat-form-field>
+                    </div>
+                    <div class="filterItem">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Sort:</mat-label>
+                            <mat-select formControlName="sort">
+                            <mat-option value="startTime-asc" selected>Date ascending</mat-option>
+                            <mat-option value="startTime-desc">Date descending</mat-option>
+                            <mat-option value="price-asc" selected>Price ascending</mat-option>
+                            <mat-option value="price-desc">Price descending</mat-option>
+                            <mat-option value="estimatedTime-asc" selected>Cruise duration ascending</mat-option>
+                            <mat-option value="estimatedTime-desc">Cruise duration descending</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="filterItem submit-btn">
+                        <input
+                          type="submit"
+                          value="Filter"
+                          class="secondary-btn filter-btn"
+                        />
+                      </div>
+                </div>
+            </form>
+          </div>
+        <div class="ride-cards">
+            <app-passenger-ride-card [ride]="ride" *ngFor="let ride of allRides"></app-passenger-ride-card>
+        </div>
+    </div>
+
+    <div class="detailed-ride-history">
+        <app-passenger-detailed-history></app-passenger-detailed-history>
+    </div>
+
+</div>

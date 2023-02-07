@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="icon_holder" type="id" />
+    <item name="sender" type="id" />
+    <item name="messages_list_view" type="id" />
+    <item name="back_button" type="id" />
+</resources>

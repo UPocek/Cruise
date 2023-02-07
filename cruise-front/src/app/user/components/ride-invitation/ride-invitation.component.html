@@ -1,0 +1,14 @@
+<div class="invitation-card">
+  <h2>Ride invitation</h2>
+  <p>Inviter : {{ invitation.senderPassengerEmail }}</p>
+  <button
+    class="secondary-btn"
+    style="background-color: var(--Amber); margin-right: 1rem"
+    (click)="respondToInvitation('YES')"
+  >
+    Accept
+  </button>
+  <button class="secondary-btn" (click)="respondToInvitation('NO')">
+    Reject
+  </button>
+</div>

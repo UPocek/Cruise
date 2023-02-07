@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/back_button_details"
+        layout="@layout/floating_back_button" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/confirm_ride_details_map"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_ride_details_map"
+        android:padding="5dp"
+        app:cardCornerRadius="8dp">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    style="@style/linearLayoutElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    app:dividerInsetEnd="140dp"
+                    app:dividerInsetStart="140dp" />
+
+                <LinearLayout
+                    android:id="@+id/details"
+                    style="@style/linearLayoutElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/divider"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/details"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/mark_favourite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:contentDescription="@string/mark_favourite_route"
+                        android:src="@drawable/ic_heart_empty"
+                        android:tag="empty" />
+                </LinearLayout>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/time_picker"
+                    style="@style/linearLayoutElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/details"
+                    android:layout_marginVertical="10dp"
+                    app:strokeColor="#333333"
+                    app:strokeWidth="2dp">
+
+                    <TextView
+                        android:id="@+id/time_picker_form"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Time: ASAP" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/extra_options"
+                    style="@style/linearLayoutElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time_picker"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/confirm_ride_details_pets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pets" />
+
+                    <CheckBox
+                        android:id="@+id/confirm_ride_details_baby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/baby_seat" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        app:strokeColor="#333333"
+                        app:strokeWidth="2dp">
+
+                        <Spinner
+                            android:id="@+id/confirm_ride_details_car_types"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp" />
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/extra_options"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    app:dividerInsetEnd="16dp"
+                    app:dividerInsetStart="16dp" />
+
+                <Button
+                    android:id="@+id/confirm_button"
+                    style="@style/mediumWidthButtonStyle"
+                    android:layout_below="@id/divider2"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/confirm_request"
+                    android:textColor="@color/dark_gray" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

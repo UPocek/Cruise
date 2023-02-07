@@ -1,0 +1,13 @@
+<div (click)="openChat()" [ngClass]="{panicContainer: this.chatItemContent?.type === 'PANIC', rideContainer: this.chatItemContent?.type === 'RIDE', supportContainer: this.chatItemContent?.type === 'SUPPORT'}" class="inbox-item">
+    <div [ngClass]="{panic: this.chatItemContent?.type === 'PANIC', ride: this.chatItemContent?.type === 'RIDE', support: this.chatItemContent?.type === 'SUPPORT'}" class="icon">
+        <div class="icon-holder">
+            <img *ngIf="this.chatItemContent?.type === 'PANIC'" src="../../../../assets/bell.png" alt="Panic">
+            <img *ngIf="this.chatItemContent?.type === 'RIDE'" src="../../../../assets/user.png" alt="Ride">
+            <img *ngIf="this.chatItemContent?.type === 'SUPPORT'" src="../../../../assets/support.png" alt="Support" srcset="">
+        </div>
+    </div>
+    <div class="item-info">
+        <h3>{{this.chatItemContent?.departureAddress}} {{this.chatItemContent?.destinationAddress}}</h3>
+        <p>{{this.chatItemContent?.rideStatus}}</p>
+    </div>
+</div>

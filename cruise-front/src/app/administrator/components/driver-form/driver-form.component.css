@@ -1,0 +1,129 @@
+mat-stepper {
+  width: 60%;
+  margin: auto;
+}
+
+.horizontal_align {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.horizontal_types {
+  text-align: start;
+}
+#create_driver,
+#create_vehicle {
+  margin: 2% auto;
+  width: 80%;
+  text-align: center;
+}
+
+#create_driver,
+#create_vehicle h1 {
+  margin-bottom: 3rem;
+}
+
+#create_driver,
+#create_vehicle button {
+  background-color: transparent;
+  border: 0;
+}
+
+.form_width {
+  width: 300px;
+  margin: auto;
+}
+
+.t20 {
+  margin-top: 20px;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+#step_done {
+  margin: auto;
+  text-align: center;
+}
+
+#step_done button {
+  margin-right: 20px;
+}
+
+#answer_btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.select_file {
+  margin-right: 1rem;
+}
+
+.upload_files {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+}
+/* overriding material styles */
+
+#create_driver
+  ::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick,
+#create_vehicle
+  ::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#create_driver ::ng-deep .mat-form-field.mat-focused .mat-form-field-label,
+#create_vehicle ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#create_driver ::ng-deep .mat-focused .mat-form-field-required-marker,
+#create_vehicle ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber);
+}
+
+#create_vehicle
+  ::ng-deep
+  .mat-checkbox-checked.mat-accent
+  .mat-checkbox-background {
+  background-color: var(--Amber) !important;
+}
+
+#create_vehicle ::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  color: var(--Amber) !important;
+}
+
+#create_vehicle::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  color: var(--Amber) !important;
+}
+
+#create_vehicle::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber) !important;
+}
+
+#create_vehicle::ng-deep
+  .mat-form-field.mat-focused.mat-primary
+  .mat-select-arrow {
+  color: var(--Amber) !important;
+}
+
+#create_vehicle::ng-deep
+  .mat-primary
+  .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: var(--Amber) !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: var(--Amber) !important;
+}

@@ -1,0 +1,14 @@
+SENDGRID_API_KEY: "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"
+GOOGLE_MAPS_API_KEY: "AIzaSyD6xOzj2hrFrXPkVEDSnNsfmHd1Tup-0gU"
+TOKEN_LIFESPAN: 2592000
+ACCOUNT_CONFIRMATION_URL: "http://localhost:4200/confirm-account/"
+RESET_PASSWORD_URL: "http://localhost:4200/new-password/"
+INVITATION_URL: "http://localhost:4200/log-in"
+EMAIL: "cruiseteam2siit@gmail.com"
+EMAIL_SUBJECT: "Welcome to Cruise"
+DRIVER_ARRIVED_SUBJECT: "Cruise - The driver has arrived at the pickup location"
+RIDE_REMINDER: "Cruise - ride reminder"
+RIDE_REJECTED: "Cruise - your scheduled ride was rejected"
+RESET_PASSWORD_EMAIL_SUBJECT: "Cruise - Reset password"
+PYTHON_SERVER_IP: "http://127.0.0.1:8000"
+

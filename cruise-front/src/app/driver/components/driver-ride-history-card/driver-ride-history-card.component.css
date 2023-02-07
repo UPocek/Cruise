@@ -1,0 +1,30 @@
+.example-card {
+  max-width: 40rem;
+  margin: 30px auto;
+  background-color: lightgray;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#message {
+  height: 2rem;
+  display: flex;
+}
+
+
+#image img {
+  width: 5rem;
+  height: 5rem;
+}
+
+#message img {
+  width: 2rem;
+  height: 2rem;
+  align-self: end;
+  margin-left: 10px;
+}
+

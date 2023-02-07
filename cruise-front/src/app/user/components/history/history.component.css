@@ -1,0 +1,81 @@
+.table-screen{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}
+
+#left {
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.center{
+  align-self: center;
+}
+
+table {
+  margin: auto;
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+#right {
+  width: 50%;
+  padding: 20px;
+}
+
+::ng-deep mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+#reason {
+  width: 70%;
+  margin: 20px 0;
+  display: flex;
+}
+
+#reason mat-form-field {
+  margin: 0 5px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .table-screen {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  #left{
+    width: 100%;
+  }
+
+  #right{
+    width: 100%;
+  }
+
+}

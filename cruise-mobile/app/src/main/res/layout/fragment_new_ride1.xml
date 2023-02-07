@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.NewRideFragment1">
+
+    <TextView
+        android:id="@+id/b1"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/where_to" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pickup_booking"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/b1"
+        android:hint="@string/pick_up_location">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pickup_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destination_booking"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickup_booking"
+        android:hint="@string/destination">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/destination_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/destination_booking"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/globe" />
+
+</RelativeLayout>

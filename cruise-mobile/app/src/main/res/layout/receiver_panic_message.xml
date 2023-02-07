@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/panic_message"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/marginCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@color/red"
+        android:backgroundTint="@color/red">
+
+        <TextView
+            android:id="@+id/panic_text_message"
+            style="@style/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/panic_time_message"
+        style="@style/messageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end" />
+</LinearLayout>

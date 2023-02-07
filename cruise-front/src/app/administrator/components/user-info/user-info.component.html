@@ -1,0 +1,25 @@
+<div id="user_info">
+  <div id="account_name">
+    <div>
+      <p class="d-h2">{{ name }} {{ surname }}</p>
+    </div>
+    <div id="image">
+      <img [src]="profilePicture" />
+    </div>
+  </div>
+  <div id="account_info">
+    <p>Email: {{ email }}</p>
+    <p>Phone: {{ phone }}</p>
+    <p>Address: {{ address }}</p>
+  </div>
+  <div id="toggle">
+    <mat-slide-toggle (change)="onToggle($event)" [checked]="isChecked">{{
+      activity
+    }}</mat-slide-toggle>
+  </div>
+  <div id="buttons">
+    <button mat-fab class="fab-buttons" (click)="openNotesDialog()">
+      <mat-icon>note</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="center-div">
+  <div *ngIf="rideRequestStatus === 0">
+    <div>
+      <div>
+        <img src="../../../../assets/pending.png" alt="PENDING" />
+      </div>
+      <h1 id="processing" style="font-weight: 300">Processing your request</h1>
+    </div>
+  </div>
+  <div *ngIf="rideRequestStatus === 1">
+    <div>
+      <div>
+        <img src="../../../../assets/verified.png" alt="VERIFIED" />
+      </div>
+      <h1 id="confirmed" class="ride-result" style="font-weight: 300">Cruise confirmed</h1>
+      <hr style="width: 300px" />
+    </div>
+    <div class="ride-info">
+      <div class="driver-info">
+        <div>
+          <i class="fa-solid fa-user-tie small-icon-style"></i>
+        </div>
+        <div class="name-vertical">
+          <p>{{driverEmail}}</p>
+        </div>
+      </div>
+      <div class="driver-info">
+        <div>
+          <i class="fa-solid fa-car small-icon-style"></i>
+        </div>
+        <div class="name-vertical">
+          <p>{{vehicleType}}</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="secondary-btn" (click)="navigateBack()">Back</button>
+    </div>
+  </div>
+  <div *ngIf="rideRequestStatus === -1">
+    <div>
+      <div>
+        <img src="../../../../assets/denied.png" alt="DENIED" />
+      </div>
+      <h1 id="denied" class="ride-result" style="font-weight: 300">No driver available</h1>
+      <hr style="width: 300px" />
+    </div>
+    <p>Try again later.</p>
+    <div>
+      <button class="secondary-btn" (click)="navigateBack()">Back</button>
+    </div>
+  </div>
+  <div *ngIf="rideRequestStatus === -2">
+    <div>
+      <div>
+        <img src="../../../../assets/denied.png" alt="DENIED" />
+      </div>
+      <h1 id="forbidden" class="ride-result" style="font-weight: 300">You already have ride in process</h1>
+      <hr style="width: 300px" />
+    </div>
+    <p>Try again later.</p>
+    <div>
+      <button class="secondary-btn" (click)="navigateBack()">Back</button>
+    </div>
+  </div>
+</div>

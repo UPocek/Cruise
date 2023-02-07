@@ -1,0 +1,24 @@
+#info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .b10 {
+    margin-bottom: 10px;
+  }
+
+  .emoji-holder{
+    margin-top: 5vh;
+    width: 120px;
+  }
+  
+  img {
+    width: 100%;
+  } 
+  

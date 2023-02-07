@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.RegistrationFragment4">
+
+    <TextView
+        android:id="@+id/registration_p4"
+        style="@style/smallInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/we_will_stalk_you" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/registration_address_form"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registration_p4"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="5dp"
+        android:hint="@string/address"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registration_address_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registration_address_form"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/deal_emoji" />
+
+</RelativeLayout>

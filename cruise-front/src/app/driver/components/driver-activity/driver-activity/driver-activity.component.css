@@ -1,0 +1,43 @@
+#activity{
+    text-align: center;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#activity h2{
+    margin: 0 auto;
+}
+
+#activity h3{
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+.working-time{
+    font-size: 1.4rem;
+    margin: 50px 0;
+}
+
+mat-slide-toggle{
+    margin-bottom: 100px;
+}
+
+.mat-slide-toggle {
+    padding-top: 1rem;
+    transform: scale(3, 2.5);
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: var(--Amber)
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: var(--Amber)
+}

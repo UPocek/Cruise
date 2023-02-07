@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SplashScreenActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/amber">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#fbfbfb"
+            app:cardCornerRadius="70dp">
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:src="@mipmap/ic_launcher"-->
+            <!--                android:contentDescription="@string/app_name"/>-->
+
+            <RelativeLayout
+                android:layout_width="220dp"
+                android:layout_height="220dp">
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_centerInParent="true"
+
+                    android:src="@drawable/cruise_logo_animation" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

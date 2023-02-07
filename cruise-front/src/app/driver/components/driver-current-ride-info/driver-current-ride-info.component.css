@@ -1,0 +1,187 @@
+#info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.b10 {
+  margin-bottom: 10px !important;
+}
+
+.t0 {
+  margin-top: 0;
+}
+.b0 {
+  margin-bottom: 0;
+}
+.width80 {
+  width: 70%;
+}
+
+#driver {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 70%;
+  margin: auto 0;
+  padding: 10px 0;
+}
+
+#driver_info {
+  display: flex;
+  flex-direction: row;
+}
+
+#driver_name {
+  margin: auto 0;
+  height: 100%;
+  margin-left: 20px;
+
+}
+
+
+#vehicle {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 70%;
+  margin: auto 0;
+  padding: 10px 0;
+}
+
+
+#vehicle_info {
+  display: flex;
+  flex-direction: row;
+}
+
+
+#vehicle_name {
+  margin: auto 0;
+  height: 100%;
+  margin-left: 20px;
+
+}
+
+
+img {
+  margin: auto 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+#contact {
+  display: flex;
+  justify-self: flex-end;
+}
+
+#contact img {
+  width: 2rem;
+  height: 2rem;
+  margin: auto 10px;
+}
+
+#buttons{
+  width: 70%;
+}
+
+#buttons div {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.start-ride-btn {
+  color: var(--PrimaryText);
+  background-color: var(--Amber);
+  padding: 1rem 1rem;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+  transition: all 200ms;
+  margin: 5px 5px 5px 0;
+}
+
+.start-ride-btn:hover {
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.end-ride-btn {
+  color: var(--White);
+  background-color: var(--PrimaryText);
+  padding: 1rem 1rem;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+  transition: all 200ms;
+  margin: 5px 0 5px 5px;
+}
+
+.end-ride-btn:hover {
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.ride-btn {
+  color: var(--White);
+  padding: 1rem 3rem;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+  transition: all 200ms;
+  margin: 5px 0;
+}
+
+.ride-btn:hover {
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.secondary-clr {
+  background-color: var(--PrimaryText);
+}
+
+.red-clr {
+  background-color: red;
+}
+
+#reason {
+  width: 70%;
+  margin: 20px 0;
+}
+
+#reasonForm{
+  width: 100%;
+}
+
+::ng-deep mat-form-field {
+  width: 100%;
+}
+
+#info ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#info ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#info ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+
+

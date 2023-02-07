@@ -1,0 +1,19 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.Cruise" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/amber</item>
+        <item name="colorPrimaryVariant">@color/amber</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/dark_gray</item>
+        <item name="colorSecondaryVariant">@color/dark_gray</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/popins</item>
+        <item name="android:forceDarkAllowed">false</item>
+
+    </style>
+</resources>

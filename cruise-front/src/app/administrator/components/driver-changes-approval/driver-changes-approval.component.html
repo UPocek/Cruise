@@ -1,0 +1,47 @@
+<div id="driver_changes">
+
+  <div id="account_name">
+    <p class="d-h2">{{firstName}} {{lastName}}</p>
+  </div>
+
+  <div>
+    <form [formGroup]="changeInfoForm" (ngSubmit)="changeInfo()">
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" formControlName="email" id="email">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput type="text" name="phone" formControlName="phone" id="phone">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput type="text" name="address" formControlName="address" id="address">
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <p class="d-h2 amber">Do you approve changes?</p>
+      </div>
+
+      <div>
+        <button id="approveBtn" class="t30 main-btn b30" (click)="approve()">Yes</button>
+        <button id="rejectBtn" class="t30 main-btn b30" (click)="reject()">No</button>
+      </div>
+
+
+
+    </form>
+  </div>
+
+</div>
+

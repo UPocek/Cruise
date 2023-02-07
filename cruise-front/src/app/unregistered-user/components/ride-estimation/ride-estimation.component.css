@@ -1,0 +1,149 @@
+.estimation-card {
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--PrimaryText);
+    color: var(--White);
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.estimation-card h2 {
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+.estimation-card form p {
+    text-align: left;
+}
+
+.line {
+    width: 300px;
+}
+
+.line hr {
+    width: 100%;
+}
+
+.estimation-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.estimation-card form>div {
+    width: 100%;
+    margin: auto;
+}
+
+mat-form-field {
+    display: block;
+    width: 100%;
+}
+
+.estimation-card ::ng-deep .mat-form-field .mat-form-field-label {
+    color: var(--White);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: var(--White);
+}
+
+.estimation-card ::ng-deep .mat-form-field .mat-input-element {
+    color: var(--White);
+}
+
+.estimation-card ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: var(--Amber);
+}
+
+.estimation-card ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--Amber);
+}
+
+.estimation-card ::ng-deep .mat-focused .mat-form-field-required-marker {
+    color: var(--Amber)
+}
+
+/* Offers */
+
+#offers {
+    margin-top: 20px;
+}
+
+.offer-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid var(--PrimaryText);
+    border-radius: 8px;
+    background-color: var(--White);
+    color: var(--PrimaryText);
+    transition: all 200ms;
+    cursor: pointer;
+}
+
+.offer-card:hover {
+    border: 2px solid var(--Amber);
+}
+
+.offer-card:active {
+    border: 2px solid var(--Amber);
+}
+
+.mini-map-holder {
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.mini-map-holder img {
+    width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.offer-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1px;
+}
+
+.offer-info h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.offer-info p {
+    font-size: 0.8rem;
+    font-weight: 200;
+    margin: 0;
+}
+
+.offer-price {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.offer-price h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+@media screen and (max-width: 1069px) {
+
+}
+
+@media screen and (max-width: 768px) {
+    .estimation-card{
+        padding: 30px;
+    }
+    .estimation-card h2{
+        font-size: 1.8rem;
+    }
+}

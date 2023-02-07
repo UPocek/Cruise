@@ -1,0 +1,34 @@
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 40px;
+    width: 80%;
+    margin: 4vh auto;
+    grid-gap: 100px;
+}
+
+.pinned{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pin-icon-holder{
+    width: 20px;
+}
+
+.pin-icon-holder img{
+    width: 100%;
+}
+
+@media screen and (max-width: 1069px) {
+    .page-container {
+        grid-template-columns: 1fr; 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-container {
+        width: 90%;
+    }
+}

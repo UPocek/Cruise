@@ -1,0 +1,47 @@
+.container {
+  margin: auto;
+  padding: 0;
+  width: 60%;
+  text-align: center;
+}
+
+.margin-1 {
+  margin: 1rem;
+}
+
+.chart-container {
+  margin: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+  align-items: flex-end;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.cumulation-container {
+  height: 80%;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--PrimaryText);
+  color: var(--White);
+  border-radius: 8px;
+}
+
+.metric {
+  padding-bottom: 1rem;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: var(--Amber) !important;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  color: var(--Amber) !important;
+  border-color: var(--White);
+}

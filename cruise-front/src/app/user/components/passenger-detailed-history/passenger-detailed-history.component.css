@@ -1,0 +1,102 @@
+#passenger-ride-details {
+  margin-top: 10vh;
+}
+
+#passenger-ride-details h3 {
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smaller-yellow-btn {
+  text-align: center;
+  padding: 15px 30px;
+  background-color: var(--Amber);
+}
+
+.more-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  margin: 10px;
+}
+
+.review-forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.review-forms form {
+  padding: 0 50px;
+}
+
+#map {
+  height: 800px;
+}
+
+.t20-top{
+  margin-top: 20px;
+}
+
+/* Statuses */
+
+.rejected {
+  color: red;
+}
+
+.future{
+  color: blue;
+}
+
+.canceled{
+  color: gray;
+}
+
+/* Details map */
+
+app-map {
+  height: 100%;
+  width: auto;
+}
+
+/* Details forms */
+
+#passenger-ride-details ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--PrimaryText);
+}
+
+#passenger-ride-details ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--PrimaryText);
+}
+
+#passenger-ride-details ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--PrimaryText)
+}
+
+@media (max-width: 1069px) {
+  #passenger-ride-details {
+    margin-top: 1vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .review-forms {
+    grid-template-columns: 1fr;
+  }
+  .review-forms form{
+    margin: 50px auto;
+    padding: 0;
+  }
+  .t20-top{
+    margin-top: 0px;
+  }
+}

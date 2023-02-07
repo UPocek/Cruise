@@ -1,0 +1,52 @@
+<div class="estimation-card">
+  <h2>Create a new ride request</h2>
+  <div class="line">
+    <hr />
+  </div>
+  <div>
+    <form [formGroup]="rideEstimationForm" (ngSubmit)="getEstimation()">
+      <div>
+        <p>Where to:</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter pickup location:</mat-label>
+          <input
+            matInput
+            type="text"
+            name="departure"
+            formControlName="departure"
+            id="departure"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter destination:</mat-label>
+          <input
+            matInput
+            type="text"
+            name="destination"
+            formControlName="destination"
+            id="destination"
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <input type="submit" value="Confirm request" class="t20 main-btn" />
+      </div>
+    </form>
+
+    <div id="offers">
+      <div *ngFor="let ride of offers; let i = index" class="offer-card" (click)="showNeedToRegisterPopUp()">
+        <div class="mini-map-holder">
+          <img src="../../../../assets/mini-map.png" alt="Mini map" />
+        </div>
+        <div class="offer-info">
+          <h4>Route {{ i + 1 }}</h4>
+          <p>{{ ride.estimatedTimeInMinutes }} min ride</p>
+        </div>
+        <div class="offer-price">
+          <h3>{{ ride.estimatedCost }}rsd</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

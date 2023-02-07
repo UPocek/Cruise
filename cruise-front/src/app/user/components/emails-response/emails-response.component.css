@@ -1,0 +1,34 @@
+.centar-component {
+  text-align: left;
+  width: 20%;
+  margin: auto;
+  padding: auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+}
+
+.emails {
+  margin: auto;
+  padding: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.dots-icon {
+  color: var(--Amber);
+  padding-right: 1rem;
+}
+
+.check-icon {
+  color: green;
+  padding-right: 1rem;
+}
+
+.x-icon {
+  color: red;
+  padding-right: 1rem;
+}

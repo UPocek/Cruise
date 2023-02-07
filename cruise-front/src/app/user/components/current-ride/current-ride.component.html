@@ -1,0 +1,10 @@
+<div id="current-ride">
+  <div id="info">
+    <app-passenger-current-ride-info *ngIf="isPassanger"></app-passenger-current-ride-info>
+    <app-driver-current-ride-info *ngIf="isDriver"></app-driver-current-ride-info>
+    <app-no-current-ride *ngIf="!isPassanger && !isDriver"></app-no-current-ride>
+  </div>
+  <div id="map">
+    <app-map *ngIf="isPassanger || isDriver"></app-map>
+  </div>
+</div>

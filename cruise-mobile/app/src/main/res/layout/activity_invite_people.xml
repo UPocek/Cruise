@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.InvitePeopleActivity">
+
+    <include
+        android:id="@+id/invite_go_back"
+        layout="@layout/floating_back_button" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/invite_people"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/p"
+        style="@style/linearLayoutElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:text="@string/enter_emails_of_people_you_want_to_invite"
+        android:textSize="16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/invite_with_email"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/p"
+        android:hint="@string/email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@id/invite_with_email" />
+
+    <com.google.android.material.divider.MaterialDivider
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer" />
+
+    <include
+        android:id="@+id/next_after_invite"
+        layout="@layout/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp" />
+
+</RelativeLayout>

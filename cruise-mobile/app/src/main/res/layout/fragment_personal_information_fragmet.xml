@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.PersonalInformationFragmet">
+
+
+    <LinearLayout
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/account_first_name_field"
+                style="@style/h1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marko" />
+
+            <TextView
+                android:id="@+id/account_last_name_field"
+                style="@style/h1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Markovic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/account_image_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/support_circle"
+                android:backgroundTint="@color/light_gray"
+                android:src="@mipmap/person_foreground" />
+
+            <Button
+                android:id="@+id/editAccount"
+                style="@style/extraSmallWidthButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/dark_gray"
+                android:text="@string/edit"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/account_number_field"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="03293029" />
+
+    <TextView
+        android:id="@+id/account_email_field"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="marko@gmail.com" />
+
+    <TextView
+        android:id="@+id/account_address_field"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Putnicka 3" />
+
+    <View
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/dark_gray" />
+
+</LinearLayout>
+

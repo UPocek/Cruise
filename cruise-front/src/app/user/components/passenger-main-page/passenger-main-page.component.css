@@ -1,0 +1,19 @@
+.page-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 40px;
+  width: 80%;
+  margin: 4vh auto;
+}
+
+@media screen and (max-width: 1069px) {
+  .page-container {
+      grid-template-columns: 1fr; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-container {
+      width: 90%;
+  }
+}

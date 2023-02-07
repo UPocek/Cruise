@@ -1,0 +1,45 @@
+#driver_changes_notification {
+  margin: 2% auto;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 0 30px;
+  border: 2px solid var(--Amber);
+  border-radius: 10px;
+  box-shadow: 1px 4px 1px 1px lightgrey;
+  cursor: pointer;
+}
+
+#driver_info {
+  width: 70%;
+  margin: auto;
+}
+
+#driver_info>p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--Amber);
+  margin: auto;
+  vertical-align: auto;
+}
+
+#image {
+  text-align: center;
+  margin: 10px 0;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+
+}
+
+#image img{
+  height: 4rem;
+  width: 4rem;
+  margin: auto;
+}
+
+
+
+
+
+

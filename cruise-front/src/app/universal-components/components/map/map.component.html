@@ -1,0 +1,19 @@
+<div id="map">
+
+    <google-map height="100%" width="100%" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+        (mapMousemove)="move($event)" (mapRightclick)="addMarker($event)">
+        <map-marker *ngFor="let markerPosition of markerPositionsBasic" [position]="markerPosition"
+            [options]="markerOptionsBasic"></map-marker>
+        <map-marker *ngFor="let markerPosition of markerPositionsFree" [position]="markerPosition"
+            [options]="markerOptionsFree"></map-marker>
+        <map-marker *ngFor="let markerPosition of markerPositionsInRide" [position]="markerPosition"
+            [options]="markerOptionsInRide"></map-marker>
+        <map-marker *ngFor="let markerPosition of markerPositionsPanic" [position]="markerPosition"
+            [options]="markerOptionsPanic"></map-marker>
+        <map-traffic-layer [autoRefresh]="true"></map-traffic-layer>
+
+        <map-directions-renderer *ngIf="(directionResults$ | async) as directionResults"
+            [directions]="directionResults"></map-directions-renderer>
+    </google-map>
+
+</div>

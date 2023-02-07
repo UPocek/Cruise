@@ -1,0 +1,14 @@
+<div id="activity">
+  <h2 class="d-h1">Welcome back,</h2>
+  <h3>{{ driverName }} {{ driverSurname }}</h3>
+  <p class="working-time">
+    Working time:
+    <span
+      ><b>{{ workingHours }} : {{ workingMinutes }}</b></span
+    >
+  </p>
+  <mat-slide-toggle (change)="onToggle($event)" [checked]="isChecked">{{
+    activity
+  }}
+</mat-slide-toggle>
+</div>

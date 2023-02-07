@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/driverStatsButton"
+    style="@style/Widget.MaterialComponents.Button.Icon"
+    android:backgroundTint="@color/amber"
+    android:elevation="8dp"
+    android:text="@string/next_button_text"
+    android:textAlignment="textStart"
+    android:textAllCaps="false"
+    android:textColor="@color/dark_gray"
+    app:cornerRadius="50dp"
+    app:icon="@drawable/ic_full_arrow_forward"
+    app:iconGravity="textEnd"
+    app:iconTint="@color/dark_gray" />

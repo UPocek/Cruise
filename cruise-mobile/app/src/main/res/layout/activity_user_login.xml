@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.UserLoginActivity">
+
+    <TextView
+        android:id="@+id/LogIn"
+        style="@style/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/LogIn" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginEmailEditText"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginPassEditText"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forgot_password"
+        style="@style/linearLayoutElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/forgot_password" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        style="@style/largeWidthButtonStyle"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/black"
+        android:text="@string/let_s_cruise" />
+
+    <LinearLayout
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/light_gray" />
+
+        <TextView
+            style="@style/smallInfoText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="0.2"
+            android:gravity="center_horizontal"
+            android:text="@string/or" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/light_gray" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/googleLoginBtn"
+        style="@style/largeWidthButtonStyle"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/light_gray"
+        android:drawableLeft="@drawable/google"
+        android:text="@string/continue_with_google"
+        android:textColor="@color/dark_gray"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/facebookLoginBtn"
+        style="@style/largeWidthButtonStyle"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/light_gray"
+        android:drawableLeft="@drawable/facebook"
+        android:text="@string/continue_with_facebook"
+        android:textColor="@color/dark_gray"
+        android:textSize="15sp" />
+
+    <TextView
+        style="@style/linearLayoutElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/login_register_line" />
+
+
+    <TextView
+        android:id="@+id/register_cruise"
+        style="@style/linearLayoutElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/cruise_with_us"
+        android:textColor="@color/amber" />
+
+</LinearLayout>
+
+
+
+
+

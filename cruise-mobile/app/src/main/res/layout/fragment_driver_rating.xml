@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.DriverRatingFragment">
+
+    <TextView
+        style="@style/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rating" />
+
+    <LinearLayout
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/h4"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/vehicle"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/driver_ride_history_cruise_vehicle_ratingbar"
+            style="@style/MyRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="40dp"
+            android:isIndicator="true"
+            android:numStars="5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/h4"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/driver"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/driver_ride_history_cruise_driver_ratingbar"
+            style="@style/MyRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="40dp"
+            android:isIndicator="true"
+            android:numStars="5" />
+
+    </LinearLayout>
+
+
+    <TextView
+        style="@style/linearLayoutElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comments"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/driver_ride_history_cruise_comments"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/white" />
+
+</LinearLayout>

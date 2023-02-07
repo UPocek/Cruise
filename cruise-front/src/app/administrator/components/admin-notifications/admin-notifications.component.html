@@ -1,0 +1,21 @@
+<div id="admin_notifications">
+
+  <h1 class="d-h1">Notifications</h1>
+
+  <div id="content">
+
+    <div id="left" class="search-results-container">
+        <div *ngFor="let i of list" >
+          <app-driver-changes-notification *ngIf="!i.isPanic" [driverChangeInfo]=i.driverChanges></app-driver-changes-notification>
+          <app-panic-notification *ngIf="i.isPanic" [panic]="i.panic"></app-panic-notification>
+        </div>
+    </div>
+
+    <div id="right">
+      <app-driver-changes-approval *ngIf="notificationForm === 'driver-changes'"></app-driver-changes-approval>
+      <app-panic-info *ngIf="notificationForm === 'panic'"></app-panic-info>
+    </div>
+
+  </div>
+
+</div>

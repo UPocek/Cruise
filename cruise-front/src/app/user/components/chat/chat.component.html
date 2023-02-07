@@ -1,0 +1,41 @@
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="title">
+            <h3>
+                {{otherPersonName}}
+            </h3>
+        </div>
+        <div class="additional-informations">
+            <p>
+                {{chatTime}}
+            </p>
+        </div>
+    </div>
+
+    <div class="all-chat-messages">
+        <div *ngFor="let message of messages" [ngClass]="{forMe: message.receiverId === myId, fromMe: message.senderId === myId}" class="message">
+            <div class="content">
+                <p [ngClass]="{panic: message.type === 'PANIC', support: message.type === 'SUPPORT'}">
+                    {{message?.message}}
+                </p>
+            </div>
+            <div class="time">
+                {{message.timeOfSending.split('.')[0]}}
+            </div>
+        </div>
+    </div>
+
+    <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+        <div class="actions">
+            <div class="form-container">
+                <mat-form-field appearance="outline">
+                    <input matInput type="text" name="messageInput" formControlName="messageInput" id="messageInput">
+                </mat-form-field>
+            </div>
+            <div class="submit">
+                <input [disabled]="!messageForm.valid" type="submit" value="Send" class="send-btn">
+            </div>
+        </div>
+    </form>
+</div>
+

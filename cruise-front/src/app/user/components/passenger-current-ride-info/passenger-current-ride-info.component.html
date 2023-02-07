@@ -1,0 +1,44 @@
+<div id="info">
+  <h1 class="d-h1 b10 center">Current ride</h1>
+  <p class="t0 center b10">Elapsed time: {{minutes}}m {{seconds}}s</p>
+  <div id="driver">
+    <div id="driver_info">
+      <img src="assets/driver.png" alt="driver">
+      <div id="driver_name">
+        <p class="t0 b0">{{driverName}}</p>
+        <p class="t0 b0">{{driverSurname}}</p>
+      </div>
+    </div>
+    <div id="contact">
+      <img routerLink="/inbox/{{ride.id}}" src="assets/message.png" alt="message">
+      <img src="assets/phone.png" alt="phone">
+    </div>
+  </div>
+  <div id="vehicle">
+    <div id="vehicle_info">
+      <img src="assets/tesla.png" alt="car">
+      <div id="vehicle_name">
+        <p class="t0 b0">{{carModel}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="width80 t20">
+    <p class="t0 b10">Estimated arrival time: {{arrival}}</p>
+    <p class="t0 b10">Total price: {{price}} RSD</p>
+  </div>
+
+  <div id="buttons">
+    <button *ngIf="rideInProgress" class="ride-btn secondary-clr" (click)="report()">Report driver</button>
+    <button *ngIf="!rideInProgress" class="ride-btn secondary-clr" (click)="withdraw()">Widhdraw from ride</button>
+    <button class="ride-btn red-clr" (click)="panic()">PANIC</button>
+  </div>
+
+  <div id="reason">
+    <mat-form-field appearance="outline">
+      <mat-label>Reason</mat-label>
+      <input matInput type="text" name="reason" id="reasonForm">
+    </mat-form-field>
+  </div>
+</div>
+
+

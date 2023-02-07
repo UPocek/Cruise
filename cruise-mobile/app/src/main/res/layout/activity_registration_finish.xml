@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/registration_finish_paragraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/registration_successful"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/registration_finish_title"
+        style="@style/h1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registration_finish_paragraph"
+
+        android:layout_marginBottom="40dp"
+        android:text="@string/registration_finish_title" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registration_finish_title"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/clap_emoji" />
+
+    <Button
+        android:id="@+id/finish_registration_button"
+        style="@style/mainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:text="@string/hop_in" />
+
+</RelativeLayout>

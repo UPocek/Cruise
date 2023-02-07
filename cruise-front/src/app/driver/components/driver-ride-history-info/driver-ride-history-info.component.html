@@ -1,0 +1,42 @@
+<div id="info">
+  <h2 class="d-h2">Ride details</h2>
+  <p><strong>Date:</strong> {{dateFrom}} - {{dateTo}}</p>
+  <p><strong>Route:</strong> {{departure}} - {{destination}}</p>
+  <p><strong>People: </strong></p>
+  <div *ngFor="let person of passengers">
+    <p> - {{person.email}}</p>
+  </div>
+  <p><strong>Cruise time: </strong> {{time}}min</p>
+  <p><strong>Distance: </strong>{{distance}}km</p>
+  <p><strong>Price: </strong>{{price}}RSD</p>
+
+  <hr>
+
+  <h2 class="d-h2">Rating</h2>
+  <div class="row">
+    <p><strong>Vehicle: </strong></p>
+    <app-star-rating
+      [changeDisabled]="true"
+      [rating]="vehicleRating"
+      [starCount]="5"
+      [color]="starColor"
+    ></app-star-rating>
+  </div>
+
+
+  <div class="row">
+    <p><strong>Driver: </strong></p>
+    <app-star-rating
+      [changeDisabled]="true"
+      [rating]="driverRating"
+      [starCount]="5"
+      [color]="starColor"
+    ></app-star-rating>
+  </div>
+
+  <p><strong>Comments:</strong></p>
+  <div id="comments-section">
+    <p id="comments"></p>
+  </div>
+
+</div>

@@ -1,0 +1,152 @@
+<div *ngIf="rideDetails !== null" id="passenger-ride-details">
+  <div class="more-info">
+    <div class="header">
+      <h2>Ride details:</h2>
+      <div (click)="requestHistoryRide()">
+        <input value="Request again" class="secondary-btn smaller-yellow-btn" />
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>Date:</h3>
+      {{ startTime }} - {{ endTime }}
+    </div>
+    <div class="item">
+      <h3>Route:</h3>
+      {{ startLocationAddress }} - {{ endLocationAddress }}
+    </div>
+    <div *ngIf="numberOfPassengers > 1" class="item">
+      <h3>Split fare with:</h3>
+      {{ numberOfPassengers - 1 }} people
+    </div>
+    <div *ngIf="numberOfPassengers > 1" class="item">
+      <ul>
+        <li *ngFor="let passenger of additionalPassengers">
+          {{ passenger.email }}
+        </li>
+      </ul>
+    </div>
+    <div class="item">
+      <h3>Cruise duration:</h3>
+      {{ duration }} minutes
+    </div>
+    <div class="item">
+      <h3>Total cost:</h3>
+      {{ totalCost }} rsd
+    </div>
+    <div class="item">
+      <h3>Vehicle type:</h3>
+      {{ vehicleType }}
+    </div>
+    <div class="item">
+      <h3>Baby transport:</h3>
+      {{ babyTransport }}
+    </div>
+    <div class="item">
+      <h3>Pet transport:</h3>
+      {{ petTransport }}
+    </div>
+    <div [ngClass]="{ rejected: status === 'REJECTED', future: status === 'FUTURE', canceled: status === 'CANCELED' }" class="item">
+      <h3>Status:</h3>
+      {{ status }}
+    </div>
+    <div *ngIf="rejection !== null" class="item rejection">
+      <h3>Rejection:</h3>
+      {{ rejection?.reason }} at {{ rejection?.timeOfRejection }}
+    </div>
+  </div>
+
+  <hr />
+
+  <div id="map">
+    <app-map></app-map>
+  </div>
+
+  <hr />
+
+  <div *ngIf="driver !== null" class="driver-info">
+    <h2>Driver info:</h2>
+    <div class="item">
+      <h3>Email:</h3>
+      {{ driver?.email }}
+    </div>
+  </div>
+
+  <hr />
+
+  <div *ngIf="driver !== null" class="reviews">
+    <h2>Rating:</h2>
+
+    <div class="review-forms">
+      <form [formGroup]="driverReviewForm" (ngSubmit)="sumbitDriverReview()">
+        <div class="item">
+          <h3>Driver:</h3>
+          <app-star-rating
+            [changeDisabled]="driverReviewAlredayAssigned"
+            [rating]="driverRating"
+            [starCount]="starCount"
+            [color]="starColor"
+            (ratingUpdated)="driverRatingChanged($event)"
+          ></app-star-rating>
+        </div>
+        <div>
+          <p>Tell us about your experience with this driver:</p>
+          <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <input
+              matInput
+              type="text"
+              name="commentDriver"
+              formControlName="commentDriver"
+              id="commentDriver"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <input
+            [disabled]="!driverReviewForm.valid || driverReviewAlredayAssigned"
+            type="submit"
+            value="Submit review"
+            class="t20-top secondary-btn"
+          />
+        </div>
+      </form>
+
+      <form [formGroup]="vehicleReviewForm" (ngSubmit)="sumbitVehicleReview()">
+        <div class="item">
+          <h3>Vehicle:</h3>
+          <app-star-rating
+            [changeDisabled]="vehicleReviewAlredayAssigned"
+            [rating]="vehicleRating"
+            [starCount]="starCount"
+            [color]="starColor"
+            (ratingUpdated)="vehicleRatingChanged($event)"
+          ></app-star-rating>
+        </div>
+        <div>
+          <p>Tell us about your experience with this vehicle:</p>
+          <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <input
+              matInput
+              type="text"
+              name="commentVehicle"
+              formControlName="commentVehicle"
+              id="commentVehicle"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <input
+            [disabled]="
+              !vehicleReviewForm.valid || vehicleReviewAlredayAssigned
+            "
+            type="submit"
+            value="Submit review"
+            class="t20-top secondary-btn"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

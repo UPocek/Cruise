@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Reports</h1>
+  <button class="secondary-btn" [hidden]="isRequested" (click)="generatePDF()">
+    Download
+  </button>
+  <div>
+    <form [formGroup]="reportForm" (ngSubmit)="getReport()">
+      <mat-form-field appearance="outline" class="margin-1">
+        <mat-label>From: </mat-label>
+        <input matInput formControlName="from" type="date" name="date-from" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="margin-1">
+        <mat-label>Till: </mat-label>
+        <input matInput formControlName="till" type="date" name="date-till" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="margin-1" *ngIf="isAdmin">
+        <mat-label>Email: </mat-label>
+        <input matInput formControlName="email" type="text" />
+      </mat-form-field>
+      <mat-checkbox formControlName="all" *ngIf="isAdmin"
+        >All users</mat-checkbox
+      >
+      <input class="secondary-btn margin-1" type="submit" />
+    </form>
+  </div>
+  <div class="chart-container">
+    <canvas id="rideCountChart">{{ rideCountChart }}</canvas>
+    <div class="cumulation-container" [hidden]="isRequested">
+      <div class="metric">
+        <h2>Sum</h2>
+        <h2>{{ ridesSum }}</h2>
+      </div>
+      <div class="metric">
+        <h2>Avg</h2>
+        <h2>{{ rideAvg }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="kmCountChart">{{ kmCountChart }}</canvas>
+    <div class="cumulation-container" [hidden]="isRequested">
+      <div class="metric">
+        <h2>Sum</h2>
+        <h2>{{ kmSum }}</h2>
+      </div>
+      <div class="metric">
+        <h2>Avg</h2>
+        <h2>{{ kmAvg }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="priceCountChart">{{ priceCountChart }}</canvas>
+    <div class="cumulation-container" [hidden]="isRequested">
+      <div class="metric">
+        <h2>Sum</h2>
+        <h2>{{ priceSum }}</h2>
+      </div>
+      <div class="metric">
+        <h2>Avg</h2>
+        <h2>{{ priceAvg }}</h2>
+      </div>
+    </div>
+  </div>
+</div>

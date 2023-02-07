@@ -1,0 +1,47 @@
+#panic_info {
+  margin: 2% auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  /*justify-content: center;*/
+  justify-content: space-between;
+}
+
+#panic_info h2 {
+  margin: auto 0;
+}
+
+img {
+  height: 2rem;
+  width: 2rem;
+  margin: auto 0;
+}
+
+#message{
+  margin-top: 20px;
+  width: 40%;
+  align-self: end;
+}
+
+#reason {
+  background-color: red;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+}
+
+#reason>p {
+  text-align: left;
+  margin: 10px;
+}
+
+
+#message>p {
+  text-align: right;
+}

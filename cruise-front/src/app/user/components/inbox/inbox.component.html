@@ -1,0 +1,27 @@
+<div class="page-container">
+    <div class="left-column">
+
+        <h1 class="d-h1">Inbox</h1>
+        <div class="inbox-cards">
+            <div class="pinned" *ngIf="showSupport">
+                <p>Pinned</p>
+                <div class="pin-icon-holder">
+                    <img src="../../../../assets/pin.png" alt="Pin">
+                </div>
+            </div>
+            <app-inbox-item-card [chatItemContent]="supportContent" *ngIf="showSupport"></app-inbox-item-card>
+            <div class="other" *ngIf="showSupport">
+                <p>Other</p>
+            </div>
+            <app-inbox-item-card *ngFor="let chatItem of chatItems" [chatItemContent]="chatItem"></app-inbox-item-card>
+            <app-inbox-item-card-admin *ngFor="let adminChatItem of adminChatItems" [chatItemContent]="adminChatItem"></app-inbox-item-card-admin>
+        </div>
+
+    </div>
+
+    <div class="right-column">
+
+        <app-chat></app-chat>
+
+    </div>
+</div>

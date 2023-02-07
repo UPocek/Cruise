@@ -1,0 +1,91 @@
+#account_info {
+  margin: 2% auto;
+  text-align: left;
+}
+
+#account_info h1 {
+  margin-bottom: 3rem;
+}
+
+#account_name_picture {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#account_name {
+  width: 50%;
+}
+
+#account_name>p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#add-picture{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  justify-content: baseline;
+}
+
+#plus-button{
+  height: fit-content;
+}
+
+#picture {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+#picture img{
+  height: 6rem;
+  width: 6rem;
+}
+
+#account_info form {
+  display: flex;
+  flex-direction: column;
+}
+#account_info form>div {
+  width: 100%;
+  margin: auto;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+#account_info ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#account_info ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#account_info ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+#forgot-pass {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+#forgot-pass p{
+  color: lightgrey;
+}
+
+.width100 {
+  width: 100%;
+}
+
+
+
+

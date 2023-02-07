@@ -1,0 +1,61 @@
+<div id="user_login">
+
+  <h1 class="d-h1">LogIn</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" formControlName="email" id="email">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password"
+               id="password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div id="forgot-pass">
+      <p class="forgot-pass" [routerLink]="['/reset-password']">Forgot password?</p>
+    </div>
+
+    <div>
+      <input id="login-btn" type="submit" value="Let's cruise..." class="t30 main-btn b30">
+    </div>
+
+
+
+  </form>
+
+  <div id="or-line">
+    <div>
+      <hr>
+    </div>
+    <p>or</p>
+    <div>
+      <hr>
+    </div>
+  </div>
+
+  <div id="login-type-buttons">
+    <div>
+      <button class="secondary-btn t30"><img src="../../../assets/facebook.png" alt="facebook"/>Continue with Facebook</button>
+    </div>
+    <div>
+      <button class="secondary-btn t30"><img src="../../../assets/google.png" alt="google"/>Continue with Google</button>
+    </div>
+  </div>
+
+  <div id="registration-text">
+    <p>Don't have an account?</p>
+    <p id="register-text" class="amber" [routerLink]="['/sign-up']">Cruise with us!</p>
+  </div>
+</div>

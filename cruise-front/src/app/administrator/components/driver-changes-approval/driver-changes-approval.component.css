@@ -1,0 +1,57 @@
+#driver_changes {
+  margin: 2% auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#driver_changes h1 {
+  margin-bottom: 3rem;
+}
+
+#account_name {
+  width: 100%;
+  flex-direction: row;
+
+}
+
+#driver_changes button {
+  margin: 10px;
+  color: white;
+}
+
+#rejectBtn {
+  background-color: #333333;
+}
+
+#driver_changes form {
+  display: flex;
+  flex-direction: column;
+}
+#driver_changes form>div {
+  margin: auto;
+}
+
+mat-form-field {
+  display: block;
+  width: 300px;
+}
+
+
+#driver_changes ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#driver_changes ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#driver_changes ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+
+
+
+
+

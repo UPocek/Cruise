@@ -1,0 +1,17 @@
+<div class="page-container">
+  <div class="left-column" *ngIf="canRequestRide; else rideInvite">
+    <app-create-ride-request></app-create-ride-request>
+  </div>
+  <ng-template #rideInvite>
+    <ul>
+      <app-ride-invitation
+        *ngFor="let invite of rideInvites; index as i"
+        [invitation]="rideInvites[i]"
+        (invitationResponded)="removeInvitation($event)"
+      ></app-ride-invitation>
+    </ul>
+  </ng-template>
+  <div class="right-column">
+    <app-map></app-map>
+</div>
+</div>

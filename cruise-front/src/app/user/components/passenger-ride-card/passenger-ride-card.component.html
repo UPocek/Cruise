@@ -1,0 +1,21 @@
+<div (click)="rideSelected()" id="ride-card">
+    <div class="map-holder">
+        <img src="../../../../assets/mini-map.png" alt="Map">
+    </div>
+    <div class="ride-info">
+        <p>{{rideName}}</p>
+        <p>{{startTime}} - {{endTime}}</p>
+        <p>{{price}} rsd / {{vehicleType}} vehicle / {{numberOfPassengers}} passenger(s)</p>
+    </div>
+    <div class="ride-icons">
+        <div routerLink="/inbox/{{ride?.id}}" class="msg">
+            <img src="../../../../assets/message.png" alt="MSG">
+        </div>
+        <div appStopPropagation *ngIf="favouriteRide === null" (click)="markAsFavouriteRide()" class="favourite">
+            <img src="../../../../assets/heart-line.png" alt="Favourite">
+        </div>
+        <div appStopPropagation *ngIf="this.favouriteRide !== null" (click)="unmarkAsFavouriteRide()" class="favourite">
+            <img src="../../../../assets/heart-fill.png" alt="Favourite">
+        </div>
+    </div>
+</div>

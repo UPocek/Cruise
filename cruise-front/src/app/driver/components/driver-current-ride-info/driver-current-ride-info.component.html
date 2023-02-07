@@ -1,0 +1,46 @@
+<div id="info">
+  <h1 class="d-h1 b10 center">Current ride</h1>
+  <p d="current-ride-time" class="t0 center b10">
+    Elapsed time: {{ minutes }}m {{ seconds }}s
+  </p>
+  <div *ngFor="let passenger of passengers">
+    <app-passenger-for-ride
+      [rideId]="ride.id"
+      [passenger]="passenger"
+    ></app-passenger-for-ride>
+  </div>
+  <div class="width80 t20">
+    <p class="t0 b10">Estimated arrival time: {{ arrival }}</p>
+    <p class="t0 b10">Total price: {{ price }} RSD</p>
+  </div>
+
+  <div id="buttons">
+    <div>
+      <button
+        id="driver-start-ride-btn"
+        *ngIf="!rideInProgress"
+        class="start-ride-btn"
+        (click)="startRide()"
+      >
+        Start ride
+      </button>
+      <button
+        id="driver-end-ride-btn"
+        *ngIf="rideInProgress"
+        class="start-ride-btn"
+        (click)="endRide()"
+      >
+        End ride
+      </button>
+      <button class="end-ride-btn" (click)="cancelRide()">Cancel ride</button>
+    </div>
+    <button class="ride-btn red-clr" (click)="panic()">PANIC</button>
+  </div>
+
+  <div id="reason">
+    <mat-form-field appearance="outline">
+      <mat-label>Reason</mat-label>
+      <input matInput type="text" name="reason" id="reasonForm" />
+    </mat-form-field>
+  </div>
+</div>

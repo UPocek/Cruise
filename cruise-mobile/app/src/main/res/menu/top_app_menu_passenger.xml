@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/passengerMainActivity"
+        android:icon="@drawable/current_ride"
+        android:title="@string/book_a_ride" />
+    <item
+        android:id="@+id/passengerRideHistory"
+        android:icon="@drawable/history"
+        android:title="@string/history" />
+    <item
+        android:id="@+id/passengerAccount"
+        android:icon="@drawable/account"
+        android:title="@string/account" />
+    <item
+        android:id="@+id/passengerInbox"
+        android:icon="@drawable/inbox"
+        android:title="@string/inbox" />
+
+</menu>

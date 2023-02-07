@@ -1,0 +1,99 @@
+#driver-ride-request {
+  margin: 2% auto;
+  width: 80%;
+  text-align: left;
+}
+
+#content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}
+
+#driver-ride-request img {
+  width: 5rem;
+  margin: 0 auto;
+}
+
+#left {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+#right {
+  width: 65%;
+  padding: 40px;
+}
+
+#title {
+  text-align: center;
+}
+
+#confirm h3{
+  color: var(--Amber);
+  margin-bottom: 5px;
+}
+
+#buttons {
+  margin-bottom: 30px;
+}
+
+#yes-btn{
+  margin-right: 20px;
+  background-color: var(--Amber);
+  color: white;
+  width: 5rem;
+}
+
+#no-btn {
+  background-color: var(--PrimaryText);
+  color: white;
+  width: 5rem;
+}
+
+#reason{
+  width: 20rem;
+  height: 1rem;
+}
+
+mat-form-field {
+  display: block;
+}
+
+#driver-ride-request ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#driver-ride-request ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#driver-ride-request ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+
+
+
+@media screen and (max-width: 1200px) {
+  #content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  #left {
+    width: 100%;
+  }
+
+  #right {
+    margin-top: 70px;
+    width: 100%;
+    height: 30rem;
+    padding: 0;
+  }
+
+}

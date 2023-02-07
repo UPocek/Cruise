@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CruiseConfirmedActivity">
+
+    <ImageView
+        android:id="@+id/ride_processing_checkmark"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/pending" />
+
+    <TextView
+        android:id="@+id/ride_processing_title"
+        style="@style/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ride_processing_checkmark"
+        android:gravity="center"
+        android:text="@string/ride_pending"
+        android:textAlignment="center" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ride_processing_title" />
+
+    <TextView
+        android:id="@+id/ride_processing_time_to_cruise_arrival"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:text=""
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:id="@+id/drive_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ride_processing_time_to_cruise_arrival"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/go_back_to_main"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/drive_info">
+
+        <include
+            android:id="@+id/back_button_cruise_confirmed"
+            layout="@layout/floating_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:layout_toStartOf="@id/back_text_confirmed" />
+
+        <TextView
+            android:id="@+id/back_text_confirmed"
+            style="@style/smallInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/back_home" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

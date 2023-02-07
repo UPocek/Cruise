@@ -1,0 +1,48 @@
+#panic_notification {
+  margin: 2% auto;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 0 30px;
+  border: 2px solid red;
+  border-radius: 10px;
+  box-shadow: 1px 4px 1px 1px lightgrey;
+  cursor: pointer;
+}
+
+#panic_info {
+  width: 70%;
+  margin: auto;
+}
+
+#panic_info>p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: red;
+  margin: auto;
+  vertical-align: auto;
+}
+
+
+#image {
+  margin: 10px 0;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  /*margin: auto;*/
+  background-color: red;
+  border-radius: 100%;
+  display: flex;
+}
+
+#image img{
+  height: 2rem;
+  width: 2rem;
+  margin: auto;
+}
+
+
+
+
+
+

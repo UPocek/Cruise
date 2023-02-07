@@ -1,0 +1,24 @@
+<mat-card class="example-card">
+  <div id="content">
+    <div id="image">
+      <img src="assets/mini-map.png" alt="mapa">
+    </div>
+    <div id="info">
+      <div>from {{departure}}</div>
+      <div>to {{destination}}</div>
+      <div>{{startTime}} - {{endTime}}</div>
+      <div>{{totalCost}}RSD / {{distance}}km / {{passengers}} passengers</div>
+      <div>
+        <app-star-rating
+          [changeDisabled]="true"
+          [rating]="rating"
+          [starCount]="5"
+          [color]="starColor"
+        ></app-star-rating>
+      </div>
+    </div>
+    <div routerLink="/inbox/{{ride.id}}" id="message">
+      <img src="assets/message.png" alt="messager">
+    </div>
+  </div>
+</mat-card>

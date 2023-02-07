@@ -1,0 +1,27 @@
+.example-card {
+  max-width: 20rem;
+  margin: 30px auto;
+  background-color: var(--Amber);
+  cursor: pointer;
+}
+
+.example-image-div {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+.example-image {
+  height: 3rem;
+  width: 3rem;
+}
+
+::ng-deep .mat-tab-label {
+  margin: 0.5rem 2rem;
+  font-size: 1.5rem;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: var(--Amber);
+}

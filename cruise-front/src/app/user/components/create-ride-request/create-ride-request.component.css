@@ -1,0 +1,279 @@
+.ride-pick-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.estimation-card {
+  padding: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--PrimaryText);
+  color: var(--White);
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.estimation-card h2 {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.title-btn {
+  cursor: pointer;
+}
+
+.estimation-card form p {
+  text-align: left;
+}
+
+.line {
+  width: 21vw;
+}
+
+.line hr {
+  width: 100%;
+}
+
+.in-l {
+  display: inline-block;
+}
+
+.top-elements {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.favourite {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.estimation-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.estimation-card form > div {
+  width: 100%;
+  margin: auto;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+.horizontal_align {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.vertical_types {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.plus-button {
+  background-color: var(--White);
+  color: var(--PrimaryText);
+  width: 25px;
+  height: 25px;
+  margin: auto;
+}
+
+.optional-text {
+  color: black;
+  width: 300px;
+}
+
+.invite-people {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: var(--White);
+}
+
+.invite-people ::ng-deep .mat-form-field .mat-form-field-wrapper {
+  margin-right: 1rem;
+  padding-bottom: 0;
+}
+
+.email-list {
+  list-style: none;
+  text-align: left;
+}
+
+.estimation-card ::ng-deep .mat-form-field .mat-form-field-label {
+  color: var(--White);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--White);
+}
+
+.estimation-card ::ng-deep .mat-form-field .mat-input-element {
+  color: var(--White);
+}
+
+.estimation-card
+  ::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+.estimation-card ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+.estimation-card ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber);
+}
+
+.estimation-card
+  ::ng-deep
+  .mat-checkbox-checked.mat-accent
+  .mat-checkbox-background {
+  background-color: var(--Amber) !important;
+}
+
+.estimation-card ::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  color: var(--Amber) !important;
+  border-color: var(--White);
+}
+
+.estimation-card::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  color: var(--Amber) !important;
+}
+
+.estimation-card::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber) !important;
+}
+
+.estimation-card::ng-deep
+  .mat-form-field.mat-focused.mat-primary
+  .mat-select-arrow {
+  color: var(--Amber) !important;
+}
+
+.estimation-card::ng-deep
+  .mat-primary
+  .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: var(--Amber) !important;
+}
+
+/* Offers */
+
+#offers {
+  margin-top: 20px;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid var(--PrimaryText);
+  border-radius: 8px;
+  background-color: var(--White);
+  color: var(--PrimaryText);
+  transition: all 200ms;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.offer-card:hover {
+  border: 2px solid var(--Amber);
+}
+
+.offer-card:active {
+  border: 2px solid var(--Amber);
+}
+
+.mini-map-holder {
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.mini-map-holder img {
+  width: 100%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.offer-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.offer-info h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.offer-info p {
+  font-size: 0.8rem;
+  font-weight: 200;
+  margin: 0;
+}
+
+.offer-price {
+  text-align: center;
+  margin: auto 10px auto auto;
+}
+
+.offer-price h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+#ride-card {
+  padding: 0.5rem;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid var(--PrimaryText);
+  border-radius: 8px;
+  background-color: var(--White);
+  color: var(--PrimaryText);
+  transition: all 200ms;
+  cursor: pointer;
+  margin: 20px auto;
+}
+
+#ride-card:hover {
+  border: 2px solid var(--Amber);
+}
+
+#ride-card:active {
+  border: 2px solid var(--Amber);
+}
+
+#ride-card {
+  font-size: 12px;
+}
+
+.focused {
+  border: 2px solid var(--Amber);
+}
+
+.map-holder {
+  width: 80px;
+  height: 80px;
+  padding: 5px;
+  margin-right: 10px;
+}

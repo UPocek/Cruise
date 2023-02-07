@@ -1,0 +1,56 @@
+#passenger {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  /*margin: auto 0;*/
+  padding: 10px 0;
+}
+
+#passenger_info {
+  display: flex;
+  flex-direction: row;
+}
+
+#passenger_name {
+  margin: auto 0;
+  height: 100%;
+  margin-left: 10px;
+}
+
+img {
+  margin: auto 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+#contact {
+  display: flex;
+  justify-self: flex-end;
+  margin-left: 50px;
+}
+
+#contact img {
+  width: 2rem;
+  height: 2rem;
+  margin: auto 10px;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+}
+
+.b10 {
+  margin-bottom: 10px !important;
+}
+
+.t0 {
+  margin-top: 0;
+}
+.b0 {
+  margin-bottom: 0;
+}
+.width80 {
+  width: 70%;
+}

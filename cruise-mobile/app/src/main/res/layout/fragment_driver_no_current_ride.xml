@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DriverNoCurrentRideFragment">
+
+    <TextView
+        android:id="@+id/ride_check_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="50dp"
+        android:gravity="center"
+        android:text="@string/you_don_t_a_have_current_ride"
+        android:textColor="@color/amber"
+        android:textSize="30dp" />
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.NewRideFragment4">
+
+    <TextView
+        android:id="@+id/p"
+        style="@style/linearLayoutElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/additional_options"
+        android:textSize="16sp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/time_picker_booking"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/p"
+        app:strokeColor="#333333"
+        app:strokeWidth="2dp">
+
+        <TextView
+            android:id="@+id/time_picker_form_booking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Time: ASAP" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/extra_options_booking"
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_picker_booking"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/pet_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pets" />
+
+        <CheckBox
+            android:id="@+id/baby_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/baby_seat" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:strokeColor="#333333"
+            app:strokeWidth="2dp">
+
+            <Spinner
+                android:id="@+id/car_types_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

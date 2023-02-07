@@ -1,0 +1,74 @@
+INSERT INTO vehicle_type (id, name, price_per_km) VALUES (1, 'STANDARD', 80);
+INSERT INTO vehicle_type (id, name, price_per_km) VALUES (2, 'LUXURY', 240);
+INSERT INTO vehicle_type (id, name, price_per_km) VALUES (3, 'LUXARY', 240);
+INSERT INTO vehicle_type (id, name, price_per_km) VALUES (4, 'VAN', 140);
+-- Uros
+INSERT INTO picture(id, picture_content) VALUES(1, '');
+INSERT INTO picture(id, picture_content) VALUES(2, '');
+INSERT INTO picture(id, picture_content) VALUES(3, '');
+INSERT INTO picture(id, picture_content) VALUES(4, '');
+INSERT INTO picture(id, picture_content) VALUES(5, '');
+INSERT INTO picture(id, picture_content) VALUES(7, '');
+INSERT INTO picture(id, picture_content) VALUES(9, '');
+INSERT INTO passenger(id, name, surname, profile_picture_id, telephone_number, email, address, password, active, blocked) VALUES (1, 'Uros', 'Pocek', 1, '+381606337280', 'uros.pocek@gmail.com', 'bul. Oslobodjenja 40', 'uros', true, false);
+INSERT INTO passenger(id, name, surname, profile_picture_id, telephone_number, email, address, password, active, blocked) VALUES (2, 'Tamara', 'Pocek', 2, '+381607883019', 'tamarailic11@gmail.com', 'bul. Oslobodjenja 2', 'tasa', true, false);
+INSERT INTO passenger(id, name, surname, profile_picture_id, telephone_number, email, address, password, active, blocked) VALUES (3, 'Test', 'Test', 3, '+381608449333', 'test@gmail.com', 'test 1', 'test', true, false);
+INSERT INTO passenger(id, name, surname, profile_picture_id, telephone_number, email, address, password, active, blocked) VALUES (7, 'Bojan', 'Bojan', 7, '+381608449333', 'bojan@gmail.com', 'test 2', 'bojan', true, false);
+INSERT INTO location(id, address, latitude, longitude) VALUES (1, 'Bulevar oslobodjenja 40', 45.267, 19.833);
+INSERT INTO location(id, address, latitude, longitude) VALUES (2, 'Bulevar oslobodjenja 2', 45.265, 19.831);
+INSERT INTO location(id, address, latitude, longitude) VALUES (3, 'Bulevar oslobodjenja 100', 45.269, 19.835);
+INSERT INTO driver(id, name, surname, profile_picture_id, telephone_number, email, address, password, active, blocked, status) VALUES (4, 'Marko', 'Markovic', 4, '+381607339280', 'marko@gmail.com','Bulevar Oslobodjenja 110', 'marko', true, false, 'FREE');
+INSERT INTO driver(id, name, surname, profile_picture_id, telephone_number, email, address, password, active, blocked, status) VALUES (5, 'Mirko', 'Mirkovic', 5, '+381607339289', 'mirko@gmail.com','Bulevar Oslobodjenja 120', 'mirko', true, false, 'FREE');
+INSERT INTO vehicle(id, make, type_id, licence_plate, seats_num, location_id, is_babies_allowed, is_pets_allowed, driver_id) VALUES (1, 'Tesla', 1, 'NS-555-UP', 4,  1, false, false, 4);
+INSERT INTO vehicle(id, make, type_id, licence_plate, seats_num, location_id, is_babies_allowed, is_pets_allowed, driver_id) VALUES (2, 'Tesla', 1, 'NS-556-UP', 4,  1, false, false, 5);
+INSERT INTO ride(id, start_time, end_time, estimated_time, is_baby_in_vehicle, is_panic, is_pet_in_vehicle, price, ride_state, driver_id, vehicle_type_id) VALUES(1, '2022-12-23 22:52:52.038935', '2022-12-23 23:52:52.038935', 11, false, false, false, 543, 'FINISHED', 4, 1);
+INSERT INTO ride(id, start_time, end_time, estimated_time, is_baby_in_vehicle, is_panic, is_pet_in_vehicle, price, ride_state, driver_id, vehicle_type_id) VALUES(2, '2022-12-24 22:52:52.038935', '2022-12-24 23:52:52.038935', 11, false, false, false, 543, 'FINISHED', 4, 1);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(1, 1);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(1, 2);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(2, 1);
+INSERT INTO route(id, distance, start_location_id, end_location_id) VALUES (1, 806, 1,2);
+INSERT INTO route(id, distance, start_location_id, end_location_id) VALUES (2, 3167, 1,3);
+INSERT INTO ride_routes(ride_id, route_id) VALUES(1,1);
+INSERT INTO ride_routes(ride_id, route_id) VALUES(2,2);
+-- Bojan
+INSERT INTO admin (id, address, name, password, surname, telephone_number, username, image_id) VALUES (1, 'adresa', 'admin', 'admin', 'admin', '+381696969696', 'admin', null);
+
+-- Uros
+INSERT INTO ride(id, start_time, end_time, estimated_time, is_baby_in_vehicle, is_panic, is_pet_in_vehicle, price, ride_state, driver_id, vehicle_type_id) VALUES(3, '2023-01-25 22:52:52.038935', '2023-01-25 23:52:52.038935', 11, false, false, false, 543, 'INREVIEW', 4, 1);
+INSERT INTO ride(id, start_time, end_time, estimated_time, is_baby_in_vehicle, is_panic, is_pet_in_vehicle, price, ride_state, driver_id, vehicle_type_id) VALUES(4, '2023-01-25 22:52:52.038935', '2023-01-25 23:52:52.038935', 11, false, false, false, 543, 'FINISHED', 4, 1);
+INSERT INTO ride(id, start_time, end_time, estimated_time, is_baby_in_vehicle, is_panic, is_pet_in_vehicle, price, ride_state, driver_id, vehicle_type_id) VALUES(5, '2023-01-25 22:52:52.038935', '2023-01-25 23:52:52.038935', 11, false, false, false, 543, 'ACTIVE', 4, 1);
+INSERT INTO ride(id, start_time, end_time, estimated_time, is_baby_in_vehicle, is_panic, is_pet_in_vehicle, price, ride_state, driver_id, vehicle_type_id) VALUES(6, '2023-01-25 22:52:52.038935', '2023-01-25 23:52:52.038935', 11, false, false, false, 543, 'ACCEPTED', 4, 1);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(3, 1);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(4, 1);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(5, 1);
+INSERT INTO passengers(ride_id, passenger_id) VALUES(6, 1);
+INSERT INTO ride_routes(ride_id, route_id) VALUES(3,1);
+INSERT INTO ride_routes(ride_id, route_id) VALUES(4,1);
+INSERT INTO ride_routes(ride_id, route_id) VALUES(5,1);
+INSERT INTO ride_routes(ride_id, route_id) VALUES(6,1);
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (1, false, 1000, 'Bulevar Oslobodjenja 40 - Fruskogorska 1', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (2, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (1,1);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (1,2);
+
+-- Bojan
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (3, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (4, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (5, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (6, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (7, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (8, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (9, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (10, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (11, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO favourite_ride(id, baby_transport, distance, favorite_name, pet_transport, vehicle_type) VALUES (12, false, 1000, 'Bulevar Oslobodjenja 2 - Bulevar Oslobodjenja 40', false, 'STANDARD');
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,3);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,4);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,5);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,6);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,7);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,8);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,9);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,10);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,11);
+INSERT INTO passenger_favourite_rides(passenger_id, favourite_ride_id) VALUES (7,12);

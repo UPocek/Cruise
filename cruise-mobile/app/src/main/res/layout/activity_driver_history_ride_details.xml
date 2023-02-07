@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include
+        android:id="@+id/driver_ride_history_back_fab"
+        layout="@layout/floating_back_button" />
+
+    <LinearLayout
+        android:id="@+id/ride_history_details_holder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/rating_btn"
+            style="@style/smallWidthButtonStyle"
+            android:backgroundTint="@color/dark_gray"
+            android:text="@string/rating"
+            android:textColor="@color/light_gray" />
+
+        <Button
+            android:id="@+id/details_btn"
+            style="@style/smallWidthButtonStyle"
+            android:layout_marginStart="25dp"
+            android:backgroundTint="@color/dark_gray"
+            android:text="@string/details"
+            android:textColor="@color/light_gray"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+
+</LinearLayout>

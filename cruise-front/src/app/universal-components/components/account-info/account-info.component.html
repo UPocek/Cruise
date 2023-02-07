@@ -1,0 +1,83 @@
+<div id="account_info">
+  <a class="secondary-btn" routerLink="/reports" style="text-decoration: none">
+    Generate reports
+  </a>
+  <div id="account_name_picture">
+    <div id="account_name">
+      <p>{{ firstName }} {{ lastName }}</p>
+    </div>
+    <div id="add-picture">
+      <div id="picture">
+        <img [src]="profilePicture" alt="Profile picture" />
+      </div>
+      <button id="plus-button" class="icon-btn" (click)="addImage.click()">
+        <i class="fa fa-pencil"></i>
+      </button>
+      <input
+        hidden
+        (change)="selectProfilePicture($event)"
+        #addImage
+        type="file"
+        accept="image/*"
+      />
+    </div>
+  </div>
+
+  <div>
+    <form [formGroup]="changeInfoForm" (ngSubmit)="changeInfo()">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ email_username }}</mat-label>
+          <input
+            matInput
+            type="email"
+            name="email"
+            formControlName="email"
+            id="email"
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input
+            matInput
+            type="text"
+            name="phone"
+            formControlName="phone"
+            id="phone"
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            type="text"
+            name="address"
+            formControlName="address"
+            id="address"
+          />
+        </mat-form-field>
+      </div>
+
+      <div id="forgot-pass">
+        <p class="forgot-pass" [routerLink]="['/reset-password']">
+          Forgot password?
+        </p>
+        <p class="forgot-pass end" (click)="openDialog()">Change password?</p>
+      </div>
+
+      <div class="width100">
+        <input
+          type="submit"
+          value="Save changes"
+          class="t30 main-btn b30 width100"
+        />
+      </div>
+    </form>
+  </div>
+</div>

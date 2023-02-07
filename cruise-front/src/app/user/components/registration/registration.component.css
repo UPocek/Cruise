@@ -1,0 +1,46 @@
+#user_registration {
+    margin: 2% auto;
+    width: 80%;
+    text-align: center;
+}
+
+#user_registration h1 {
+    margin-bottom: 3rem;
+}
+
+#user_registration p {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+#user_registration button {
+    background-color: transparent;
+    border: 0;
+}
+
+#user_registration form {
+    display: flex;
+    flex-direction: column;
+}
+
+#user_registration form>div {
+    width: 300px;
+    margin: auto;
+}
+
+mat-form-field {
+    display: block;
+    width: 100%;
+}
+
+#user_registration ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: var(--Amber);
+}
+
+#user_registration ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--Amber);
+}
+
+#user_registration ::ng-deep .mat-focused .mat-form-field-required-marker {
+    color: var(--Amber)
+}

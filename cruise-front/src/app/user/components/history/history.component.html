@@ -1,0 +1,66 @@
+<div class="table-screen">
+  <div id="left" class="search-results-container">
+    <h1 class="d-h1 center">Ride history</h1>
+    <form [formGroup]="formGroup" (ngSubmit)="findRides()">
+      <div id="reason" class="center">
+        <mat-form-field appearance="outline">
+          <mat-label>Date from</mat-label>
+          <input formControlName="from" matInput type="datetime-local" name="datefrom" id="dateFrom">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date to</mat-label>
+          <input formControlName="to" matInput type="datetime-local" name="dateto" id="dateTo">
+        </mat-form-field>
+      </div>
+      <div class="center">
+        <mat-form-field appearance="outline" *ngIf="who === 'ADMIN'">
+          <mat-label>User / Driver - email</mat-label>
+          <input matInput type="email" name="useremail" id="useremail">
+        </mat-form-field>
+      </div>
+      <div class="filterItem center">
+        <mat-form-field appearance="outline">
+          <mat-label>Sort:</mat-label>
+          <mat-select formControlName="sort">
+            <mat-option value="startTime-asc" selected>Date ascending</mat-option>
+            <mat-option value="startTime-desc">Date descending</mat-option>
+            <mat-option value="price-asc" selected>Price ascending</mat-option>
+            <mat-option value="price-desc">Price descending</mat-option>
+            <mat-option value="estimatedTime-asc" selected>Cruise duration ascending</mat-option>
+            <mat-option value="estimatedTime-desc">Cruise duration descending</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="center">
+        <button class="main-btn" (click)="findRides()">Submit</button>
+      </div>
+    </form>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef=" ">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" [style.border-bottom-style]="'none'">
+          <div>
+            <app-driver-ride-history-card [ride]="element" *ngIf="userToShow === 'DRIVER'"></app-driver-ride-history-card>
+            <app-passenger-ride-card [ride]="element" *ngIf="userToShow === 'PASSENGER'"></app-passenger-ride-card>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: displayedColumns"
+      ></tr>
+    </table>
+    <mat-paginator id="passenger-paginator"
+                   [pageSizeOptions]="[1, 2, 3]"
+                   showFirstLastButtons
+    ></mat-paginator>
+  </div>
+
+
+  <div id="right">
+    <app-driver-ride-history-info id="driverRideInfo" *ngIf="userToShow === 'DRIVER' "  style="visibility:hidden"></app-driver-ride-history-info>
+    <app-passenger-detailed-history *ngIf="userToShow === 'PASSENGER'"></app-passenger-detailed-history>
+  </div>
+
+</div>

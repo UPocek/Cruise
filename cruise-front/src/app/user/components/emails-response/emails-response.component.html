@@ -1,0 +1,23 @@
+<div class="centar-component">
+  <h1>Waitng for emails</h1>
+  <div class="emails">
+    <ul>
+      <p *ngFor="let email of emails">
+        <i class="fa-solid fa-ellipsis dots-icon"></i>{{ email }}
+      </p>
+      <p *ngFor="let accepted of acceptedRidePassengers">
+        <i class="fa-solid fa-check check-icon"></i>{{ accepted }}
+      </p>
+      <p *ngFor="let rejected of rejectedRidePassengers">
+        <i class="fa-solid fa-x x-icon"></i>{{ rejected }}
+      </p>
+    </ul>
+  </div>
+  <button
+    class="secondary-btn"
+    style="background-color: var(--Amber); display: block; margin: auto"
+    (click)="createRequest()"
+  >
+    Proceed ride
+  </button>
+</div>

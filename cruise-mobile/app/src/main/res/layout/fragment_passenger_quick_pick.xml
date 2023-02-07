@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/passenger_map"
+        android:name="com.cruisemobile.cruise.fragments.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_marginBottom="30dp" />
+
+    <TextView
+        style="@style/linearLayoutElement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/where_to"
+        android:textSize="16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pickup"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pick_up_location">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pickup_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destination"
+        style="@style/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/destination">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/destination_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/find_a_cruise"
+        style="@style/largeWidthButtonStyle"
+        android:layout_width="match_parent"
+        android:text="@string/find_a_cruise"
+        android:textColor="@color/dark_gray" />
+
+</LinearLayout>
+

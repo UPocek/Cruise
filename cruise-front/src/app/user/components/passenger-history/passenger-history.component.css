@@ -1,0 +1,62 @@
+#passenger-history{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10vw;
+    padding: 2% 10%;
+}
+
+.rides-list{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.rides-list h1{
+    margin-bottom: 10px;
+}
+
+/* Filters */
+
+.filterInputs{
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+justify-content: center;
+}
+
+.filterItem{
+    margin: 4px;
+}
+
+.submit-btn{
+    margin-top: -20px;
+}
+
+#passenger-history ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: var(--PrimaryText);
+}
+  
+#passenger-history ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--PrimaryText);
+}
+  
+#passenger-history ::ng-deep .mat-focused .mat-form-field-required-marker {
+    color: var(--PrimaryText)
+}
+
+@media (max-width: 1069px) {
+    #passenger-history{
+        grid-template-columns: 1fr;
+        grid-gap: 40px;
+    }
+}
+  
+@media (max-width: 768px) {
+    .filterInputs{
+       grid-template-columns: 1fr;
+    }
+
+    .filter-btn{
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.Cruise" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/amber</item>
+        <item name="colorPrimaryVariant">@color/amber</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/dark_gray</item>
+        <item name="colorSecondaryVariant">@color/light_gray</item>
+        <item name="colorOnSecondary">@color/dark_gray</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/popins</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="textAppearanceBody1">@style/h1</item>
+
+
+    </style>
+
+    <style name="Theme.Cruise.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MyRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/my_ratingbar</item>
+        <item name="minHeight">16dp</item>
+        <item name="maxHeight">16dp</item>
+    </style>
+
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

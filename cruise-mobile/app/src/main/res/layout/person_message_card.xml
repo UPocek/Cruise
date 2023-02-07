@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/person_message_card"
+    style="@style/marginCards"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        style="@style/cardMessageIcon"
+        android:backgroundTint="@color/amber"
+        android:src="@mipmap/person_foreground" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title, secondary and supporting text -->
+        <TextView
+            android:id="@+id/person_from_message"
+            style="@style/messageRideStyle" />
+
+        <TextView
+            android:id="@+id/person_when_message"
+            style="@style/messageRideStatus" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,44 @@
+
+#info {
+  margin: 0 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  vertical-align: center;
+}
+
+app-star-rating {
+  margin: auto 10px;
+}
+
+.row p {
+  margin: auto 0
+}
+
+::ng-deep mat-form-field {
+  width: 100%;
+}
+
+#reason ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--Amber);
+}
+
+#reason ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--Amber);
+}
+
+#reason ::ng-deep .mat-focused .mat-form-field-required-marker {
+  color: var(--Amber)
+}
+
+#comments-section {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#comments {
+  margin-left: 10px;
+}
+

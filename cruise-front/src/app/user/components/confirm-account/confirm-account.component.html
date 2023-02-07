@@ -1,0 +1,16 @@
+<div>
+
+    <div class='verify-card'>
+        <div>
+            <img *ngIf='status===0' src='../../../../assets/pending.png' alt='PENDING'>
+            <img *ngIf='status===1' src='../../../../assets/verified.png' alt='VERIFIED'>
+            <img *ngIf='status===2' src='../../../../assets/denied.png' alt='DENIED'>
+        </div>
+        <h2 *ngIf='status===0'>We are processing your request</h2>
+        <h2 *ngIf='status===1'>Your account has been verified</h2>
+        <h2 *ngIf='status===2'>Verification id has expired. Sign up again</h2>
+        <a *ngIf='status===1' routerLink='/log-in'>Log In</a>
+        <a *ngIf='status===2' routerLink='/sign-up'>Sign up</a>
+    </div>
+
+</div>

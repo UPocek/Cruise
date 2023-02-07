@@ -1,0 +1,8 @@
+.invitation-card {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid var(--White);
+  border-radius: 8px;
+  background-color: #f2f2f2;
+}

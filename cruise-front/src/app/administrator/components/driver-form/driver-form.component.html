@@ -1,0 +1,210 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="driverForm" label="Add driver">
+    <div id="create_driver">
+      <h1 class="d-h1">Driver info</h1>
+      <form [formGroup]="driverForm">
+        <div class="form_width">
+          <div class="upload_files">
+            <button
+              class="select_file"
+              type="button"
+              mat-raised-button
+              (click)="fileInput1.click()"
+            >
+              Choose File
+            </button>
+            <input
+              hidden
+              (change)="selectProfilePicture($event)"
+              formControlName="profil_picture"
+              #fileInput1
+              type="file"
+              accept="image/*"
+            />
+            <span *ngIf="profilePicture" class="file-name"
+              >Profile picture added</span
+            >
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              name="email"
+              formControlName="email"
+              id="email"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="name"
+              formControlName="name"
+              id="name"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Surname</mat-label>
+            <input
+              matInput
+              type="text"
+              name="surname"
+              formControlName="surname"
+              id="surname"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input
+              matInput
+              type="text"
+              name="phone"
+              formControlName="phone"
+              id="phone"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              type="text"
+              name="address"
+              formControlName="address"
+              id="address"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              name="password"
+              formControlName="password"
+              id="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="upload_files">
+            <button
+              class="select_file"
+              type="button"
+              mat-raised-button
+              (click)="uploadDriverLicense.click()"
+            >
+              Choose File
+            </button>
+            <input
+              hidden
+              (change)="selectDriverLicense($event)"
+              #uploadDriverLicense
+              type="file"
+              accept="image/*"
+            />
+            <span *ngIf="driversLicense" class="file-name"
+              >Drivers license added</span
+            >
+          </div>
+          <div class="upload_files">
+            <button
+              class="select_file"
+              type="button"
+              mat-raised-button
+              (click)="uploadTrafficLicense.click()"
+            >
+              Choose File
+            </button>
+            <input
+              hidden
+              (change)="selectTrafficLicense($event)"
+              #uploadTrafficLicense
+              type="file"
+              accept="image/*"
+            />
+            <span *ngIf="trafficLicense" class="file-name"
+              >Traffic license added</span
+            >
+          </div>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="vehicleForm" label="Add vehicle">
+    <div id="create_vehicle">
+      <h1 class="d-h1">Vehicle info</h1>
+      <form [formGroup]="vehicleForm">
+        <div class="form_width">
+          <mat-form-field appearance="outline">
+            <mat-label>Model name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="model_name"
+              formControlName="model_name"
+              id="model_name"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Registration number</mat-label>
+            <input
+              matInput
+              type="text"
+              name="registration_num"
+              formControlName="registration_num"
+              id="registration_num"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Number of seats</mat-label>
+            <input
+              matInput
+              type="number"
+              name="num_seats"
+              formControlName="num_seats"
+              id="num_seats"
+            />
+          </mat-form-field>
+        </div>
+        <div class="horizontal_align form_width">
+          <div class="horizontal_types">
+            <mat-checkbox formControlName="pets">Pets</mat-checkbox>
+            <mat-checkbox formControlName="babys">Babys</mat-checkbox>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Vehicle type</mat-label>
+            <mat-select formControlName="vehicle_types">
+              <mat-option value="STANDARD" selected>STANDARD</mat-option>
+              <mat-option value="LUXARY">LUXARY</mat-option>
+              <mat-option value="VAN">VAN</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step label="Done">
+    <div id="step_done">
+      <h1>Create driver?</h1>
+      <div id="answer_btns">
+        <button class="main-btn" (click)="createDriver()">Yes</button>
+        <button class="main-btn" (click)="routBack()">No</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>

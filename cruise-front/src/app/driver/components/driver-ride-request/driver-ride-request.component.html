@@ -1,0 +1,35 @@
+<div id="driver-ride-request">
+  <div id="content">
+    <div id="left">
+      <img src="assets/waving-hand.png"/>
+      <div id="title">
+        <h1 id="new-ride-to-drive" class="d-h2">Hey, we have a cruise for you!</h1>
+      </div>
+      <div id="info">
+        <p><strong>Route:</strong> {{departure}} to {{destination}}</p>
+        <p><strong>Estimated cruise time:</strong> {{estimatedTime}}min</p>
+        <p><strong>Distance:</strong> {{distance}}km</p>
+        <p><strong>Price:</strong> {{cost}}RSD</p>
+        <p><strong>Number of passengers:</strong> {{numberOfPassengers}}</p>
+      </div>
+      <div id="confirm">
+        <h3 class="d-h3">So, you are in?</h3>
+        <div id="buttons">
+          <button id="yes-btn" (click)="acceptRide(true)" mat-raised-button>Yes</button>
+          <button id="no-btn" (click)="acceptRide(false)" mat-raised-button>No</button>
+        </div>
+      </div>
+      <div id="reason">
+        <form [formGroup]="reasonForm">
+          <mat-form-field appearance="outline">
+            <mat-label>If no, tell us why...</mat-label>
+            <input matInput type="text" name="reason" id="reason" value="" formControlName="reason">
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div id="right">
+      <app-map></app-map>
+    </div>
+  </div>
+</div>

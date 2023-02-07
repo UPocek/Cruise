@@ -1,0 +1,16 @@
+<nav>
+  <p class="logo" routerLink="/{{navbarLinks[0]}}">CRUISE</p>
+  <ul>
+    <li *ngFor="let item of navbarItems ; index as i; let last = last" id="nav{{i}}">
+      <a routerLink="/{{navbarLinks[i]}}" *ngIf="!last">
+        {{item}}
+      </a>
+      <a routerLink="/{{navbarLinks[i]}}" *ngIf="last && navbarItems[i] === 'Sign up'">
+        {{item}}
+      </a>
+      <a routerLink="/{{navbarLinks[i]}}" *ngIf="last && navbarItems[i] !== 'Sign up'" (click)="logOut()">
+        {{item}}
+      </a>
+    </li>
+  </ul>
+</nav>

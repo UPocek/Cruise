@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+
+        android:id="@+id/drawerLayoutDriverInbox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.AppBarLayout
+                style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/topAppBarDriverInbox"
+                    style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/white"
+                    android:elevation="0dp"
+                    app:navigationIcon="@drawable/menu" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <!-- Screen content -->
+
+            <LinearLayout
+                android:id="@+id/driverInbox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+                <!-- Scrollable content -->
+
+            </LinearLayout>
+
+
+            <!-- Use app:layout_behavior="@string/appbar_scrolling_view_behavior" to fit below top app bar -->
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationViewDriverInbox"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:backgroundTint="@color/amber"
+            app:headerLayout="@layout/header_navigation_drawer"
+            app:itemIconPadding="20dp"
+            app:itemIconSize="38dp"
+            app:itemIconTint="@color/white"
+            app:itemTextAppearance="@style/h2"
+            app:itemTextColor="@color/white"
+            app:itemVerticalPadding="10dp"
+            app:menu="@menu/top_app_menu_driver">
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</LinearLayout>

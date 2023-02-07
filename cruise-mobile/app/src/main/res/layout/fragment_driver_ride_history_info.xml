@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".fragments.DriverRideHistoryInfoFragment">
+
+        <TextView
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:text="@string/cruise_details" />
+
+        <LinearLayout
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driver_ride_history_details_time"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/route"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driver_ride_history_details_location"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/passengers"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driver_ride_history_details_number_of_passengers"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/driver_ride_history_cruise_splitfare"
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/white" />
+
+        <LinearLayout
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cruise_time"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driver_ride_history_details_duration"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driver_ride_history_details_distance"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearLayoutElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_price"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driver_ride_history_details_price"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/driver_ride_details_map"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+    </LinearLayout>
+</ScrollView>

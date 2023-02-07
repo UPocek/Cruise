@@ -1,0 +1,51 @@
+.call-to-register {
+    border: 2px solid var(--PrimaryText);
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.emoji-holder {
+    width: 150px;
+}
+
+.emoji-holder img {
+    width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.content h3 {
+    margin-left: 50px;
+    font-size: 1.4rem;
+}
+
+.call-to-action-btn-holder {
+    margin: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1069px) {
+    .emoji-holder{
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .call-to-register{
+        padding: 15px;
+    }
+
+    .content h3{
+        font-size: 1.2rem;
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DriverCurrentRideFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/driver_current_ride_map"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="30dp" />
+
+        <LinearLayout
+            style="@style/rootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/driver_current_ride_map"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/driver_current_ride_elapsed_time_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/elapsed_time" />
+
+                <TextView
+                    android:id="@+id/driver_current_ride_elapsed_time"
+                    style="@style/h4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/loading" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/driver_current_ride_driver_info"
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/driver_current_ride_driver_icon"
+                    style="@style/cardMessageIcon"
+                    android:background="@drawable/support_circle"
+                    android:backgroundTint="@color/light_gray"
+                    android:contentDescription="@string/person_icon"
+                    android:src="@mipmap/person_foreground" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/driver_current_ride_passenger_name"
+                        style="@style/smallInfoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/loading" />
+
+                    <TextView
+                        android:id="@+id/driver_current_ride_passenger_surname"
+                        style="@style/smallInfoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/loading" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/current_ride_driver_message"
+                        style="@style/mediumIconStyle"
+                        android:contentDescription="@string/message_button"
+                        android:src="@drawable/message_icon" />
+
+                    <ImageView
+                        android:id="@+id/current_ride_driver_call"
+                        style="@style/mediumIconStyle"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/call_button"
+                        android:src="@drawable/phone_icon" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/driver_current_ride_btns"
+                style="@style/linearLayoutElement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/driver_current_ride_start_end_btn"
+                    style="@style/smallWidthButtonStyle"
+                    android:backgroundTint="@color/amber"
+                    android:text="@string/start" />
+
+                <Button
+                    android:id="@+id/driver_current_ride_cancel_btn"
+                    style="@style/smallWidthButtonStyle"
+                    android:layout_marginStart="25dp"
+                    android:backgroundTint="@color/dark_gray"
+                    android:text="@string/cancel" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/driver_current_ride_panic_btn"
+                style="@style/largeWidthButtonStyle"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/red"
+                android:text="@string/panic"
+                android:textAllCaps="true" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/inputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_your_panic_report_reason">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/driver_current_ride_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="90dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="rootLayout">
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="title">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:layout_marginVertical">30dp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="inputField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="android:layout_marginHorizontal">30dp</item>
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+    </style>
+
+    <style name="linearLayoutElement">
+        <item name="android:layout_marginHorizontal">30dp</item>
+        <item name="android:layout_marginVertical">5dp</item>
+    </style>
+
+    <style name="mainButton">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:paddingHorizontal">80dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="largeWidthButtonStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_height">65dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="android:layout_marginHorizontal">30dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="mediumWidthButtonStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginHorizontal">35dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="smallWidthButtonStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="extraSmallWidthButtonStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">10dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="userChangeCard">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+
+    <style name="h1">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="h2">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="h4">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="mediumInfoText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="smallInfoText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="xsmallInfoText">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="cardMessageIcon">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@drawable/support_circle</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="iconStyle">
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="mediumIconStyle">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="marginCards">
+        <item name="android:layout_marginHorizontal">30dp</item>
+        <item name="android:layout_marginVertical">8dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:elevation">1dp</item>
+        <item name="strokeColor">@color/dark_gray</item>
+        <item name="android:backgroundTint">@color/light_gray</item>
+    </style>
+
+    <style name="message">
+        <item name="android:layout_marginHorizontal">5dp</item>
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="messageText">
+        <item name="android:padding">15dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">end</item>
+    </style>
+
+    <style name="messageTime">
+        <item name="android:layout_marginHorizontal">5dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="messageRideStyle" parent="h4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/amber</item>
+    </style>
+
+    <style name="messageRideStatus">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

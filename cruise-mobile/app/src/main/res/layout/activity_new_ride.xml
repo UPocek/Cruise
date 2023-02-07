@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NewRideActivity">
+
+    <include
+        android:id="@+id/cancel_booking"
+        layout="@layout/x_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp" />
+
+    <TextView
+        android:id="@+id/book_a_ride_title"
+        style="@style/h1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/book_a_ride_title" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/book_a_ride_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/book_a_ride_title" />
+
+    <include
+        android:id="@+id/back_button_booking"
+        layout="@layout/floating_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:visibility="invisible" />
+
+
+    <include
+        android:id="@+id/next_button_booking"
+        layout="@layout/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp" />
+
+</RelativeLayout>
