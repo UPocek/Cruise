@@ -1,5 +1,8 @@
-<video src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/cruise-video.mp4" controls="controls" style="max-width: 730px;">
-</video>
+
+
+https://user-images.githubusercontent.com/62771420/217657272-01091333-9076-4100-9f0e-bb6d8dbf1680.mp4
+
+
 
 # Cruise
 
@@ -26,7 +29,7 @@ Our REST API is developed in Java's Spring Boot framework. This is the first tim
 ### Frontend layer
 
 Our client application is developed in the Angular framework, where we learned a lot about JavaScript and TypeScript, client-side rendering, component tree, HTTP communication, and observables. In the pictures below we tried to show you that our Driver and Passenger have real-time communication when riding together, and for achieving such functionality we used STOMP protocol over WebSoket. In the end, we concluded that Angular is good if you want to separate UI logic and template generating, but for some more dynamic UI, frameworks like React may do a better job. 🤔 
-[nesto](https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img1.PNG)
+![nesto](https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img1.PNG)
 <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img1.PNG" width="45%"></img> <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img3.PNG" width="45%"></img> <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img4.PNG" width="45%"></img> <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img5.PNG" width="45%"></img> <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img6.PNG" width="45%"></img> <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img7.PNG" width="45%"></img><img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img8.PNG" width="45%"></img> <img src="https://github.com/tamarailic/cruise/blob/main/docs/assets/images/img9.PNG" width="45%"></img>
 
 ### Mobile App
