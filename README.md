@@ -1,8 +1,7 @@
 
 
-https://user-images.githubusercontent.com/62771420/217657272-01091333-9076-4100-9f0e-bb6d8dbf1680.mp4
-
-
+<video src="https://user-images.githubusercontent.com/62771420/217657272-01091333-9076-4100-9f0e-bb6d8dbf1680.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 # Cruise
 
