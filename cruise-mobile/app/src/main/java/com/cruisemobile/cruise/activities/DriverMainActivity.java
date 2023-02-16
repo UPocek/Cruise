@@ -48,8 +48,8 @@ import tech.gusavila92.websocketclient.WebSocketClient;
 
 
 public class DriverMainActivity extends AppCompatActivity {
-    private static String CHANNEL_ID = "Zero channel";
-    private static int NOTIFICATION_ID = 1;
+    private static final String CHANNEL_ID = "Zero channel";
+    private static final int NOTIFICATION_ID = 1;
     private SharedPreferences sharedPreferences;
     private MaterialToolbar topAppBar;
     private DrawerLayout drawerLayout;

@@ -253,7 +253,6 @@ public class PassengerCurrentRideFragment extends Fragment {
     private void panic(View view, Long id) {
         EditText message = view.findViewById(R.id.passenger_current_ride_message);
         String messageText = String.valueOf(message.getText());
-        String jwt = sharedPreferences.getString("jwt", "");
         if (messageText.equals(""))
             Toast.makeText(getContext(), "You have to enter reason for panic", Toast.LENGTH_SHORT).show();
         else {
@@ -263,6 +262,7 @@ public class PassengerCurrentRideFragment extends Fragment {
                 public void onResponse(Call<PanicDTO> call, Response<PanicDTO> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(getContext(), "Panic forwarded to administarion!", Toast.LENGTH_SHORT).show();
+                        message.setText("");
                     } else {
                         Toast.makeText(getContext(), "Panic exception", Toast.LENGTH_SHORT).show();
                         Log.e("PANIC", "Panic exception" + response.code());

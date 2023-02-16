@@ -232,11 +232,11 @@ public class DriverRideHistoryActivity extends AppCompatActivity implements Sens
 
     public class LoadingViewHolder extends RecyclerView.ViewHolder {
 
-        private ProgressBar progressBar;
+        private final ProgressBar progressBar;
 
         public LoadingViewHolder(View itemView) {
             super(itemView);
-            progressBar = (ProgressBar) itemView.findViewById(R.id.loadmore_progress);
+            progressBar = itemView.findViewById(R.id.loadmore_progress);
 
         }
     }

@@ -109,7 +109,7 @@ public class ReportsFragment extends Fragment {
         datePickerDialogTo.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                toDate = LocalDate.of(year, month + 1, dayOfMonth + 1).atStartOfDay().toString();
+                toDate = LocalDate.of(year, month + 1, dayOfMonth).plusDays(1).atStartOfDay().toString();
             }
         });
         toDateField.setOnClickListener(new View.OnClickListener() {

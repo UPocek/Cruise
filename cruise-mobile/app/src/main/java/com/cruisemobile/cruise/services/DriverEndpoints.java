@@ -18,7 +18,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface DriverEndpoints {
-    public static String urlExtension = "driver";
+    String urlExtension = "driver";
 
     @Headers({
             "User-Agent: Mobile-Android",

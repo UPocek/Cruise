@@ -16,8 +16,8 @@ import java.util.List;
 
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferHolder> {
 
-    private LayoutInflater mInflater;
-    private List<OfferDTO> offers;
+    private final LayoutInflater mInflater;
+    private final List<OfferDTO> offers;
 
     public OfferAdapter(Context context, List<OfferDTO> offers) {
         mInflater = LayoutInflater.from(context);
@@ -48,9 +48,9 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.OfferHolder>
     class OfferHolder extends RecyclerView.ViewHolder {
 
         OfferAdapter offerAdapter;
-        private TextView offerName;
-        private TextView offerTime;
-        private TextView offerPrice;
+        private final TextView offerName;
+        private final TextView offerTime;
+        private final TextView offerPrice;
 
         public OfferHolder(@NonNull View itemView, OfferAdapter adapter) {
             super(itemView);

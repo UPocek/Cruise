@@ -18,10 +18,10 @@ import java.util.Objects;
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String PANIC_MESSAGES = "PANIC";
-    private String messagesType;
-    private ArrayList<MessageDTO> allMessages;
-    private Long userId;
-    private LayoutInflater mInflater;
+    private final String messagesType;
+    private final ArrayList<MessageDTO> allMessages;
+    private final Long userId;
+    private final LayoutInflater mInflater;
 
     public ChatAdapter(Context context, String messagesType,
                        ArrayList<MessageDTO> messages, Long userId) {

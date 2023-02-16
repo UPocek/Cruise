@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface PassengerEndpoints {
 
-    public static String urlExtension = "passenger";
+    String urlExtension = "passenger";
 
     @Headers({
             "User-Agent: Mobile-Android",

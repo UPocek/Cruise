@@ -22,9 +22,9 @@ import java.util.Objects;
 
 public class DriverRidesHistoryAdapter extends RecyclerView.Adapter<DriverRidesHistoryAdapter.DriverRideHistoryHolder> {
 
-    private ArrayList<RideForUserDTO> userRides;
-    private LayoutInflater mInflater;
-    private Long userId;
+    private final ArrayList<RideForUserDTO> userRides;
+    private final LayoutInflater mInflater;
+    private final Long userId;
     private boolean isLoadingAdded = false;
 
     public DriverRidesHistoryAdapter(Context context, ArrayList<RideForUserDTO> userRides, Long userId) {
@@ -66,10 +66,10 @@ public class DriverRidesHistoryAdapter extends RecyclerView.Adapter<DriverRidesH
     }
 
     class DriverRideHistoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView rideLocations;
-        private TextView rideInfo;
-        private ImageButton inboxButton;
-        private ImageButton favouriteButton;
+        private final TextView rideLocations;
+        private final TextView rideInfo;
+        private final ImageButton inboxButton;
+        private final ImageButton favouriteButton;
         private Long otherId;
         private String otherFullName;
         private RideForUserDTO ride;

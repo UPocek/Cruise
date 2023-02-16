@@ -24,7 +24,7 @@ import java.util.TimerTask;
 @SuppressLint("CustomSplashScreen")
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private ActivityResultLauncher<String> permission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+    private final ActivityResultLauncher<String> permission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
         if (result) {
             int SPLASH_TIME_OUT = 2800;
             new Timer().schedule(new TimerTask() {

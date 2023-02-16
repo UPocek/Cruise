@@ -65,7 +65,7 @@ public class DriverMapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_driver_map, container, false);
-        SlideToActView slideToActView = (SlideToActView) view.findViewById(R.id.driver_active_slider);
+        SlideToActView slideToActView = view.findViewById(R.id.driver_active_slider);
         slideToActView.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
             @Override
             public void onSlideComplete(@NonNull SlideToActView slideToActView) {

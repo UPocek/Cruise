@@ -8,25 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceUtils {
 
+    private static final String BASE_URL = "http://cruise.eastus.cloudapp.azure.com:8080/api/";
+    public static final String SERVER_IP = "http://cruise.eastus.cloudapp.azure.com";
 
-//    public static final String SERVER_IP = "192.168.0.144";
-    //    Tamara
-//    private static final String BASE_URL = "http://192.168.0.144:8080/api/";
-//    Bojan
-//    private static final String BASE_URL = "http://192.168.8.101:8080/api/";
-//    public static final String SERVER_IP = "192.168.8.101";
-//    private static final String BASE_URL = "http://192.168.1.5:8080/api/";
-//    public static final String SERVER_IP = "192.168.1.5";
-//    private static final String BASE_URL = "http://192.168.1.5:8080/api/";
-//    private static final String BASE_URL = "http://192.168.0.141:8080/api/";
-//    private static final String BASE_URL = "http://192.168.1.13:8080/api/";
-    //    Uros
-    private static final String BASE_URL = "http://192.168.0.141:8080/api/";
-//    Uros MAC
-//    private static final String BASE_URL = "http://192.168.5.220:8080/api/";
-    public static final String SERVER_IP = "192.168.0.141";
-//    public static final String SERVER_IP = "192.168.8.101";
-//    public static final String SERVER_IP = "192.168.1.13";
     static TokenInterceptor interceptor = new TokenInterceptor();
 
     static OkHttpClient client = new OkHttpClient.Builder()

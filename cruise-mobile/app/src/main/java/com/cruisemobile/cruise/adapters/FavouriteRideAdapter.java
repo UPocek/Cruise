@@ -32,10 +32,10 @@ import java.util.concurrent.Executors;
 import retrofit2.Call;
 
 public class FavouriteRideAdapter extends RecyclerView.Adapter<FavouriteRideAdapter.FavouriteRideHolder> {
-    private ExecutorService executorService;
-    private LayoutInflater mInflater;
-    private Context context;
-    private SharedPreferences sharedPreferences;
+    private final ExecutorService executorService;
+    private final LayoutInflater mInflater;
+    private final Context context;
+    private final SharedPreferences sharedPreferences;
     private ArrayList<FavouriteRideDTO> favouriteRides;
 
     public FavouriteRideAdapter(Context context, ArrayList<FavouriteRideDTO> favouriteRides) {

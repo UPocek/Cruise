@@ -261,6 +261,7 @@ public class DriverCurrentRideFragment extends Fragment {
                 public void onResponse(Call<PanicDTO> call, Response<PanicDTO> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(getContext(), "Panic forwarded to administarion!", Toast.LENGTH_SHORT).show();
+                        message.setText("");
                         DriverFragmentTransition.to(DriverMapFragment.newInstance(), getActivity(), false);
                     } else {
                         Toast.makeText(getContext(), "Message for panic is not valid " + response.code(), Toast.LENGTH_SHORT).show();

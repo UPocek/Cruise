@@ -33,11 +33,11 @@ public class InboxAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static final int PANIC = 2;
     private static final String PANIC_MESSAGES = "PANIC";
     private static final String RIDE_MESSAGES = "RIDE";
-    private Context context;
+    private final Context context;
     private ArrayList<ChatItemDTO> allChatItems;
     private boolean isLoadingAdded = false;
-    private LayoutInflater mInflater;
-    private Long userId;
+    private final LayoutInflater mInflater;
+    private final Long userId;
 
     public InboxAdapter(Context context,
                         ArrayList<ChatItemDTO> rides, Long thisUserId) {
@@ -221,11 +221,11 @@ public class InboxAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public class LoadingViewHolder extends RecyclerView.ViewHolder {
 
-        private ProgressBar progressBar;
+        private final ProgressBar progressBar;
 
         public LoadingViewHolder(View itemView) {
             super(itemView);
-            progressBar = (ProgressBar) itemView.findViewById(R.id.loadmore_progress);
+            progressBar = itemView.findViewById(R.id.loadmore_progress);
 
         }
     }

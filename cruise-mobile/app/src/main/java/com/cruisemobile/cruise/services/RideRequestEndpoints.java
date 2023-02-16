@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface RideRequestEndpoints {
 
-    public static String urlExtension = "ride-request";
+    String urlExtension = "ride-request";
 
     @Headers({
             "User-Agent: Mobile-Android",

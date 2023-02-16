@@ -195,9 +195,6 @@ public class CruiseConfirmedActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         Log.d("RIDE", "Ride not requested");
-                        rideStateCheckmark.setImageResource(R.drawable.denied);
-                        rideStateText.setText(R.string.cruise_denied);
-                        rideStateTimeToDriverArrival.setText("Server error");
                     }
                 });
 //                webSocketClient.send(gson.toJson(ride));

@@ -16,8 +16,8 @@ import java.util.List;
 public class HistoryCruiseCommentAdapter extends BaseAdapter {
 
     Activity activity;
-    private List<ReviewPairDTO> reviews;
-    private List<Pair<String, String>> comments;
+    private final List<ReviewPairDTO> reviews;
+    private final List<Pair<String, String>> comments;
 
     public HistoryCruiseCommentAdapter(Activity activity, List<ReviewPairDTO> reviews) {
         this.activity = activity;

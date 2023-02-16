@@ -40,9 +40,9 @@ public class PassengerRidesHistoryAdapter extends RecyclerView.Adapter<RecyclerV
     private static final int LOADING = 0;
     private static final int RIDE = 1;
     private ArrayList<RideForUserDTO> userRides;
-    private LayoutInflater mInflater;
-    private Long userId;
-    private ArrayList<FavouriteRideDTO> userFavouriteRides;
+    private final LayoutInflater mInflater;
+    private final Long userId;
+    private final ArrayList<FavouriteRideDTO> userFavouriteRides;
     private boolean isLoadingAdded = false;
 
     public PassengerRidesHistoryAdapter(Context context, ArrayList<RideForUserDTO> userRides, Long userId, ArrayList<FavouriteRideDTO> userFavouriteRides) {
@@ -175,10 +175,10 @@ public class PassengerRidesHistoryAdapter extends RecyclerView.Adapter<RecyclerV
 //    INNER CLASS
 
     class RideHistoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView rideLocations;
-        private TextView rideInfo;
-        private ImageButton inboxButton;
-        private ImageButton favouriteButton;
+        private final TextView rideLocations;
+        private final TextView rideInfo;
+        private final ImageButton inboxButton;
+        private final ImageButton favouriteButton;
         private Long otherId;
         private String otherFullName;
         private RideForUserDTO ride;
@@ -301,11 +301,11 @@ public class PassengerRidesHistoryAdapter extends RecyclerView.Adapter<RecyclerV
 
     public class LoadingViewHolder extends RecyclerView.ViewHolder {
 
-        private ProgressBar progressBar;
+        private final ProgressBar progressBar;
 
         public LoadingViewHolder(View itemView) {
             super(itemView);
-            progressBar = (ProgressBar) itemView.findViewById(R.id.loadmore_progress);
+            progressBar = itemView.findViewById(R.id.loadmore_progress);
 
         }
     }

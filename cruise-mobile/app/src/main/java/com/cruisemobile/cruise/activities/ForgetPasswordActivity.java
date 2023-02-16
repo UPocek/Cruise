@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
 
-    private EditText[] mCodeInputs = new EditText[6];
+    private final EditText[] mCodeInputs = new EditText[6];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

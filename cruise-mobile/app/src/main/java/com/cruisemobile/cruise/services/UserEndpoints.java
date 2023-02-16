@@ -25,7 +25,7 @@ import retrofit2.http.Query;
 
 public interface UserEndpoints {
 
-    public static String urlExtension = "user";
+    String urlExtension = "user";
 
     @Headers({
             "User-Agent: Mobile-Android",

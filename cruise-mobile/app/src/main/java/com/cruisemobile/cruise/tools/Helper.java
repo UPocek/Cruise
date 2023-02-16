@@ -100,11 +100,14 @@ public class Helper {
         String[] tokensDateTime = isoDate.split("\\.")[0].split("T");
         String[] dateTokens = tokensDateTime[0].split("-");
         String[] timeTokens = tokensDateTime[1].split(":");
-
-        return String.format("%s.%s.%s %s:%s:%s", dateTokens[2], dateTokens[1], dateTokens[0], timeTokens[0], timeTokens[1], timeTokens[2]);
+        try {
+            return String.format("%s.%s.%s %s:%s:%s", dateTokens[2], dateTokens[1], dateTokens[0], timeTokens[0], timeTokens[1], timeTokens[2]);
+        } catch (Exception e) {
+            return String.format("%s.%s.%s %s:%s:%s", dateTokens[2], dateTokens[1], dateTokens[0], timeTokens[0], timeTokens[1], "00");
+        }
     }
 
-    public static UserForRideDTO getLoggedInUserAsUserForRide(SharedPreferences sharedPreferences){
-        return new UserForRideDTO(sharedPreferences.getLong("id", -1),sharedPreferences.getString("email", ""));
+    public static UserForRideDTO getLoggedInUserAsUserForRide(SharedPreferences sharedPreferences) {
+        return new UserForRideDTO(sharedPreferences.getLong("id", -1), sharedPreferences.getString("email", ""));
     }
 }

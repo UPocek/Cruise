@@ -9,7 +9,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ReportsEndpoints {
-    public static String urlExtension = "ride";
+    String urlExtension = "ride";
 
     @Headers({
             "User-Agent: Mobile-Android",

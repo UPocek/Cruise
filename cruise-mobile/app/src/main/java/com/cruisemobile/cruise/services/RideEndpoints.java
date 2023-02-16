@@ -20,7 +20,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RideEndpoints {
-    public static String urlExtension = "ride";
+    String urlExtension = "ride";
 
     @Headers({
             "User-Agent: Mobile-Android",

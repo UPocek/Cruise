@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
  * create an instance of this fragment.
  */
 public class ChangeUserFragment extends Fragment {
-    private String hintLabel;
+    private final String hintLabel;
 
     public ChangeUserFragment(String label) {
         this.hintLabel = label;

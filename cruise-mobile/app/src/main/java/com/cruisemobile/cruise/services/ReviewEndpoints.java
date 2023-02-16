@@ -15,7 +15,7 @@ import retrofit2.http.Path;
 
 public interface ReviewEndpoints {
 
-    public static String urlExtension = "review";
+    String urlExtension = "review";
 
     @Headers({
             "User-Agent: Mobile-Android",

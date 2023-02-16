@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface UnregisteredUserEndpoints {
 
-    public static String urlExtension = "unregisteredUser";
+    String urlExtension = "unregisteredUser";
 
     @Headers({
             "User-Agent: Mobile-Android",
