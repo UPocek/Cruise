@@ -5,17 +5,13 @@ import com.cruise.Cruise.admin.DTO.AdminChatsDTO;
 import com.cruise.Cruise.admin.DTO.AdminDTO;
 import com.cruise.Cruise.admin.DTO.RegisterAdminDTO;
 import com.cruise.Cruise.admin.Services.IAdminService;
-import com.cruise.Cruise.security.IdentityCheck;
 import com.cruise.Cruise.security.jwt.JwtTokenUtil;
-import com.cruise.Cruise.user.DTO.AllChatItemsDTO;
 import com.cruise.Cruise.user.DTO.MessageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 @RestController

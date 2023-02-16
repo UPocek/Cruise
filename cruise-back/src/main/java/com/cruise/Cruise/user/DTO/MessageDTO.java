@@ -32,20 +32,14 @@ public class MessageDTO {
     public MessageDTO(Message message) {
         this.id = message.getId();
         this.timeOfSending = String.valueOf(message.getSentTime());
-        try
-        {
+        try {
             this.senderId = message.getSender().getId();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             this.senderId = null;
         }
-        try
-        {
+        try {
             this.receiverId = message.getReceiver().getId();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             this.receiverId = null;
         }
         this.message = message.getMessage();

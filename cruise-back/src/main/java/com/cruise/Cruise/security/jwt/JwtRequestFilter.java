@@ -2,7 +2,6 @@ package com.cruise.Cruise.security.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -47,15 +45,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                         SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                     }
                 } catch (IllegalArgumentException e) {
-                    System.out.println("Unable to get JWT Token.");
+//                    System.out.println("Unable to get JWT Token.");
                 } catch (ExpiredJwtException e) {
-                    System.out.println("JWT Token has expired.");
-                    throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "JWT Token has expired");
+//                    System.out.println("JWT Token has expired.");
+//                    throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "JWT Token has expired");
                 } catch (io.jsonwebtoken.MalformedJwtException e) {
-                    System.out.println("Bad JWT Token.");
+//                    System.out.println("Bad JWT Token.");
                 }
             } else {
-                logger.warn("JWT Token does not exist.");
+//                logger.warn("JWT Token does not exist.");
             }
         }
         chain.doFilter(request, response);

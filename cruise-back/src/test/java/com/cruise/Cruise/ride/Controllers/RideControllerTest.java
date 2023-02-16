@@ -1,4 +1,5 @@
 package com.cruise.Cruise.ride.Controllers;
+
 import com.cruise.Cruise.ride.DTO.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -14,12 +15,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
+
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -30,7 +32,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -40,27 +41,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("hibernate")
 public class RideControllerTest {
 
-    @Value("${jwt.secret}")
-    private String ourSecret;
-    @Autowired
-    private MockMvc mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
-    @MockBean
-    private SimpMessagingTemplate simpMessagingTemplate;
-
     private final String mPassengerEmail = "uros.pocek@gmail.com";
     private final Long mPassengerId = 1L;
     private final String mPassenger2Email = "tamarailic11@gmail.com";
     private final Long mPassenger2Id = 2L;
-
     private final String mPassenger4Email = "bojan@gmail.com";
     private final Long mPassenger4Id = 7L;
-
     private final String mAdminUsername = "admin";
     private final Long mAdminId = 1L;
-
-
     private final Long idOfActiveRide = 5L;
     private final Long idOfAcceptedRide = 6L;
     private final String mDriverEmail = "marko@gmail.com";
@@ -70,7 +58,14 @@ public class RideControllerTest {
     private final Long idOfInReviewRide = 3L;
     private final Long idOfFinishedRide = 4L;
     private final Long idOfNonExistingRide = 123L;
-
+    @Value("${jwt.secret}")
+    private String ourSecret;
+    @Autowired
+    private MockMvc mockMvc;
+    @Autowired
+    private ObjectMapper objectMapper;
+    @MockBean
+    private SimpMessagingTemplate simpMessagingTemplate;
 
     @Test
     public void shouldReturnBadRequestWhenRideIdNotExisting() throws Exception {
@@ -85,7 +80,7 @@ public class RideControllerTest {
 
         MvcResult result = mockMvc.perform(get("/api/ride/{id}", idOfNonExistingRide).header("Authorization", "Bearer " + token))
                 .andExpect(status().isBadRequest()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Ride with that id doesn't exist");
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Ride with that id doesn't exist");
     }
 
     @Test
@@ -134,8 +129,9 @@ public class RideControllerTest {
 
         MvcResult result = mockMvc.perform(put("/api/ride/{id}/start", idOfNonExistingRide).header("Authorization", "Bearer " + token))
                 .andExpect(status().isNotFound()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Ride with that id does not exist");
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Ride with that id does not exist");
     }
+
     @Test
     public void shouldNotStartRideIfRideStateNotAccepted() throws Exception {
         String token = Jwts.builder()
@@ -149,9 +145,10 @@ public class RideControllerTest {
 
         MvcResult result = mockMvc.perform(put("/api/ride/{id}/start", idOfFinishedRide).header("Authorization", "Bearer " + token))
                 .andExpect(status().isBadRequest()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Cannot start a ride that is not in status ACCEPTED!");
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Cannot start a ride that is not in status ACCEPTED!");
 
     }
+
     @Test
     public void shouldStartRide() throws Exception {
         String token = Jwts.builder()
@@ -196,9 +193,10 @@ public class RideControllerTest {
                         .header("Authorization", "Bearer " + token)
                         .header("Content-Type", "application/json;charset=UTF-8")
                         .content(objectMapper.writeValueAsString(reasonDTO)))
-                        .andExpect(status().isNotFound()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Ride does not exist!");
+                .andExpect(status().isNotFound()).andReturn();
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Ride does not exist!");
     }
+
     @Test
     public void shouldNotCancelRideWithExplanationIfRideStateNotAccepted() throws Exception {
         String token = Jwts.builder()
@@ -217,8 +215,9 @@ public class RideControllerTest {
                         .header("Content-Type", "application/json;charset=UTF-8")
                         .content(objectMapper.writeValueAsString(reasonDTO)))
                 .andExpect(status().isBadRequest()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Cannot cancel a ride that is not in status ACCEPTED!");
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Cannot cancel a ride that is not in status ACCEPTED!");
     }
+
     @Test
     public void shouldNotCancelRideWithExplanationIfRoleNotValid() throws Exception {
         String token = Jwts.builder()
@@ -238,6 +237,7 @@ public class RideControllerTest {
                         .content(objectMapper.writeValueAsString(reasonDTO)))
                 .andExpect(status().isForbidden()).andReturn();
     }
+
     @Test
     public void shouldNotCancelRideWithExplanationIfNoJwt() throws Exception {
         ReasonDTO reasonDTO = new ReasonDTO();
@@ -278,6 +278,7 @@ public class RideControllerTest {
                 .andExpect(jsonPath("$.rejection.reason", Matchers.is("some reason")))
                 .andExpect(jsonPath("$.status", Matchers.is("REJECTED")));
     }
+
     @Test
     public void shouldNotCancelExistingRideIfRideIdNotExisting() throws Exception {
         String token = Jwts.builder()
@@ -292,8 +293,9 @@ public class RideControllerTest {
         MvcResult result = mockMvc.perform(put("/api/ride/{id}/withdraw", idOfNonExistingRide)
                         .header("Authorization", "Bearer " + token))
                 .andExpect(status().isNotFound()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Ride does not exist!");
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Ride does not exist!");
     }
+
     @Test
     public void shouldNotCancelExistingRideStateNotAccepted() throws Exception {
         String token = Jwts.builder()
@@ -308,8 +310,9 @@ public class RideControllerTest {
         MvcResult result = mockMvc.perform(put("/api/ride/{id}/withdraw", idOfFinishedRide)
                         .header("Authorization", "Bearer " + token))
                 .andExpect(status().isBadRequest()).andReturn();
-        Assertions.assertEquals(result.getResponse().getErrorMessage(),"Cannot withdraw from a ride that is not in status ACCEPTED!");
+        Assertions.assertEquals(result.getResponse().getErrorMessage(), "Cannot withdraw from a ride that is not in status ACCEPTED!");
     }
+
     @Test
     public void shouldNotCancelExistingRideIfRoleNotValid() throws Exception {
         String token = Jwts.builder()
@@ -325,6 +328,7 @@ public class RideControllerTest {
                         .header("Authorization", "Bearer " + token))
                 .andExpect(status().isForbidden()).andReturn();
     }
+
     @Test
     public void shouldNotCancelExistingRideIfNoJwt() throws Exception {
         mockMvc.perform(put("/api/ride/{id}/withdraw", idOfAcceptedRide))
@@ -356,6 +360,7 @@ public class RideControllerTest {
                 .andExpect(jsonPath("$.petTransport", Matchers.is(false)))
                 .andExpect(jsonPath("$.status", Matchers.is("CANCELED")));
     }
+
     @Test
     public void shouldAcceptRideAndAssignDriverToIt() throws Exception {
         String token = Jwts.builder()
@@ -676,8 +681,7 @@ public class RideControllerTest {
     }
 
     @Test
-    public void shouldReturn404ForPanicToNonExistingRide() throws Exception
-    {
+    public void shouldReturn404ForPanicToNonExistingRide() throws Exception {
         String token = Jwts.builder()
                 .setSubject(mPassengerEmail)
                 .claim("role", "ROLE_PASSENGER")
@@ -690,9 +694,9 @@ public class RideControllerTest {
         reasonDTO.setReason(reason);
 
         MvcResult result = mockMvc.perform(put("/api/ride/{id}/panic", idOfNonExistingRide)
-                .header("Authorization", "Bearer " + token)
-                .header("Content-Type", "application/json;charset=UTF-8")
-                .content(objectMapper.writeValueAsString(reasonDTO)))
+                        .header("Authorization", "Bearer " + token)
+                        .header("Content-Type", "application/json;charset=UTF-8")
+                        .content(objectMapper.writeValueAsString(reasonDTO)))
                 .andExpect(status().isNotFound())
                 .andReturn();
         Assertions.assertEquals("Ride with that id does not exist", result.getResponse().getErrorMessage());
@@ -731,8 +735,8 @@ public class RideControllerTest {
         reasonDTO.setReason(reason);
 
         mockMvc.perform(put("/api/ride/{id}/panic", idOfActiveRide)
-                .header("Content-Type", "application/json;charset=UTF-8")
-                .content(objectMapper.writeValueAsString(reasonDTO)))
+                        .header("Content-Type", "application/json;charset=UTF-8")
+                        .content(objectMapper.writeValueAsString(reasonDTO)))
                 .andExpect(status().isUnauthorized());
     }
 
@@ -758,8 +762,7 @@ public class RideControllerTest {
                 .andExpect(status().isForbidden());
     }
 
-    private FavouriteRideBasicDTO getFavouriteRideBasicDTO()
-    {
+    private FavouriteRideBasicDTO getFavouriteRideBasicDTO() {
         FavouriteRideBasicDTO favouriteRideBasicDTO = new FavouriteRideBasicDTO();
 
         favouriteRideBasicDTO.setFavoriteName("Moja omiljena ruta");
@@ -846,8 +849,8 @@ public class RideControllerTest {
                         .header("Authorization", "Bearer " + token)
                         .header("Content-Type", "application/json;charset=UTF-8")
                         .content(objectMapper.writeValueAsString(ride)))
-                        .andExpect(status().isBadRequest())
-                        .andReturn();
+                .andExpect(status().isBadRequest())
+                .andReturn();
         Assertions.assertEquals("Number of favorite rides cannot exceed 10!", result.getResponse().getErrorMessage());
     }
 
@@ -889,8 +892,8 @@ public class RideControllerTest {
 
         MvcResult result = mockMvc.perform(delete("/api/ride/favourites/{id}", 5L)
                         .header("Authorization", "Bearer " + token))
-                        .andExpect(status().isNoContent())
-                        .andReturn();
+                .andExpect(status().isNoContent())
+                .andReturn();
         Assertions.assertEquals("Successful deletion of favorite location!", result.getResponse().getContentAsString());
     }
 
@@ -934,7 +937,6 @@ public class RideControllerTest {
                 .andExpect(status().isForbidden())
                 .andReturn();
     }
-
 
 
 }

@@ -11,7 +11,6 @@ import com.cruise.Cruise.ride.Services.IRideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -136,14 +135,15 @@ public class RideController {
     @Valid
     @PreAuthorize("hasAuthority('ROLE_ADMIN') || hasAuthority('ROLE_DRIVER')")
     public ReportsDTO getReportsByDriverId(@PathVariable Long id, @RequestParam(value = "from") String from,
-                                     @RequestParam(value = "to") String to) {
+                                           @RequestParam(value = "to") String to) {
         return reportService.getReports(id, from, to, "ROLE_DRIVER");
     }
+
     @GetMapping("/reports/{id}/passenger")
     @Valid
     @PreAuthorize("hasAuthority('ROLE_ADMIN') || hasAuthority('ROLE_PASSENGER')")
     public ReportsDTO getReportsByPassengerId(@PathVariable Long id, @RequestParam(value = "from") String from,
-                                          @RequestParam(value = "to") String to) {
+                                              @RequestParam(value = "to") String to) {
         return reportService.getReports(id, from, to, "ROLE_PASSENGER");
     }
 
@@ -159,7 +159,7 @@ public class RideController {
     @Valid
     @PreAuthorize("hasAuthority('ROLE_ADMIN') || hasAuthority('ROLE_DRIVER') || hasAuthority('ROLE_PASSENGER')")
     public ReportsDTO getReportsByEmail(@PathVariable String email, @RequestParam(value = "from") String from,
-                                     @RequestParam(value = "to") String to) {
+                                        @RequestParam(value = "to") String to) {
         return reportService.getUserReportsByEmail(email, from, to);
     }
 
@@ -167,7 +167,7 @@ public class RideController {
     @Valid
     @PreAuthorize("hasAuthority('ROLE_ADMIN') || hasAuthority('ROLE_DRIVER') || hasAuthority('ROLE_PASSENGER')")
     public ReportDTO getUserReportsByType(@PathVariable Long id, @RequestParam(value = "from") String from,
-                                        @RequestParam(value = "to") String to, @RequestParam(value = "role") String role, @RequestParam(value = "type") String type) {
+                                          @RequestParam(value = "to") String to, @RequestParam(value = "role") String role, @RequestParam(value = "type") String type) {
         return reportService.getReportByType(id, from, to, role, type);
     }
 

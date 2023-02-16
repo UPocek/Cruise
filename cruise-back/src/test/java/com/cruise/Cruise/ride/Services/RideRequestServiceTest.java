@@ -6,8 +6,6 @@ import com.cruise.Cruise.helper.IHelperService;
 import com.cruise.Cruise.models.*;
 import com.cruise.Cruise.passenger.Repositories.IPassengerRepository;
 import com.cruise.Cruise.ride.DTO.*;
-import com.cruise.Cruise.ride.DTO.RideForTransferDTO;
-import com.cruise.Cruise.ride.DTO.UserForRideDTO;
 import com.cruise.Cruise.ride.Repositories.ILocationRepository;
 import com.cruise.Cruise.ride.Repositories.IRideInvitationRepository;
 import com.cruise.Cruise.ride.Repositories.IRideRepository;
@@ -31,23 +29,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.never;
-
 
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("hibernate")
 public class RideRequestServiceTest {
+    public static double RANDOM_PRICE = 200;
     private final Long EXISTING_PASSENGER_ID = 1L;
     private final String NOT_EXISTING_PASSENGER_EMAIL = "not_existing@gmail.com";
     private final String EXISTING_PASSENGER_EMAIL = "existing@gmail.com";
     private final double RANDOM_TIME_ESTIMATION = 10;
-    public static double RANDOM_PRICE = 200;
     private final LocalDateTime PAST_TIME = LocalDateTime.now().minusMinutes(6);
     private final LocalDateTime MORE_THEN_5_HOUR_IN_FUTURE = LocalDateTime.now().plusHours(5).plusMinutes(5);
     private final LocalDateTime FUTURE_RIDE_TIME = LocalDateTime.now().plusMinutes(16);
@@ -120,28 +114,30 @@ public class RideRequestServiceTest {
         Assertions.assertEquals("REJECTED", rideForTransferToReject.getStatus());
         Mockito.verify(rideRepository, Mockito.times(1)).save(rideThatWillBeRejected);
     }
+
     //createRideBasic
     @Test
-    public void shouldNotCreateRideInPastTime(){
+    public void shouldNotCreateRideInPastTime() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(PAST_TIME));
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideBasic(ride);
         });
         assertThat(exception.getMessage()).contains("Can't request ride in past time");
     }
+
     @Test
-    public void shouldNotCreateRideInFutureWhenStartTimeIsMoreThenPlusFiveHours(){
+    public void shouldNotCreateRideInFutureWhenStartTimeIsMoreThenPlusFiveHours() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(MORE_THEN_5_HOUR_IN_FUTURE));
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideBasic(ride);
         });
         assertThat(exception.getMessage()).contains("Can't request ride more then 5 hours in future");
     }
 
     @Test
-    public void shouldNotCreateRideInFutureWhenPassengerNotExisting(){
+    public void shouldNotCreateRideInFutureWhenPassengerNotExisting() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(FUTURE_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -155,14 +151,14 @@ public class RideRequestServiceTest {
 
         Mockito.when(passengerRepository.findByEmail(NOT_EXISTING_PASSENGER_EMAIL)).thenReturn(Optional.empty());
 
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideBasic(ride);
         });
         assertThat(exception.getMessage()).contains("Passenger doesn't exist");
     }
 
     @Test
-    public void shouldNotCreateRideInFutureWhenPassengerAlreadyHasScheduledRide(){
+    public void shouldNotCreateRideInFutureWhenPassengerAlreadyHasScheduledRide() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(FUTURE_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -185,13 +181,14 @@ public class RideRequestServiceTest {
         Mockito.when(rideRepository.findByRideStateAndPassengers(ACCEPTED_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
         Mockito.when(rideRepository.findByRideStateAndPassengers(INREVIEW_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
         Mockito.when(rideRepository.findByRideStateAndPassengers(FUTURE_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideBasic(ride);
         });
         assertThat(exception.getMessage()).contains("Cannot create a ride while you have one already pending!");
     }
+
     @Test
-    public void shouldCreateRideInFutureAndFindExistingRoute(){
+    public void shouldCreateRideInFutureAndFindExistingRoute() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(FUTURE_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -223,8 +220,8 @@ public class RideRequestServiceTest {
         ride.setVehicleType(EXISTING_VEHICLE_TYPE);
         Route route = new Route();
         route.setId(EXISTING_ROUTE_ID);
-        route.setStartLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE,LATITUDE_FOR_EXISTING_ROUTE,LONGITUDE_FOR_EXISTING_ROUTE));
-        route.setEndLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE,LATITUDE_FOR_EXISTING_ROUTE,LONGITUDE_FOR_EXISTING_ROUTE));
+        route.setStartLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE, LATITUDE_FOR_EXISTING_ROUTE, LONGITUDE_FOR_EXISTING_ROUTE));
+        route.setEndLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE, LATITUDE_FOR_EXISTING_ROUTE, LONGITUDE_FOR_EXISTING_ROUTE));
         route.setDistance(DISTANCE_FOR_EXISTING_ROUTE);
 
         Mockito.when(passengerRepository.findByEmail(EXISTING_PASSENGER_EMAIL)).thenReturn(Optional.of(passenger));
@@ -243,7 +240,7 @@ public class RideRequestServiceTest {
     }
 
     @Test
-    public void shouldCreateRideInFutureAndCreateNewRoute(){
+    public void shouldCreateRideInFutureAndCreateNewRoute() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(FUTURE_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -291,7 +288,7 @@ public class RideRequestServiceTest {
     }
 
     @Test
-    public void shouldNotCreatePendingRideWhenPassengerNotExisting(){
+    public void shouldNotCreatePendingRideWhenPassengerNotExisting() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(PENDING_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -305,13 +302,14 @@ public class RideRequestServiceTest {
 
         Mockito.when(passengerRepository.findByEmail(NOT_EXISTING_PASSENGER_EMAIL)).thenReturn(Optional.empty());
 
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideBasic(ride);
         });
         assertThat(exception.getMessage()).contains("Passenger doesn't exist");
     }
+
     @Test
-    public void shouldNotCreatePendingRideWhenPassengerAlreadyHasScheduledRide(){
+    public void shouldNotCreatePendingRideWhenPassengerAlreadyHasScheduledRide() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(PENDING_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -334,13 +332,14 @@ public class RideRequestServiceTest {
         Mockito.when(rideRepository.findByRideStateAndPassengers(ACCEPTED_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
         Mockito.when(rideRepository.findByRideStateAndPassengers(INREVIEW_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
         Mockito.when(rideRepository.findByRideStateAndPassengers(FUTURE_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideBasic(ride);
         });
         assertThat(exception.getMessage()).contains("Cannot create a ride while you have one already pending!");
     }
+
     @Test
-    public void shouldCreatePendingRideAndFindExistingRoute(){
+    public void shouldCreatePendingRideAndFindExistingRoute() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(PENDING_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -372,8 +371,8 @@ public class RideRequestServiceTest {
         ride.setVehicleType(EXISTING_VEHICLE_TYPE);
         Route route = new Route();
         route.setId(EXISTING_ROUTE_ID);
-        route.setStartLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE,LATITUDE_FOR_EXISTING_ROUTE,LONGITUDE_FOR_EXISTING_ROUTE));
-        route.setEndLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE,LATITUDE_FOR_EXISTING_ROUTE,LONGITUDE_FOR_EXISTING_ROUTE));
+        route.setStartLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE, LATITUDE_FOR_EXISTING_ROUTE, LONGITUDE_FOR_EXISTING_ROUTE));
+        route.setEndLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE, LATITUDE_FOR_EXISTING_ROUTE, LONGITUDE_FOR_EXISTING_ROUTE));
         route.setDistance(DISTANCE_FOR_EXISTING_ROUTE);
 
         Mockito.when(passengerRepository.findByEmail(EXISTING_PASSENGER_EMAIL)).thenReturn(Optional.of(passenger));
@@ -392,7 +391,7 @@ public class RideRequestServiceTest {
     }
 
     @Test
-    public void shouldCreatePendingRideAndCreateNewRoute(){
+    public void shouldCreatePendingRideAndCreateNewRoute() {
         RideDTO ride = new RideDTO();
         ride.setStartTime(String.valueOf(PENDING_RIDE_TIME));
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
@@ -438,8 +437,9 @@ public class RideRequestServiceTest {
         Mockito.verify(routesRepository, Mockito.times(1)).save(any(Route.class));
         Mockito.verify(rideRepository, Mockito.times(1)).save(any(Ride.class));
     }
+
     @Test
-    public void shouldNotCreateRideForNowWhenPassengerNotExisting(){
+    public void shouldNotCreateRideForNowWhenPassengerNotExisting() {
         RideDTO ride = new RideDTO();
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
         ride.setPrice(RANDOM_PRICE);
@@ -452,13 +452,14 @@ public class RideRequestServiceTest {
 
         Mockito.when(passengerRepository.findByEmail(NOT_EXISTING_PASSENGER_EMAIL)).thenReturn(Optional.empty());
 
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideForNow(ride);
         });
         assertThat(exception.getMessage()).contains("Passenger doesn't exist");
     }
+
     @Test
-    public void shouldNotCreateRideForNowWhenPassengerAlreadyHasScheduledRide(){
+    public void shouldNotCreateRideForNowWhenPassengerAlreadyHasScheduledRide() {
         RideDTO ride = new RideDTO();
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
         ride.setPrice(RANDOM_PRICE);
@@ -480,13 +481,14 @@ public class RideRequestServiceTest {
         Mockito.when(rideRepository.findByRideStateAndPassengers(ACCEPTED_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
         Mockito.when(rideRepository.findByRideStateAndPassengers(INREVIEW_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
         Mockito.when(rideRepository.findByRideStateAndPassengers(FUTURE_RIDE_STATE, passenger)).thenReturn(new HashSet<>());
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.createRideForNow(ride);
         });
         assertThat(exception.getMessage()).contains("Can't request ride because passenger is already in ride process");
     }
+
     @Test
-    public void shouldCreateRideForNowAndFindExistingRoute(){
+    public void shouldCreateRideForNowAndFindExistingRoute() {
         RideDTO ride = new RideDTO();
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
         ride.setPrice(RANDOM_PRICE);
@@ -517,8 +519,8 @@ public class RideRequestServiceTest {
         ride.setVehicleType(EXISTING_VEHICLE_TYPE);
         Route route = new Route();
         route.setId(EXISTING_ROUTE_ID);
-        route.setStartLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE,LATITUDE_FOR_EXISTING_ROUTE,LONGITUDE_FOR_EXISTING_ROUTE));
-        route.setEndLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE,LATITUDE_FOR_EXISTING_ROUTE,LONGITUDE_FOR_EXISTING_ROUTE));
+        route.setStartLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE, LATITUDE_FOR_EXISTING_ROUTE, LONGITUDE_FOR_EXISTING_ROUTE));
+        route.setEndLocation(new Location(ADDRESS_FOR_EXISTING_ROUTE, LATITUDE_FOR_EXISTING_ROUTE, LONGITUDE_FOR_EXISTING_ROUTE));
         route.setDistance(DISTANCE_FOR_EXISTING_ROUTE);
 
         Mockito.when(passengerRepository.findByEmail(EXISTING_PASSENGER_EMAIL)).thenReturn(Optional.of(passenger));
@@ -537,7 +539,7 @@ public class RideRequestServiceTest {
     }
 
     @Test
-    public void shouldCreateRideForNowAndCreateNewRoute(){
+    public void shouldCreateRideForNowAndCreateNewRoute() {
         RideDTO ride = new RideDTO();
         ride.setTimeEstimation(RANDOM_TIME_ESTIMATION);
         ride.setPrice(RANDOM_PRICE);
@@ -584,15 +586,16 @@ public class RideRequestServiceTest {
     }
 
     @Test
-    public void shouldNotReturnRideWithNotExistingId(){
+    public void shouldNotReturnRideWithNotExistingId() {
         Mockito.when(rideRepository.findById(NOT_EXISTING_RIDE_ID)).thenReturn(Optional.empty());
-        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class,() -> {
+        ResponseStatusException exception = Assertions.assertThrows(ResponseStatusException.class, () -> {
             rideRequestService.getRideRequest(NOT_EXISTING_RIDE_ID);
         });
         assertThat(exception.getMessage()).contains("Ride with that id doesn't exist");
     }
+
     @Test
-    public void shouldReturnRideWithExistingId(){
+    public void shouldReturnRideWithExistingId() {
         Ride ride = new Ride();
         ride.setId(EXISTING_RIDE_ID);
         ride.setStartTime(PENDING_RIDE_TIME);
@@ -627,6 +630,7 @@ public class RideRequestServiceTest {
 
         assertThat(rideRequestService.getRideRequest(EXISTING_RIDE_ID).getId()).isEqualTo(EXISTING_ROUTE_ID);
     }
+
     @Test
     public void shouldThrowForNonExistingRide() {
         Long nonExistingRideId = 123L;
@@ -782,6 +786,7 @@ public class RideRequestServiceTest {
         });
         Assertions.assertTrue(e.getMessage().contains("Ride with that id does not exists"));
     }
+
     @Test
     public void shouldThrowForRideWithInvalidDriverIdWhenTryingToInReview() {
         Long existingRideId = 1L;

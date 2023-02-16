@@ -41,6 +41,7 @@ public interface IRideRequestService {
     Route findRouteOrCreate(LocationForRideDTO departureDto, LocationForRideDTO destinationDto, double distance);
 
     RideForTransferDTO markRideAsInReview(RideForTransferDTO ride);
+
     boolean assignDriverToRide(Ride ride);
 
 

@@ -502,10 +502,15 @@ public class DriverService implements IDriverService {
             return null;
         }
         RequestBody body = RequestBody.create(jsonBody, JSON);
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
+        Request request;
+        try {
+            request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+        } catch (Exception e) {
+            return null;
+        }
         try (Response response = client.newCall(request).execute()) {
             return response;
         } catch (Exception ex) {

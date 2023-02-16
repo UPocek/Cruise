@@ -83,21 +83,17 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public AdminChatsDTO getAdminChats(Long id)
-    {
+    public AdminChatsDTO getAdminChats(Long id) {
         AdminChatsDTO adminChatsDTO = new AdminChatsDTO(new HashSet<>());
         List<Message> messages = messageRepository.findByType("SUPPORT");
-        for(Message message: messages)
-        {
-            if(message.getSender() != null && !isIdInSet(adminChatsDTO.getUsers(), message.getSender().getId()))
-            {
+        for (Message message : messages) {
+            if (message.getSender() != null && !isIdInSet(adminChatsDTO.getUsers(), message.getSender().getId())) {
                 User user = message.getSender();
                 UserForAdminChatDTO userDto = new UserForAdminChatDTO(user.getName(), user.getSurname(), user.getEmail(), user.getId());
                 adminChatsDTO.getUsers().add(userDto);
                 continue;
             }
-            if(message.getReceiver() != null && !isIdInSet(adminChatsDTO.getUsers(), message.getReceiver().getId()))
-            {
+            if (message.getReceiver() != null && !isIdInSet(adminChatsDTO.getUsers(), message.getReceiver().getId())) {
                 User user = message.getReceiver();
                 UserForAdminChatDTO userDto = new UserForAdminChatDTO(user.getName(), user.getSurname(), user.getEmail(), user.getId());
                 adminChatsDTO.getUsers().add(userDto);
@@ -108,8 +104,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public List<MessageDTO> getAllUserSupportMessages(Long adminId, Long id)
-    {
+    public List<MessageDTO> getAllUserSupportMessages(Long adminId, Long id) {
         List<Message> messages = messageRepository.findBySenderIdAndTypeOrReceiverIdAndType(id, "SUPPORT", id, "SUPPORT");
 //        messages.sort((o1, o2) -> o1.getSentTime().isAfter(o2.getSentTime()) ? 1 : -1);
         List<MessageDTO> userSupportMessages = new ArrayList<>();
@@ -119,11 +114,9 @@ public class AdminService implements IAdminService {
         return userSupportMessages;
     }
 
-    private boolean isIdInSet(Set<UserForAdminChatDTO> set, Long id)
-    {
-        for(UserForAdminChatDTO user: set)
-        {
-            if(Objects.equals(user.getId(), id))
+    private boolean isIdInSet(Set<UserForAdminChatDTO> set, Long id) {
+        for (UserForAdminChatDTO user : set) {
+            if (Objects.equals(user.getId(), id))
                 return true;
         }
         return false;

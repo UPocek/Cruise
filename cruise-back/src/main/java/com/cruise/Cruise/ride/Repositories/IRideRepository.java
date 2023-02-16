@@ -28,7 +28,7 @@ public interface IRideRepository extends JpaRepository<Ride, Long> {
     Page<Ride> findAllUserHistoryItems(Long userId, Pageable pageable);
 
     //3
-    @Query("SELECT DISTINCT r FROM Ride r LEFT JOIN r.passengers p WHERE (r.driver.id = :driverId OR passenger_id = :passengerId) AND (r.rideState != 'REJECTED' OR r.rideState != 'REJECTED')")
+    @Query("SELECT DISTINCT r FROM Ride r LEFT JOIN r.passengers p WHERE (r.driver.id = :driverId OR passenger_id = :passengerId) AND r.rideState != 'REJECTED'")
     Page<Ride> findByPassengersIdOrDriverIdChatItems(@Param("passengerId") Long passengerId, @Param("driverId") Long driverId, Pageable pageable);
 
     //4

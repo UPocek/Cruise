@@ -46,8 +46,7 @@ public class DriversRideDTO {
         this.petTransport = ride.getPetInVehicle();
     }
 
-    public DriversRideDTO(Long id, List<RouteForRideDTO> locations, RejectionForRideDTO rejection, String startTime, String endTime, double totalCost, UserForRideDTO driver, List<UserForRideDTO> passengers, int estimatedTimeInMinutes, String vehicleType, boolean babyTransport, boolean petTransport)
-    {
+    public DriversRideDTO(Long id, List<RouteForRideDTO> locations, RejectionForRideDTO rejection, String startTime, String endTime, double totalCost, UserForRideDTO driver, List<UserForRideDTO> passengers, int estimatedTimeInMinutes, String vehicleType, boolean babyTransport, boolean petTransport) {
         this.id = id;
         this.locations = locations;
         this.rejection = rejection;

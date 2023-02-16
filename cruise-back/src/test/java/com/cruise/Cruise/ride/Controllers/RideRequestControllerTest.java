@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -40,6 +39,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("hibernate")
 public class RideRequestControllerTest {
 
+    private final String mPassengerEmail = "uros.pocek@gmail.com";
+    private final String mPassenger2Email = "tamarailic11@gmail.com";
+    private final String mDriverEmail = "marko@gmail.com";
+    private final Long mPassengerId = 1L;
+    private final Long mPassenger2Id = 2L;
+    private final Long mDriverId = 4L;
+    private final Long mDriver2Id = 5L;
+    private final Long idOfInReviewRide = 3L;
     @Value("${jwt.secret}")
     private String ourSecret;
     @MockBean
@@ -50,15 +57,6 @@ public class RideRequestControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
-
-    private final String mPassengerEmail = "uros.pocek@gmail.com";
-    private final String mPassenger2Email = "tamarailic11@gmail.com";
-    private final String mDriverEmail = "marko@gmail.com";
-    private final Long mPassengerId = 1L;
-    private final Long mPassenger2Id = 2L;
-    private final Long mDriverId = 4L;
-    private final Long mDriver2Id = 5L;
-    private final Long idOfInReviewRide = 3L;
 
     @Test
     public void shouldProcessPassengerRequestForNewRide() throws Exception {

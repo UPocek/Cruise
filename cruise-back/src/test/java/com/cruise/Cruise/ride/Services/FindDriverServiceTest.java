@@ -3,7 +3,10 @@ package com.cruise.Cruise.ride.Services;
 import com.cruise.Cruise.driver.Repositories.IDriverRepository;
 import com.cruise.Cruise.driver.Services.ICalculateWorkingHoursService;
 import com.cruise.Cruise.driver.Services.NoDriverAvailableForRideException;
-import com.cruise.Cruise.models.*;
+import com.cruise.Cruise.models.Driver;
+import com.cruise.Cruise.models.Location;
+import com.cruise.Cruise.models.Vehicle;
+import com.cruise.Cruise.models.VehicleType;
 import com.cruise.Cruise.ride.DTO.LocationForRideDTO;
 import com.cruise.Cruise.ride.DTO.RideForTransferDTO;
 import com.cruise.Cruise.ride.DTO.RouteForRideDTO;
@@ -21,10 +24,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.*;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest

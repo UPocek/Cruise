@@ -1,5 +1,6 @@
 package com.cruise.Cruise.unregisteredUser.Services;
 
+import com.cruise.Cruise.helper.IHelperService;
 import com.cruise.Cruise.models.VehicleType;
 import com.cruise.Cruise.ride.DTO.LocationForRideDTO;
 import com.cruise.Cruise.ride.DTO.RideEstimationDTO;
@@ -30,6 +31,8 @@ public class UnregisteredUserService implements IUnregisteredUserService {
 
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private IHelperService helper;
     @Autowired
     private IVehicleTypeRepository vehicleTypeRepository;
 
@@ -66,7 +69,7 @@ public class UnregisteredUserService implements IUnregisteredUserService {
 
     public List<Double> getTimeAndDistanceEstimation(LocationForRideDTO origin, LocationForRideDTO destination, int timeInSecondsSinceMidnightJanuary1st1970) {
         List<Double> result = new ArrayList<>();
-        String apiKey = (String) getConfigValue("GOOGLE_MAPS_API_KEY");
+        String apiKey = (String) helper.getConfigValue("GOOGLE_MAPS_API_KEY");
 
         String urlEndpoint = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + origin.getAddress() + "&destinations=" + destination.getAddress() + "&departure_time=";
         if (timeInSecondsSinceMidnightJanuary1st1970 == -1) {
@@ -93,22 +96,5 @@ public class UnregisteredUserService implements IUnregisteredUserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid address");
         }
         return result;
-    }
-
-    private Object getConfigValue(String keyName) {
-        InputStream inputStream;
-        try {
-            inputStream = new FileInputStream(new File("src/main/resources/config.yaml"));
-        } catch (IOException e) {
-            try {
-                inputStream = new FileInputStream(new File("cruise-back/src/main/resources/config.yaml"));
-            } catch (IOException ex) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.toString());
-            }
-        }
-
-        Yaml yaml = new Yaml();
-        Map<String, Object> data = yaml.load(inputStream);
-        return data.get(keyName);
     }
 }

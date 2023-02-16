@@ -78,9 +78,18 @@ public class HelperService implements IHelperService {
         InputStream inputStream;
         try {
             inputStream = new FileInputStream(new File("src/main/resources/config.yaml"));
-        } catch (IOException ex) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.toString());
+        } catch (IOException e) {
+            try {
+                inputStream = new FileInputStream(new File("cruise-back/src/main/resources/config.yaml"));
+            } catch (IOException ex) {
+                try {
+                    inputStream = new FileInputStream(new File("target/classes/config.yaml"));
+                } catch (IOException exx) {
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.toString());
+                }
+            }
         }
+
         Yaml yaml = new Yaml();
         Map<String, Object> data = yaml.load(inputStream);
         return data.get(keyName);

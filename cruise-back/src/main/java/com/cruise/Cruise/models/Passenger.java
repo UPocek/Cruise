@@ -1,7 +1,6 @@
 package com.cruise.Cruise.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,8 +20,7 @@ public class Passenger extends User {
     private Set<FavouriteRide> favouriteRides = new HashSet<>();
 
 
-    public Passenger()
-    {
+    public Passenger() {
     }
 
     public Passenger(Long id, String name, String surname, Picture profilePicture, String telephoneNumber, String email, String address, String password, Boolean active, Boolean blocked) {

@@ -1,9 +1,11 @@
 package com.cruise.Cruise.ride.Repositories;
-import com.cruise.Cruise.driver.DTO.CreateDriverDTO;
-import com.cruise.Cruise.driver.DTO.DriversRideDTO;
-import com.cruise.Cruise.models.*;
 
 import com.cruise.Cruise.driver.DTO.DriverBasicInfoDTO;
+import com.cruise.Cruise.driver.DTO.DriversRideDTO;
+import com.cruise.Cruise.models.Driver;
+import com.cruise.Cruise.models.Passenger;
+import com.cruise.Cruise.models.Picture;
+import com.cruise.Cruise.models.Ride;
 import com.cruise.Cruise.passenger.DTO.PassengerBasicInfoDTO;
 import com.cruise.Cruise.ride.DTO.*;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +21,6 @@ import org.springframework.test.context.ActiveProfiles;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -198,78 +199,87 @@ public class RideRepositoryTest {
     }
 
     @Test
-    public void shouldFindRidesForChatForExistingPassenger(){
-        Pageable pageable = PageRequest.of(0,10);
-        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(PASSENGER_ID_WITH_2_RIDES, PASSENGER_ID_WITH_2_RIDES,pageable);
+    public void shouldFindRidesForChatForExistingPassenger() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(PASSENGER_ID_WITH_2_RIDES, PASSENGER_ID_WITH_2_RIDES, pageable);
         assertThat(rides.getTotalElements()).isEqualTo(2);
     }
+
     @Test
-    public void shouldNotFindRidesForChatForNotExistingPassenger(){
-        Pageable pageable = PageRequest.of(0,10);
-        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(NOT_EXISTING_USER_ID, NOT_EXISTING_USER_ID,pageable);
-        assertThat(rides).isEmpty();
-    }
-    @Test
-    public void shouldNotFindRidesForChatForExistingPassengerWithoutRides(){
-        Pageable pageable = PageRequest.of(0,10);
-        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(PASSENGER_ID_WITH_NO_RIDES, PASSENGER_ID_WITH_NO_RIDES,pageable);
-        assertThat(rides).isEmpty();
-    }
-    @Test
-    public void shouldFindRidesForChatForExistingDriver(){
-        Pageable pageable = PageRequest.of(0,10);
-        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(DRIVER_ID_WITH_2_RIDES, DRIVER_ID_WITH_2_RIDES,pageable);
-        assertThat(rides.getTotalElements()).isEqualTo(2);
-    }
-    @Test
-    public void shouldNotFindRidesForChatForNotExistingDriver(){
-        Pageable pageable = PageRequest.of(0,10);
-        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(NOT_EXISTING_USER_ID, NOT_EXISTING_USER_ID,pageable);
-        assertThat(rides).isEmpty();
-    }
-    @Test
-    public void shouldNotFindRidesForChatForExistingDriverWithoutRides(){
-        Pageable pageable = PageRequest.of(0,10);
-        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(DRIVER_ID_WITH_NO_RIDES, DRIVER_ID_WITH_NO_RIDES,pageable);
+    public void shouldNotFindRidesForChatForNotExistingPassenger() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(NOT_EXISTING_USER_ID, NOT_EXISTING_USER_ID, pageable);
         assertThat(rides).isEmpty();
     }
 
-  @Test
-    public void shouldFindRideForUserDTOListForExistingPassengerAndValidTimesSortedByStartTime(){
+    @Test
+    public void shouldNotFindRidesForChatForExistingPassengerWithoutRides() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(PASSENGER_ID_WITH_NO_RIDES, PASSENGER_ID_WITH_NO_RIDES, pageable);
+        assertThat(rides).isEmpty();
+    }
+
+    @Test
+    public void shouldFindRidesForChatForExistingDriver() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(DRIVER_ID_WITH_2_RIDES, DRIVER_ID_WITH_2_RIDES, pageable);
+        assertThat(rides.getTotalElements()).isEqualTo(2);
+    }
+
+    @Test
+    public void shouldNotFindRidesForChatForNotExistingDriver() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(NOT_EXISTING_USER_ID, NOT_EXISTING_USER_ID, pageable);
+        assertThat(rides).isEmpty();
+    }
+
+    @Test
+    public void shouldNotFindRidesForChatForExistingDriverWithoutRides() {
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Ride> rides = rideRepository.findByPassengersIdOrDriverIdChatItems(DRIVER_ID_WITH_NO_RIDES, DRIVER_ID_WITH_NO_RIDES, pageable);
+        assertThat(rides).isEmpty();
+    }
+
+    @Test
+    public void shouldFindRideForUserDTOListForExistingPassengerAndValidTimesSortedByStartTime() {
         LocalDateTime from = LocalDateTime.parse("2022-12-23T22:52:52.038935");
         LocalDateTime to = LocalDateTime.parse("2022-12-24T23:52:52.038935");
-        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(PASSENGER_ID_WITH_2_RIDES,from, to, by("startTime"));
+        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(PASSENGER_ID_WITH_2_RIDES, from, to, by("startTime"));
         assertThat(rides.size()).isEqualTo(2);
         assertThat(rides.get(0).getStartTime().isBefore(rides.get(1).getStartTime())).isTrue();
     }
+
     @Test
-    public void shouldNotFindRideForUserDTOListForExistingPassengerWithoutRides(){
+    public void shouldNotFindRideForUserDTOListForExistingPassengerWithoutRides() {
         LocalDateTime from = LocalDateTime.parse("2022-12-23T22:52:52.038935");
         LocalDateTime to = LocalDateTime.parse("2022-12-24T23:52:52.038935");
-        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(PASSENGER_ID_WITH_NO_RIDES,from, to, by("startTime") );
+        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(PASSENGER_ID_WITH_NO_RIDES, from, to, by("startTime"));
         assertThat(rides).isEmpty();
     }
+
     @Test
-    public void shouldNotFindRideForUserDTOListForNotExistingPassengerAndValidTimes(){
+    public void shouldNotFindRideForUserDTOListForNotExistingPassengerAndValidTimes() {
         LocalDateTime from = LocalDateTime.parse("2022-12-23T22:52:52.038935");
         LocalDateTime to = LocalDateTime.parse("2022-12-24T23:52:52.038935");
-        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(NOT_EXISTING_USER_ID,from, to, by("startTime") );
+        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(NOT_EXISTING_USER_ID, from, to, by("startTime"));
         assertThat(rides).isEmpty();
     }
+
     @Test
-    public void shouldNotFindRideForUserDTOListForExistingPassengerAndEndTimeGreaterThenStartTime(){
+    public void shouldNotFindRideForUserDTOListForExistingPassengerAndEndTimeGreaterThenStartTime() {
         LocalDateTime from = LocalDateTime.parse("2022-12-24T23:52:52.038935");
         LocalDateTime to = LocalDateTime.parse("2022-12-23T22:52:52.038935");
-        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(PASSENGER_ID_WITH_2_RIDES,from, to, by("startTime"));
+        List<RideForUserDTO> rides = rideRepository.findAllPassengersRides(PASSENGER_ID_WITH_2_RIDES, from, to, by("startTime"));
         assertThat(rides).isEmpty();
     }
+
     //Set<Ride> findByRideStateAndPassengers(String state, Passenger passenger);
     @Test
-    public void shouldFindRideByExistingRideStateAndExistingPassenger(){
+    public void shouldFindRideByExistingRideStateAndExistingPassenger() {
         Picture picture = new Picture();
         picture.setId(PASSENGER_ID_WITH_2_RIDES);
         picture.setPictureContent("");
-        Passenger passenger= new Passenger();
+        Passenger passenger = new Passenger();
         passenger.setId(PASSENGER_ID_WITH_2_RIDES);
         passenger.setProfilePicture(picture);
         passenger.setName("Uros");
@@ -285,12 +295,13 @@ public class RideRepositoryTest {
         assertThat(rides).isNotEmpty();
         assertThat(rides.size()).isEqualTo(2);
     }
+
     @Test
-    public void shouldNotFindRideByExistingRideStateAndExistingPassengerWithoutRides(){
+    public void shouldNotFindRideByExistingRideStateAndExistingPassengerWithoutRides() {
         Picture picture = new Picture();
         picture.setId(PASSENGER_ID_WITH_NO_RIDES);
         picture.setPictureContent("");
-        Passenger passenger= new Passenger();
+        Passenger passenger = new Passenger();
         passenger.setId(PASSENGER_ID_WITH_NO_RIDES);
         passenger.setProfilePicture(picture);
         passenger.setName("Test");
@@ -305,12 +316,13 @@ public class RideRepositoryTest {
         Set<Ride> rides = rideRepository.findByRideStateAndPassengers(EXISTING_RIDE_STATE, passenger);
         assertThat(rides).isEmpty();
     }
+
     @Test
-    public void shouldNotFindRideByNotExistingRideStateAndExistingPassenger(){
+    public void shouldNotFindRideByNotExistingRideStateAndExistingPassenger() {
         Picture picture = new Picture();
         picture.setId(PASSENGER_ID_WITH_2_RIDES);
         picture.setPictureContent("");
-        Passenger passenger= new Passenger();
+        Passenger passenger = new Passenger();
         passenger.setId(PASSENGER_ID_WITH_2_RIDES);
         passenger.setProfilePicture(picture);
         passenger.setName("Uros");
@@ -325,12 +337,13 @@ public class RideRepositoryTest {
         Set<Ride> rides = rideRepository.findByRideStateAndPassengers(NOT_EXISTING_RIDE_STATE, passenger);
         assertThat(rides).isEmpty();
     }
+
     @Test
-    public void shouldNotFindRideByExistingRideStateAndNotExistingPassenger(){
+    public void shouldNotFindRideByExistingRideStateAndNotExistingPassenger() {
         Picture picture = new Picture();
         picture.setId(NOT_EXISTING_USER_ID);
         picture.setPictureContent("");
-        Passenger passenger= new Passenger();
+        Passenger passenger = new Passenger();
         passenger.setId(NOT_EXISTING_USER_ID);
         passenger.setProfilePicture(picture);
         passenger.setName("Not");
@@ -347,24 +360,27 @@ public class RideRepositoryTest {
     }
 
     @Test
-    public void shouldFindRideByExistingRideStateAndExistingPassengerIdSortedByStartTime(){
+    public void shouldFindRideByExistingRideStateAndExistingPassengerIdSortedByStartTime() {
         Set<Ride> rides = rideRepository.findByRideStateAndPassengersId(EXISTING_RIDE_STATE, PASSENGER_ID_WITH_2_RIDES, by("startTime"));
         assertThat(rides).isNotEmpty();
         assertThat(rides.size()).isEqualTo(2);
         assertThat(rides.stream().toList().get(0).getStartTime().isBefore(rides.stream().toList().get(1).getStartTime())).isTrue();
     }
+
     @Test
-    public void shouldNotFindRideByExistingRideStateAndExistingPassengerIdWithoutRides(){
+    public void shouldNotFindRideByExistingRideStateAndExistingPassengerIdWithoutRides() {
         Set<Ride> rides = rideRepository.findByRideStateAndPassengersId(EXISTING_RIDE_STATE, PASSENGER_ID_WITH_NO_RIDES, by("startTime"));
         assertThat(rides).isEmpty();
     }
+
     @Test
-    public void shouldNotFindRideByNotExistingRideStateAndExistingPassengerId(){
+    public void shouldNotFindRideByNotExistingRideStateAndExistingPassengerId() {
         Set<Ride> rides = rideRepository.findByRideStateAndPassengersId(NOT_EXISTING_RIDE_STATE, PASSENGER_ID_WITH_2_RIDES, by("startTime"));
         assertThat(rides).isEmpty();
     }
+
     @Test
-    public void shouldNotFindRideByExistingRideStateAndNotExistingPassengerId(){
+    public void shouldNotFindRideByExistingRideStateAndNotExistingPassengerId() {
         Set<Ride> rides = rideRepository.findByRideStateAndPassengersId(EXISTING_RIDE_STATE, NOT_EXISTING_USER_ID, by("startTime"));
         assertThat(rides).isEmpty();
     }
@@ -530,7 +546,6 @@ public class RideRepositoryTest {
         Set<Ride> rides = rideRepository.findByRideState("FINISHED");
         Assertions.assertEquals(2, rides.size());
     }
-
 
 
 }

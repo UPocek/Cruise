@@ -1,7 +1,5 @@
 package com.cruise.Cruise.ride.Services;
 
-import com.cruise.Cruise.driver.DTO.ReportDTO;
-import com.cruise.Cruise.driver.DTO.ReportsDTO;
 import com.cruise.Cruise.panic.DTO.PanicDTO;
 import com.cruise.Cruise.ride.DTO.FavouriteRideBasicDTO;
 import com.cruise.Cruise.ride.DTO.FavouriteRideDTO;

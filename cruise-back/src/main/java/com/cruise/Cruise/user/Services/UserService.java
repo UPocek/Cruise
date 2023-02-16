@@ -42,7 +42,6 @@ import java.util.*;
 @Service
 public class UserService implements IUserService, UserDetailsService {
 
-    ResourceBundle bundle = ResourceBundle.getBundle("ValidationMessages", LocaleContextHolder.getLocale());
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
@@ -103,8 +102,7 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
-    public void sentResetPasswordMailAndroid(String email)
-    {
+    public void sentResetPasswordMailAndroid(String email) {
         Optional<User> result = userRepository.findByEmail(email);
         if (result.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
@@ -127,8 +125,7 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
-    public Boolean checkCode(String email, String code)
-    {
+    public Boolean checkCode(String email, String code) {
         return resetPasswordRequestRepository.findByUserEmailAndHash(email, code).isPresent();
     }
 
@@ -276,8 +273,7 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     public MessageDTO sendMessage(Long receiverId, SentMessageDTO message, Long id) {
         Optional<User> senderResult = userRepository.findById(id);
-        if (senderResult.isEmpty())
-        {
+        if (senderResult.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sender with that id does not exist");
         }
         User sender = senderResult.get();
@@ -286,7 +282,7 @@ public class UserService implements IUserService, UserDetailsService {
         if (message.getType().equals("RIDE") || message.getType().equals("PANIC")) {
             messageToSend = sendMessageToOtherUser(sender, message, receiverId);
         } else if (message.getType().equals("SUPPORT")) {
-            if(message.getRideId() != -1)
+            if (message.getRideId() != -1)
                 messageToSend = sendMessageToSupport(sender, message);
             else
                 messageToSend = sendMessageAdmin(sender, message, receiverId);
@@ -303,8 +299,7 @@ public class UserService implements IUserService, UserDetailsService {
         return newMessage;
     }
 
-    private Message sendMessageAdmin(User sender, SentMessageDTO message, Long receiverId)
-    {
+    private Message sendMessageAdmin(User sender, SentMessageDTO message, Long receiverId) {
         Optional<User> receiverResult = userRepository.findById(receiverId);
         if (receiverResult.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Receiver with that id does not exist");
@@ -485,7 +480,6 @@ public class UserService implements IUserService, UserDetailsService {
         historyItems.sort(Comparator.comparing(RideForUserDTO::getStartTime).reversed());
         return new AllHistoryItemsDTO(historyItems, userHistoryItems.getTotalPages());
     }
-
 
 
     private ArrayList<ChatItemDTO> getChatItems(Page<Ride> rides, String type) {

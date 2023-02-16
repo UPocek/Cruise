@@ -3,7 +3,6 @@ package com.cruise.Cruise.user.Services;
 import com.cruise.Cruise.models.User;
 import com.cruise.Cruise.user.DTO.*;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 
 import java.security.Principal;
 import java.util.List;

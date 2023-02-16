@@ -23,7 +23,7 @@ import java.util.*;
 import static org.springframework.data.domain.Sort.by;
 
 @Service
-public class ReportService implements IReportService{
+public class ReportService implements IReportService {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -38,7 +38,7 @@ public class ReportService implements IReportService{
     public ReportsDTO getAllReports(String fromDate, String tillDate) {
         LocalDateTime dateFrom = LocalDate.parse(fromDate).atStartOfDay();
         LocalDateTime dateTill = LocalDate.parse(tillDate).plusDays(1).atStartOfDay();
-        if(dateFrom.isAfter(dateTill)){
+        if (dateFrom.isAfter(dateTill)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid dates input");
         }
         ReportsDTO reportsDTO = new ReportsDTO();
@@ -71,7 +71,7 @@ public class ReportService implements IReportService{
     public ReportsDTO getReports(Long id, String fromDate, String tillDate, String role) {
         LocalDateTime dateFrom = LocalDate.parse(fromDate).atStartOfDay();
         LocalDateTime dateTill = LocalDate.parse(tillDate).plusDays(1).atStartOfDay();
-        if(dateFrom.isAfter(dateTill)){
+        if (dateFrom.isAfter(dateTill)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid dates input");
         }
         ReportsDTO reportsDTO = new ReportsDTO();
@@ -126,7 +126,7 @@ public class ReportService implements IReportService{
             priceCountReport.addSum(ride.getPrice());
         }
 
-        if(currentDate != null){
+        if (currentDate != null) {
             rideCountReport.addDays(new DayDTO(currentDate.toString(), rideCountValue));
             kmCountReport.addDays(new DayDTO(currentDate.toString(), kmCountValue));
             priceCountReport.addDays(new DayDTO(currentDate.toString(), priceCountValue));
@@ -166,7 +166,7 @@ public class ReportService implements IReportService{
     private ReportDTO getRideReport(Long id, String fromDate, String tillDate, String role) {
         LocalDateTime dateFrom = LocalDateTime.parse(fromDate);
         LocalDateTime dateTill = LocalDateTime.parse(tillDate);
-        if(dateFrom.isAfter(dateTill)){
+        if (dateFrom.isAfter(dateTill)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid dates input");
         }
         ReportDTO rideCountReport = new ReportDTO("Ride counts in period", "number of rides", 0, 0);
@@ -196,7 +196,7 @@ public class ReportService implements IReportService{
             rideCountReport.addSum(1);
         }
 
-        if(currentDate != null){
+        if (currentDate != null) {
             rideCountReport.setAvg(rideCountReport.getSum() / daysNum);
             rideCountReport.addDays(new DayDTO(currentDate.toString(), rideCountValue));
         }
@@ -206,7 +206,7 @@ public class ReportService implements IReportService{
     private ReportDTO getKmReport(Long id, String fromDate, String tillDate, String role) {
         LocalDateTime dateFrom = LocalDateTime.parse(fromDate);
         LocalDateTime dateTill = LocalDateTime.parse(tillDate);
-        if(dateFrom.isAfter(dateTill)){
+        if (dateFrom.isAfter(dateTill)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid dates input");
         }
         ReportDTO kmCountReport = new ReportDTO("Kilometers counts in period", "number of km", 0, 0);
@@ -235,7 +235,7 @@ public class ReportService implements IReportService{
             kmCountReport.addSum(getRideDistance(ride.getRoutes()) / 1000);
         }
 
-        if(currentDate != null){
+        if (currentDate != null) {
             kmCountReport.addDays(new DayDTO(currentDate.toString(), kmCountValue));
             kmCountReport.setAvg(kmCountReport.getSum() / daysNum);
         }
@@ -246,7 +246,7 @@ public class ReportService implements IReportService{
     private ReportDTO getMoneyReport(Long id, String fromDate, String tillDate, String role) {
         LocalDateTime dateFrom = LocalDateTime.parse(fromDate);
         LocalDateTime dateTill = LocalDateTime.parse(tillDate);
-        if(dateFrom.isAfter(dateTill)){
+        if (dateFrom.isAfter(dateTill)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid dates input");
         }
         ReportDTO priceCountReport = new ReportDTO("Money transactions in period", "money amount", 0, 0);
@@ -274,7 +274,7 @@ public class ReportService implements IReportService{
             }
             priceCountReport.addSum(ride.getPrice());
         }
-        if(currentDate != null){
+        if (currentDate != null) {
             priceCountReport.addDays(new DayDTO(currentDate.toString(), priceCountValue));
             priceCountReport.setAvg(priceCountReport.getSum() / daysNum);
         }

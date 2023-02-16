@@ -29,6 +29,21 @@ public class FavouriteRide {
     private boolean petTransport;
     private double distance;
 
+    public FavouriteRide(FavouriteRide other) {
+        this.id = other.id;
+        this.favoriteName = other.favoriteName;
+        this.locations = new ArrayList<>(other.locations);
+        this.passengers = new ArrayList<>(other.passengers);
+        this.vehicleType = other.vehicleType;
+        this.babyTransport = other.babyTransport;
+        this.petTransport = other.petTransport;
+        this.distance = other.distance;
+    }
+
+    public FavouriteRide() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -92,23 +107,6 @@ public class FavouriteRide {
     public void setDistance(double distance) {
         this.distance = distance;
     }
-
-    public FavouriteRide(FavouriteRide other) {
-        this.id = other.id;
-        this.favoriteName = other.favoriteName;
-        this.locations = new ArrayList<>(other.locations);
-        this.passengers = new ArrayList<>(other.passengers);
-        this.vehicleType = other.vehicleType;
-        this.babyTransport = other.babyTransport;
-        this.petTransport = other.petTransport;
-        this.distance = other.distance;
-    }
-
-    public FavouriteRide() {
-
-    }
-
-
 
 
 }

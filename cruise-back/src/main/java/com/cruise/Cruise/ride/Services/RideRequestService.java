@@ -449,7 +449,7 @@ public class RideRequestService implements IRideRequestService {
             Optional<Passenger> result = this.passengerRepository.findByEmail(passengerForRide.getEmail());
             if (result.isPresent()) {
                 ridePassengers.add(result.get());
-            }else{
+            } else {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Passenger doesn't exist");
             }
         }

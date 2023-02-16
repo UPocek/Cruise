@@ -1,28 +1,22 @@
 package com.cruise.Cruise.admin.DTO;
 
-import java.util.List;
 import java.util.Set;
 
-public class AdminChatsDTO
-{
+public class AdminChatsDTO {
     private Set<UserForAdminChatDTO> users;
 
-    public AdminChatsDTO(Set<UserForAdminChatDTO> users)
-    {
+    public AdminChatsDTO(Set<UserForAdminChatDTO> users) {
         this.users = users;
     }
 
-    public AdminChatsDTO()
-    {
+    public AdminChatsDTO() {
     }
 
-    public Set<UserForAdminChatDTO> getUsers()
-    {
+    public Set<UserForAdminChatDTO> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<UserForAdminChatDTO> users)
-    {
+    public void setUsers(Set<UserForAdminChatDTO> users) {
         this.users = users;
     }
 }
