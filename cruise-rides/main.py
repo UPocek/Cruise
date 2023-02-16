@@ -7,13 +7,14 @@ import random
 import math
 
 GOOGLE_MAPS_API_KEY = 'AIzaSyD6xOzj2hrFrXPkVEDSnNsfmHd1Tup-0gU'
-URL_BASE = 'http://localhost:8080'
+URL_BASE = 'http://cruise.eastus.cloudapp.azure.com:8080'
 UPDATE_INTERVAL_IN_SECONDS = 5
 MAX_RIDE_DISTANCE = 0.025
 BOUNDS = 0.025
 CAR_SPEED_IN_KM_H = 60
-ONE_KM_H_TO_POINTS = 0.0004
-CAR_SPEED_TO_USE = ONE_KM_H_TO_POINTS * CAR_SPEED_IN_KM_H / 60
+ONE_KM_H_TO_POINTS = 0.0002
+SPEED_UP_TIMES = 2
+CAR_SPEED_TO_USE = SPEED_UP_TIMES * ONE_KM_H_TO_POINTS * CAR_SPEED_IN_KM_H / 60
 all_vehicles = []
 active_rides = {}
 
@@ -35,7 +36,20 @@ class RideRequest(BaseModel):
 
 app = FastAPI()
 
-@app.post("/ride-request", status_code=200)
+@app.get("/")
+async def index():
+    return {'status': 'Online'}
+
+@app.get("/debug")
+async def debug():
+    return {'all_vehicles': all_vehicles, 'active_rides': active_rides}
+
+@app.get('/start')
+async def start():
+    main()
+    return {'app':'started'}
+
+@app.post('/ride-request', status_code=200)
 def drive_vehicle_to_passenger(ride_request: RideRequest):
     vehicle_for_ride:Vehicle = ride_request.vehicle
     destination_location:Location = ride_request.location
@@ -47,29 +61,22 @@ def drive_vehicle_to_passenger(ride_request: RideRequest):
     vehicle_to_steer['vehicle']['status'] = vehicle_for_ride.status
     assign_new_route(vehicle_to_steer, route)
     set_drive_navigation(vehicle_to_steer)
-    print("New ride request")
+    print('New ride request')
 
-@app.post("/add-vehicle", status_code=200)
+@app.post('/add-vehicle', status_code=200)
 def add_vehicle(vehicle: Vehicle):
     v = {'id':vehicle.id, 'driverId':vehicle.driverId, 'currentLocation': {'address': vehicle.currentLocation.address, 'latitude':vehicle.currentLocation.latitude, 'longitude': vehicle.currentLocation.longitude}, 'status': vehicle.status}
     all_vehicles.append({'vehicle':v, 'departure': {'latitude':v['currentLocation']['latitude'], 'longitude':v['currentLocation']['longitude']}, 'destination': {'latitude':v['currentLocation']['latitude'], 'longitude':v['currentLocation']['longitude']}, 'bounds': calculate_bounds(v)})
-    print("New vehicle added")
+    print('New vehicle added')
 
-@app.get("/remove-vehicle/{vehicle_id}", status_code=200)
+@app.get('/remove-vehicle/{vehicle_id}', status_code=200)
 def remove_vehicle(vehicle_id:int):
     for vehicle in all_vehicles:
         if vehicle['vehicle']['id'] == vehicle_id:
             all_vehicles.remove(vehicle)
-            print("Vehicle removed")
+            print('Vehicle removed')
             break
-
-def get_all_vehicles():
-    response = requests.get(f'{URL_BASE}/api/driver/all-active-vehicles')
-    data = response.json()
-    for vehicle in data:
-        all_vehicles.append({'vehicle':vehicle, 'departure': {'latitude':vehicle['currentLocation']['latitude'], 'longitude':vehicle['currentLocation']['longitude']}, 'destination': {'latitude':vehicle['currentLocation']['latitude'], 'longitude':vehicle['currentLocation']['longitude']}, 'bounds': calculate_bounds(vehicle)})
-    print(all_vehicles)
-
+        
 def calculate_bounds(vehicle):
     current_latitude, current_longitude = vehicle['currentLocation']['latitude'], vehicle['currentLocation']['longitude']
     bounds = {'min-latitude':current_latitude - BOUNDS, 'min-longitude':current_longitude - BOUNDS, 'max-latitude':current_latitude + BOUNDS, 'max-longitude':current_longitude + BOUNDS}
@@ -87,6 +94,8 @@ def monitor_progress():
                 elif vehicle['vehicle']['status'] == 'ACTIVE':
                     notify_driver_finished_ride(active_rides.pop(vehicle['vehicle']['id']))
                     vehicle['vehicle']['status'] = 'FREE'
+                    assign_new_route(vehicle)
+                    set_drive_navigation(vehicle)
                 else:
                     assign_new_route(vehicle)
                     set_drive_navigation(vehicle)
@@ -130,7 +139,7 @@ def get_route_steps(departure, destination):
     url = f'https://maps.googleapis.com/maps/api/directions/json?origin={departure["latitude"]},{departure["longitude"]}&destination={destination["latitude"]},{destination["longitude"]}&key={GOOGLE_MAPS_API_KEY}'
     payload={}
     headers = {}
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = requests.request('GET', url, headers=headers, data=payload)
     json_response = json.loads(response.text)
     return json_response
 
@@ -162,19 +171,38 @@ def update_vehicle_locations():
     t.setDaemon(True)
     t.start()
     current_vehicles_state = [vehicle['vehicle'] for vehicle in all_vehicles]
-    response = requests.put(url = f'{URL_BASE}/api/vehicle/all/location', data = json.dumps({'totalCount':len(current_vehicles_state), 'results': current_vehicles_state}), headers={'Content-Type':'application/json'})
-    if(response.status_code != 200):
-        print('update_vehicle_locations',response.status_code, response.reason)
+    try:
+        response = requests.put(url = f'{URL_BASE}/api/vehicle/all/location', data = json.dumps({'totalCount':len(current_vehicles_state), 'results': current_vehicles_state}), headers={'Content-Type':'application/json'})
+        if(response.status_code != 200):
+            print('update_vehicle_locations',response.status_code, response.reason)
+    except Exception:
+        print("E: Couldn't update vehicle locations")
 
 def notify_driver_has_arrived_to_pick_up_location(rideId):
-    response = requests.put(url = f'{URL_BASE}/api/ride/driver-on-address/{rideId}')
-    if(response.status_code != 200):
-        print('notify_driver_has_arrived_to_pick_up_location',response.status_code, response.reason)
+    try:
+        response = requests.put(url = f'{URL_BASE}/api/ride/driver-on-address/{rideId}')
+        if(response.status_code != 200):
+            print('notify_driver_has_arrived_to_pick_up_location',response.status_code, response.reason)
+    except Exception:
+        print("E: Couldn't notify for driver arrived at pick-up location")
 
 def notify_driver_finished_ride(rideId):
-    response = requests.put(url = f'{URL_BASE}/api/ride/{rideId}/end')
-    if(response.status_code != 200):
-        print('notify_driver_finished_ride',response.status_code, response.reason)
+    try:
+        response = requests.put(url = f'{URL_BASE}/api/ride/{rideId}/end')
+        if(response.status_code != 200):
+            print('notify_driver_finished_ride',response.status_code, response.reason)
+    except Exception:
+        print("E: Couldn't notify for finished ride")
+
+def get_all_vehicles():
+    try:
+        response = requests.get(f'{URL_BASE}/api/driver/all-active-vehicles')
+        data = response.json()
+        for vehicle in data:
+            all_vehicles.append({'vehicle':vehicle, 'departure': {'latitude':vehicle['currentLocation']['latitude'], 'longitude':vehicle['currentLocation']['longitude']}, 'destination': {'latitude':vehicle['currentLocation']['latitude'], 'longitude':vehicle['currentLocation']['longitude']}, 'bounds': calculate_bounds(vehicle)})
+    except Exception:
+        print('E: Back is not online')
+    print(all_vehicles)
     
 
 def main():
