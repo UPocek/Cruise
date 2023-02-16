@@ -7,6 +7,7 @@ import * as SockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-notifications',
@@ -18,7 +19,7 @@ export class AdminNotificationsComponent
 {
   list: AdminNotificationDTO[] = [];
   notificationForm: string = '';
-  url = 'http://localhost:8080';
+  url = environment.serverUrl;
   isLoaded = false;
   private stompClient: any;
   driverChangesSubscription: Subscription = new Subscription();

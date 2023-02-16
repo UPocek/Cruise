@@ -16,6 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { PopUpService } from 'src/app/universal-components/services/pop-up.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-passenger-current-ride-info',
@@ -33,7 +34,7 @@ export class PassengerCurrentRideInfoComponent implements OnInit, OnDestroy {
   seconds: number = 0;
   ride!: RideDTO;
   stompClient: any;
-  url: string = 'http://localhost:8080';
+  url: string = environment.serverUrl;
   isLoaded = false;
   rideInProgress = false;
   timer: any;

@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import SockJS from 'sockjs-client';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { PopUpService } from 'src/app/universal-components/services/pop-up.service';
+import { environment } from 'src/environments/environment';
 import { MessageDTO } from '../../models/message-dto';
 import { SendMessageDTO } from '../../models/send-message-dto';
 import { InboxService } from '../../services/inbox.service';
@@ -27,7 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   chatType: string = '';
   rideId: number = -1;
 
-  url = 'http://localhost:8080';
+  url = environment.serverUrl;
   isLoaded = false;
   stompClient: any;
   chatSubscription: Subscription = new Subscription();
@@ -62,11 +63,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         }
       }
     );
-    this.adminChatSubscription = this.inboxService.adminChatInfo$.subscribe(([name, surname, email, id]) => {
-      if(name != null && surname != null && email != null && id != null) {
-        this.getMessagesForAdmin(name, surname, email, id)
+    this.adminChatSubscription = this.inboxService.adminChatInfo$.subscribe(
+      ([name, surname, email, id]) => {
+        if (name != null && surname != null && email != null && id != null) {
+          this.getMessagesForAdmin(name, surname, email, id);
+        }
       }
-    })
+    );
   }
 
   displayChat(rideId: number, type: string) {
@@ -128,22 +131,18 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   sendMessage() {
     let messageToSend: SendMessageDTO;
-    if(this.authService.getRole() === 'ROLE_ADMIN')
-    {
+    if (this.authService.getRole() === 'ROLE_ADMIN') {
       messageToSend = {
         message: this.messageForm.value.messageInput!,
-        type: "SUPPORT",
+        type: 'SUPPORT',
         rideId: -1,
       };
-    }
-    else
-    {
+    } else {
       messageToSend = {
         message: this.messageForm.value.messageInput!,
         type: this.chatType,
         rideId: this.rideId,
       };
-
     }
     this.userSerice.sendMessage(this.otherId, messageToSend).subscribe({
       next: (message) => {
@@ -223,9 +222,14 @@ export class ChatComponent implements OnInit, OnDestroy {
     });
   }
 
-  getMessagesForAdmin(name: string, surname: string, email: string, id: number) {
+  getMessagesForAdmin(
+    name: string,
+    surname: string,
+    email: string,
+    id: number
+  ) {
     this.otherId = id;
-    this.otherPersonName = name + " " + surname;
+    this.otherPersonName = name + ' ' + surname;
     const messageDateTime = new Date().toISOString().split('.')[0].split('T');
     const messageDateTokens = messageDateTime[0].split('-');
     const messageTimeTokens = messageDateTime[1];

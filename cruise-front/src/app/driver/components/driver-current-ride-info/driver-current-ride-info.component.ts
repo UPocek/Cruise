@@ -13,6 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { PopUpService } from 'src/app/universal-components/services/pop-up.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-driver-current-ride-info',
@@ -28,7 +29,7 @@ export class DriverCurrentRideInfoComponent implements OnInit, OnDestroy {
   seconds: number = 0;
   ride!: RideDTO;
   stompClient: any;
-  url: string = 'http://localhost:8080';
+  url: string = environment.serverUrl;
   isLoaded = false;
   rideInProgress = false;
   timer?: any;

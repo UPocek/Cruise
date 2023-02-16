@@ -32,6 +32,7 @@ export class MapService {
   googleMapApiKey = environment.googleMapApiKey;
   private headers = new HttpHeaders({
     skip: 'true',
+    ggl: 'true',
   });
 
   getLatLngFromAddress(address: string): Observable<any> {

@@ -17,6 +17,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { AdminNotificationDTO } from '../../../administrator/models/admin-notification-dto';
 import { ChangePasswordDialog } from './dialog/change-password-dialog';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-account-info',
@@ -39,7 +40,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
   });
 
   stompClient: any;
-  url: string = 'http://localhost:8080';
+  url: string = environment.serverUrl;
   isLoaded = false;
 
   getPassengerSubscription: Subscription = new Subscription();

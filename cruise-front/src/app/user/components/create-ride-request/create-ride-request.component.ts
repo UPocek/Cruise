@@ -20,6 +20,7 @@ import { FavouriteService } from '../../services/favourite.service';
 import { FavouriteRideDTO } from '../../models/favourite-ride-dto';
 import { PopUpService } from 'src/app/universal-components/services/pop-up.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-ride-request',
@@ -34,7 +35,7 @@ export class CreateRideRequestComponent implements OnInit {
   offers: OfferDTO[] = [];
   departure: LocationDTO = <LocationDTO>{};
   destination: LocationDTO = <LocationDTO>{};
-  url: string = 'http://localhost:8080';
+  url: string = environment.serverUrl;
   isLoaded = false;
   ride: RideDTO = <RideDTO>{};
   favouriteRides!: FavouriteRideDTO[];

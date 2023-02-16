@@ -227,8 +227,6 @@ export class MapComponent implements OnInit, OnDestroy {
         this.markerPositionsInRide.push(vehicleLatLng);
       } else if (vehicle.status == 'PANIC') {
         this.markerPositionsPanic.push(vehicleLatLng);
-      } else {
-        console.log(`Invalide ride state ${vehicle.status}`);
       }
     }
   }

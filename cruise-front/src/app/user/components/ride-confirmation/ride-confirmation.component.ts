@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { environment } from 'src/environments/environment';
 import { RideDTO } from '../../models/ride-dto';
 import { RideRequestService } from '../../services/ride-request.service';
 
@@ -14,7 +15,7 @@ import { RideRequestService } from '../../services/ride-request.service';
 export class RideConfirmationComponent implements OnInit, OnDestroy {
   passengerId!: number;
   rideRequestStatus: number = 0;
-  url: string = 'http://localhost:8080';
+  url: string = environment.serverUrl;
   isLoaded = false;
   private stompClient: any;
   ride: RideDTO = <RideDTO>{};

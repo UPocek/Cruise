@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router, RouteReuseStrategy } from '@angular/router';
+import { Router } from '@angular/router';
 import { Stomp } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
 import * as SockJS from 'sockjs-client';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { environment } from 'src/environments/environment';
 import { AnswerEmailDTO } from '../../models/answer-email-dto';
 import { RideDTO } from '../../models/ride-dto';
-import { PassengerService } from '../../services/passenger.service';
 import { RideRequestService } from '../../services/ride-request.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { RideRequestService } from '../../services/ride-request.service';
 export class EmailsResponseComponent implements OnInit, OnDestroy {
   emails: string[] = [];
   private subscription = new Subscription();
-  url: string = 'http://localhost:8080';
+  url: string = environment.serverUrl;
   isLoaded = false;
   private stompClient: any;
   passengerId!: number;

@@ -1,16 +1,14 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import {Observable, Subscription} from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { RideDTO } from '../../models/ride-dto';
 import { DriverService } from '../../../driver/services/driver.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { UserService } from '../../services/user.service';
 import { RideService } from '../../services/ride.service';
-import { unprefixedRemovedVariables } from '@angular/material/schematics/ng-update/migrations/theming-api-v12/config';
-import {MatInput} from "@angular/material/input";
-import {FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-history',
@@ -31,7 +29,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     from: new FormControl(''),
     to: new FormControl(''),
     sort: new FormControl(''),
-  })
+  });
 
   constructor(
     private driverService: DriverService,
@@ -49,15 +47,14 @@ export class HistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  getRidesSubscription: Subscription = new Subscription()
-  getUserSubscription: Subscription = new Subscription()
+  getRidesSubscription: Subscription = new Subscription();
+  getUserSubscription: Subscription = new Subscription();
 
   findRides() {
     const dateFrom = this.formGroup.value.from!;
     const dateTo = this.formGroup.value.to!;
     const sortWay = this.formGroup.value.sort!;
 
-    console.log(sortWay)
     if (this.authService.getRole() === 'ROLE_DRIVER')
       this.getRidesSubscription = this.driverService
         .getAllRides(this.authService.getId(), -1, 1, sortWay, dateFrom, dateTo)
@@ -72,31 +69,34 @@ export class HistoryComponent implements OnInit, OnDestroy {
           (<HTMLInputElement>document.getElementById('useremail')).value
         )
         .subscribe((user) => {
-          this.getRidesSubscription = this.rideService.getAllUserRides(user.id).subscribe(
-            (rides) => {
-              this.rides = rides.results;
-              this.userToShow = 'PASSENGER';
-              this.dataSource = new MatTableDataSource<RideDTO>(this.rides);
-              this.dataSource.paginator = this.paginator;
-            },
-            () => {
-              this.driverService
-                .getAllRides(user.id, -1, 1, sortWay, dateFrom, dateTo)
-                .subscribe((response) => {
-                  this.userToShow = 'DRIVER';
-                  this.rides = response.results;
-                  this.dataSource = new MatTableDataSource<RideDTO>(this.rides);
-                  this.dataSource.paginator = this.paginator;
-                });
-            }
-          );
+          this.getRidesSubscription = this.rideService
+            .getAllUserRides(user.id)
+            .subscribe(
+              (rides) => {
+                this.rides = rides.results;
+                this.userToShow = 'PASSENGER';
+                this.dataSource = new MatTableDataSource<RideDTO>(this.rides);
+                this.dataSource.paginator = this.paginator;
+              },
+              () => {
+                this.driverService
+                  .getAllRides(user.id, -1, 1, sortWay, dateFrom, dateTo)
+                  .subscribe((response) => {
+                    this.userToShow = 'DRIVER';
+                    this.rides = response.results;
+                    this.dataSource = new MatTableDataSource<RideDTO>(
+                      this.rides
+                    );
+                    this.dataSource.paginator = this.paginator;
+                  });
+              }
+            );
         });
     }
   }
 
   ngOnDestroy(): void {
-    this.getRidesSubscription.unsubscribe()
-    this.getUserSubscription.unsubscribe()
+    this.getRidesSubscription.unsubscribe();
+    this.getUserSubscription.unsubscribe();
   }
-
 }

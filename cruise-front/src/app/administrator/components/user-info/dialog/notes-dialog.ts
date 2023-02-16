@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {UserNotesDTO} from "../../../models/user-notes-dto";
-import {Subscription} from "rxjs";
-import {UserInfoService} from "../../../services/user-info.service";
+import { UserNotesDTO } from '../../../models/user-notes-dto';
+import { Subscription } from 'rxjs';
+import { UserInfoService } from '../../../services/user-info.service';
 
 @Component({
   selector: 'app-notes-dialog',
@@ -11,8 +11,7 @@ import {UserInfoService} from "../../../services/user-info.service";
 })
 
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class NotesDialog implements OnInit, OnDestroy{
-
+export class NotesDialog implements OnInit, OnDestroy {
   notes!: UserNotesDTO;
   notesSupscription: Subscription = new Subscription();
   idSupscription: Subscription = new Subscription();
@@ -23,16 +22,16 @@ export class NotesDialog implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.idSupscription = this.userInfoService.selectedId$.subscribe((id) => {
-      this.notesSupscription = this.userInfoService.getUserNotes(id).subscribe((notes) => {
-        this.notes = notes;
-        console.log(this.notes)
-      })
-    })
+      this.notesSupscription = this.userInfoService
+        .getUserNotes(id)
+        .subscribe((notes) => {
+          this.notes = notes;
+        });
+    });
   }
 
   ngOnDestroy(): void {
     this.notesSupscription.unsubscribe();
     this.idSupscription.unsubscribe();
   }
-
 }

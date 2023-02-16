@@ -88,7 +88,6 @@ export class RegistrationComponent {
       address: this.registrationForm.value.address,
       password: this.registrationForm.value.password,
     };
-    console.log("radi")
     this.registrationService.registerUser(userDTO).subscribe({
       next: (response) => {
         this.registeredUserDTO = response;

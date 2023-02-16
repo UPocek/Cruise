@@ -11,6 +11,7 @@ import { DriverService } from '../../services/driver.service';
 import { MapService } from '../../../universal-components/services/map.service';
 import { Router } from '@angular/router';
 import { PopUpService } from 'src/app/universal-components/services/pop-up.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-driver-ride-request',
@@ -30,7 +31,7 @@ export class DriverRideRequestComponent implements OnInit, OnDestroy {
   numberOfPassengers?: number;
   cost?: number;
 
-  url = 'http://localhost:8080';
+  url = environment.serverUrl;
   isLoaded = false;
   private stompClient: any;
 

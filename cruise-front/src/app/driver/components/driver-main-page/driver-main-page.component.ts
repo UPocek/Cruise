@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { DriverService } from '../../services/driver.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-driver-main-page',
@@ -12,7 +13,7 @@ import { AuthService } from '../../../auth/services/auth.service';
   styleUrls: ['./driver-main-page.component.css'],
 })
 export class DriverMainPageComponent implements OnInit, OnDestroy {
-  url = 'http://localhost:8080';
+  url = environment.serverUrl;
   isLoaded = false;
   stompClient: any;
   rideToDriveSubscription: Subscription = new Subscription();

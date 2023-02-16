@@ -9,11 +9,8 @@ import {
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { LoginService } from 'src/app/auth/services/login.service';
+import { environment } from 'src/environments/environment';
 import { AnswerEmailDTO } from '../../models/answer-email-dto';
-import { RideDTO } from '../../models/ride-dto';
-import { PassengerService } from '../../services/passenger.service';
-
 @Component({
   selector: 'app-ride-invitation',
   templateUrl: './ride-invitation.component.html',
@@ -25,7 +22,7 @@ export class RideInvitationComponent implements OnInit, OnDestroy {
 
   isLoaded = false;
   private stompClient: any;
-  url = 'http://localhost:8080';
+  url = environment.serverUrl;
   passengerId!: number;
 
   constructor(private authService: AuthService) {}

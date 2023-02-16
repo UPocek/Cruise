@@ -13,6 +13,7 @@ import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { PopUpService } from 'src/app/universal-components/services/pop-up.service';
 import { AuthService } from '../services/auth.service';
 import { LoginDTO } from '../models/login-dto';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -28,7 +29,14 @@ export class Interceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const accessToken: any = localStorage.getItem('jwt');
-    if (req.headers.get('skip')) return next.handle(req);
+    if (req.headers.get('skip')) {
+      if (req.headers.get('ggl')) {
+        req = req.clone({
+          headers: req.headers.delete('skip').delete('ggl'),
+        });
+      }
+      return next.handle(req);
+    }
 
     const headers_object = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -67,7 +75,7 @@ export class Interceptor implements HttpInterceptor {
       if (token)
         return this.httpClient
           .post<LoginDTO>(
-            'http://localhost:8080/api/user/refreshToken',
+            `${environment.urlBase}/user/refreshToken',`,
             <LoginDTO>{
               accessToken: localStorage.getItem('jwt'),
               refreshToken: localStorage.getItem('refreshToken'),
