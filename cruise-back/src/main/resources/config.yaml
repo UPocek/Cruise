@@ -1,5 +1,5 @@
-SENDGRID_API_KEY: "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"
-GOOGLE_MAPS_API_KEY: "AIzaSyD6xOzj2hrFrXPkVEDSnNsfmHd1Tup-0gU"
+SENDGRID_API_KEY: ""
+GOOGLE_MAPS_API_KEY: ""
 TOKEN_LIFESPAN: 2592000
 ACCOUNT_CONFIRMATION_URL: "http://cruise.eastus.cloudapp.azure.com:8080/#/confirm-account/"
 RESET_PASSWORD_URL: "http://cruise.eastus.cloudapp.azure.com:8080/#/new-password/"
