@@ -37,7 +37,7 @@ import { Interceptor } from './auth/interceptor/interceptor.interceptor';
       useClass: Interceptor,
       multi: true,
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   exports: [AppComponent, NavbarComponent],
   bootstrap: [AppComponent],

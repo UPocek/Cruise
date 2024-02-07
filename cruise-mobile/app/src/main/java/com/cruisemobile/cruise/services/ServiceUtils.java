@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceUtils {
 
-    private static final String BASE_URL = "http://cruise.eastus.cloudapp.azure.com:8080/api/";
-    public static final String SERVER_IP = "http://cruise.eastus.cloudapp.azure.com";
+    private static final String BASE_URL = "http://192.168.1.7:8080/api/";
+    public static final String SERVER_IP = "http://192.168.1.7";
 
     static TokenInterceptor interceptor = new TokenInterceptor();
 

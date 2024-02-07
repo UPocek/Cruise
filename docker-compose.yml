@@ -1,0 +1,17 @@
+name: cruise
+services:
+  mysql_cruise:
+    image: mysql:8.2
+    container_name: mysql_cruise
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'cruise'
+      MYSQL_USER: 'cruise'
+      MYSQL_PASSWORD: 'cruise123!'
+      MYSQL_ROOT_PASSWORD: 'cruise123!'
+    ports:
+      - '3306:3306'
+    volumes:
+      - cruise-db:/var/lib/mysql
+volumes:
+  cruise-db:
